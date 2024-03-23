@@ -1,6 +1,7 @@
 import axiosClient from "@/utils/axiosClient";
 import { useRouter } from "next/navigation";
 import cookie from "js-cookie";
+import { parse } from "cookie";
 
 export const handleLogin = (
   email: string,
@@ -27,7 +28,9 @@ export const handleLogin = (
     });
 };
 
-export const isAuthenticated = (): boolean => {
-  const token = cookie.get("JWT_TOKEN");
+// @ts-ignore
+export const isAuthenticated = (req: NextRequest): boolean => {
+  const cookies = parse(req.headers.get('cookie') || '')
+  const token = cookies['JWT_TOKEN'];
   return !!token;
 };

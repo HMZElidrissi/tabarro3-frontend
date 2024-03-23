@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { handleLogin } from "@/utils/actions";
+import withGuest from "@/hoc/withGuest";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
