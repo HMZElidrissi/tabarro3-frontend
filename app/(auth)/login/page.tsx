@@ -1,7 +1,21 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { handleLogin } from "@/utils/actions";
 
 const LoginPage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({} as any);
+  const router = useRouter();
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    handleLogin(email, password, setErrors, router);
+  };
+
   return (
     <>
       <div className="h-screen">
@@ -18,7 +32,12 @@ const LoginPage = () => {
 
           <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
             <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-              <form className="space-y-6" method="POST">
+              <form className="space-y-6" onSubmit={handleSubmit}>
+                {errors && errors.email && (
+                  <div className="text-center text-red-500 text-sm mb-2">
+                    {errors.email}
+                  </div>
+                )}
                 <div>
                   <label htmlFor="email" className="form-label">
                     Email
@@ -28,10 +47,16 @@ const LoginPage = () => {
                     type="email"
                     id="email"
                     name="email"
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="Your email ..."
                   />
                 </div>
                 <div>
+                  {errors && (
+                    <div className="text-center text-red-500 text-sm mb-2">
+                      {errors.password}
+                    </div>
+                  )}
                   <label htmlFor="password" className="form-label">
                     Password
                   </label>
@@ -40,6 +65,7 @@ const LoginPage = () => {
                     type="password"
                     id="password"
                     name="password"
+                    onChange={(e) => setPassword(e.target.value)}
                     placeholder="Your password ..."
                   />
                 </div>
