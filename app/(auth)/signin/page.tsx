@@ -1,13 +1,11 @@
 "use client";
 import { signIn } from "next-auth/react";
 import { getCsrfToken } from "next-auth/react";
-import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import Error from "../error/page";
 
 const SignInPage = () => {
-  const { data: session, status } = useSession();
 
   const handleSignin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -30,13 +28,15 @@ const SignInPage = () => {
       <div className="h-screen">
         <div className="min-h-full flex flex-col justify-center py-10 sm:px-6 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
+            <Link href="/">
             <Image
               className="mx-auto"
               width={200}
               height={200}
               src="/logo.svg"
               alt="tabaro3"
-            />
+              />
+            </Link>
           </div>
 
           <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
