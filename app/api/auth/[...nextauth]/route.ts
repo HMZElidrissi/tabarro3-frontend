@@ -8,11 +8,10 @@ export const authOptions: NextAuthOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        email: { label: "Email", type: "email", placeholder: "Your email ..." },
+        email: { label: "Email", type: "email" },
         password: {
           label: "Password",
-          type: "password",
-          placeholder: "Your password ...",
+          type: "password"
         },
       },
       async authorize(credentials) {
@@ -55,6 +54,11 @@ export const authOptions: NextAuthOptions = {
       session.accessToken = token.accessToken as string;
       return session;
     },
+  },
+  pages: {
+    signIn: "/auth/signin",
+    signOut: "/auth/signout",
+    error: "/auth/error",
   },
 };
 
