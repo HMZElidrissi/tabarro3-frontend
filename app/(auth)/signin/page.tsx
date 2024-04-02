@@ -6,7 +6,6 @@ import Link from "next/link";
 import Error from "../error/page";
 
 const SignInPage = () => {
-
   const handleSignin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -29,12 +28,12 @@ const SignInPage = () => {
         <div className="min-h-full flex flex-col justify-center py-10 sm:px-6 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
             <Link href="/">
-            <Image
-              className="mx-auto"
-              width={200}
-              height={200}
-              src="/logo.svg"
-              alt="tabaro3"
+              <Image
+                className="mx-auto"
+                width={200}
+                height={200}
+                src="/logo.svg"
+                alt="tabaro3"
               />
             </Link>
           </div>

@@ -60,7 +60,7 @@ const config = {
           "950": "#190101",
         },
         background: {
-          "100": "#FBFBFB"
+          "100": "#FBFBFB",
         },
       },
     },

@@ -1,3 +1,4 @@
+"use client";
 import {
   Dialog,
   DialogContent,
@@ -6,10 +7,23 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogClose
 } from "@/app/ui/components/dialog";
 import { TrashIcon } from "@heroicons/react/24/outline";
+import { Participant } from "@/app/lib/definitions";
+import { deleteParticipant } from "@/app/lib/data";
+import { useRouter } from "next/navigation";
 
-const DeleteDialog = () => {
+const DeleteParticipantDialog = ({
+                                   participant
+                                 }: {
+  participant: Participant;
+}) => {
+  const router = useRouter();
+  const handleClick = async () => {
+    await deleteParticipant(participant.id);
+    router.refresh();
+  };
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -24,11 +38,16 @@ const DeleteDialog = () => {
           <DialogDescription>This action cannot be undone.</DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <button className="save-button">Delete</button>
+          <DialogClose asChild>
+            <button className="save-button" onClick={() => {
+              handleClick();
+            }}>Delete
+            </button>
+          </DialogClose>
         </DialogFooter>
       </DialogContent>
     </Dialog>
   );
 };
 
-export default DeleteDialog;
+export default DeleteParticipantDialog;

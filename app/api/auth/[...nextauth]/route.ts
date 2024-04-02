@@ -11,7 +11,7 @@ export const authOptions: NextAuthOptions = {
         email: { label: "Email", type: "email" },
         password: {
           label: "Password",
-          type: "password"
+          type: "password",
         },
       },
       async authorize(credentials) {
@@ -24,7 +24,7 @@ export const authOptions: NextAuthOptions = {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(credentials),
-            }
+            },
           );
 
           if (response.ok) {

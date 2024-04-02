@@ -3,14 +3,14 @@ import { Fragment, useState } from "react";
 import { Dialog, Menu, Transition } from "@headlessui/react";
 import {
   Bars3Icon,
+  BellIcon,
   MagnifyingGlassIcon,
   XMarkIcon,
-  BellIcon,
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { navigation, userNavigation } from "../lib/data";
+import { navigation, userNavigation } from "../lib/definitions";
 import clsx from "clsx";
 
 export default function DashboardLayout({
@@ -92,7 +92,7 @@ export default function DashboardLayout({
                         "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md",
                         {
                           "bg-gray-100 text-gray-900": pathname === item.href,
-                        }
+                        },
                       )}
                     >
                       <item.icon
@@ -100,7 +100,7 @@ export default function DashboardLayout({
                           "text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6",
                           {
                             "text-gray-500": pathname === item.href,
-                          }
+                          },
                         )}
                         aria-hidden="true"
                       />
@@ -141,7 +141,7 @@ export default function DashboardLayout({
                     "group flex items-center px-2 py-2 text-sm font-medium rounded-md",
                     {
                       "bg-gray-100 text-gray-900": pathname === item.href,
-                    }
+                    },
                   )}
                 >
                   <item.icon
@@ -149,7 +149,7 @@ export default function DashboardLayout({
                       "text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6",
                       {
                         "text-gray-500": pathname === item.href,
-                      }
+                      },
                     )}
                     aria-hidden="true"
                   />
@@ -233,7 +233,7 @@ export default function DashboardLayout({
                           className={clsx(
                             pathname === item.href
                               ? "bg-gray-100"
-                              : "block px-4 py-2 text-sm text-gray-700"
+                              : "block px-4 py-2 text-sm text-gray-700",
                           )}
                         >
                           {item.name}
