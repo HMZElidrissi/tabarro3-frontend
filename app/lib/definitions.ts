@@ -8,6 +8,7 @@ import {
   HomeIcon,
   InboxIcon,
   UsersIcon,
+  BuildingOffice2Icon
 } from "@heroicons/react/24/outline";
 
 export type Participant = {
@@ -20,25 +21,30 @@ export type Participant = {
 };
 
 export type Organization = {
-  id: number;
+  id?: number;
   name: string;
   email: string;
+  password?: string;
+  password_confirmation?: string;
   city: string;
   phone: string;
 };
 
 export const navigation = [
-  { name: "Dashboard", href: "/admin/participants", icon: HomeIcon },
+  { name: "Dashboard", href: "#", icon: HomeIcon },
   { name: "Team", href: "/test", icon: UsersIcon },
   { name: "Projects", href: "#", icon: FolderIcon },
   { name: "Calendar", href: "#", icon: CalendarIcon },
   { name: "Documents", href: "#", icon: InboxIcon },
   { name: "Reports", href: "#", icon: ChartBarIcon },
+  { name: "Participants", href: "/admin/participants", icon: UsersIcon },
+  { name: "Organizations", href: "/admin/organizations", icon: BuildingOffice2Icon },
+  { name: "Campaigns", href: "#", icon: CalendarIcon }
 ];
 export const userNavigation = [
   { name: "Your Profile", href: "#" },
   { name: "Settings", href: "#" },
-  { name: "Sign out", href: "#" },
+  { name: "Sign out", href: "#" }
 ];
 
 export const bloodGroups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
