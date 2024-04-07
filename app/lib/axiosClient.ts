@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getSession } from "next-auth/react";
+import { getSessionToken } from "./jwt-token";
 
 const axiosClient = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_API_URL}`,
@@ -9,8 +9,8 @@ const axiosClient = axios.create({
 });
 
 axiosClient.interceptors.request.use(async (config) => {
-  const session = await getSession();
-  config.headers.Authorization = `Bearer ${session?.accessToken}`;
+  const token = await getSessionToken();
+  config.headers.Authorization = `Bearer ${token}`;
   return config;
 });
 
@@ -19,8 +19,8 @@ axiosClient.interceptors.response.use(
     return response;
   },
   (error) => {
-    if (error.response.status === 401) {
-      console.log("Unauthenticated");
+    if (error.response?.status === 401) {
+      window.location.href = "/signin";
     }
     return Promise.reject(error);
   }

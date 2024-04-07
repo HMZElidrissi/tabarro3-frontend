@@ -10,18 +10,18 @@ import {
   DialogClose
 } from "@/app/ui/components/dialog";
 import { TrashIcon } from "@heroicons/react/24/outline";
-import { Organization } from "@/app/lib/definitions";
-import { deleteOrganization } from "@/app/lib/data";
+import { Campaign } from "@/app/lib/definitions";
+import { deleteCampaign } from "@/app/lib/data";
 import { useRouter } from "next/navigation";
 
-const DeleteOrganizationDialog = ({
-                                    organization
-                                  }: {
-  organization: Organization;
+const DeleteCampaignDialog = ({
+                                campaign
+                              }: {
+  campaign: Campaign;
 }) => {
   const router = useRouter();
   const handleClick = async () => {
-    await deleteOrganization(organization.id as number);
+    await deleteCampaign(campaign.id as number);
     router.refresh();
   };
   return (
@@ -50,4 +50,4 @@ const DeleteOrganizationDialog = ({
   );
 };
 
-export default DeleteOrganizationDialog;
+export default DeleteCampaignDialog;

@@ -1,4 +1,3 @@
-import { Dialog } from "@/app/ui/components/dialog";
 import EditParticipantDialog from "@/app/ui/participants/EditParticipantDialog";
 import DeleteParticipantDialog from "@/app/ui/participants/DeleteParticipantDialog";
 import { fetchParticipants } from "@/app/lib/data";
@@ -87,7 +86,6 @@ const ParticipantsPage = async () => {
                 ))}
                 </tbody>
               </table>
-              <Dialog />
             </div>
           </div>
         </div>

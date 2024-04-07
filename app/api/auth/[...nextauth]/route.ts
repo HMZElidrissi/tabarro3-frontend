@@ -11,8 +11,8 @@ export const authOptions: NextAuthOptions = {
         email: { label: "Email", type: "email" },
         password: {
           label: "Password",
-          type: "password",
-        },
+          type: "password"
+        }
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) return null;
@@ -23,8 +23,8 @@ export const authOptions: NextAuthOptions = {
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(credentials),
-            },
+              body: JSON.stringify(credentials)
+            }
           );
 
           if (response.ok) {
@@ -36,8 +36,8 @@ export const authOptions: NextAuthOptions = {
           console.error(error);
           return null;
         }
-      },
-    }),
+      }
+    })
     // GoogleProvider({
     //   clientId: process.env.GOOGLE_CLIENT_ID!,
     //   clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
@@ -53,13 +53,13 @@ export const authOptions: NextAuthOptions = {
     async session({ session, token }) {
       session.accessToken = token.accessToken as string;
       return session;
-    },
+    }
   },
   pages: {
     signIn: "/signin",
     signOut: "/signout",
-    error: "/error",
-  },
+    error: "/error"
+  }
 };
 
 const handler = NextAuth(authOptions);

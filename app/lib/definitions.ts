@@ -30,6 +30,15 @@ export type Organization = {
   phone: string;
 };
 
+export type Campaign = {
+  id?: number;
+  name: string;
+  description: string;
+  start_time: string;
+  end_time: string;
+  location: string;
+}
+
 export const navigation = [
   { name: "Dashboard", href: "#", icon: HomeIcon },
   { name: "Team", href: "/test", icon: UsersIcon },
@@ -39,7 +48,7 @@ export const navigation = [
   { name: "Reports", href: "#", icon: ChartBarIcon },
   { name: "Participants", href: "/admin/participants", icon: UsersIcon },
   { name: "Organizations", href: "/admin/organizations", icon: BuildingOffice2Icon },
-  { name: "Campaigns", href: "#", icon: CalendarIcon }
+  { name: "Campaigns", href: "/organization/campaigns", icon: CalendarIcon }
 ];
 export const userNavigation = [
   { name: "Your Profile", href: "#" },

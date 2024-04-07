@@ -1,17 +1,18 @@
-import EditOrganizationDialog from "@/app/ui/organizations/EditOrganizationDialog";
-import DeleteOrganizationDialog from "@/app/ui/organizations/DeleteOrganizationDialog";
-import { fetchOrganizations } from "@/app/lib/data";
-import { Organization } from "@/app/lib/definitions";
-import CreateOrganizationDialog from "@/app/ui/organizations/CreateOrganizationDialog";
+import EditCampaignDialog from "@/app/ui/campaigns/EditCampaignDialog";
+import DeleteCampaignDialog from "@/app/ui/campaigns/DeleteCampaignDialog";
+import { fetchCampaigns } from "@/app/lib/data";
+import { Campaign } from "@/app/lib/definitions";
+import CreateCampaignDialog from "@/app/ui/campaigns/CreateCampaignDialog";
+import CampaignParticipantsDialog from "@/app/ui/campaigns/CampaignParticipantsDialog";
 
-const OrganizationsPage = async () => {
-  const organizations: Organization[] = await fetchOrganizations();
+const CampaignsPage = async () => {
+  const campaigns: Campaign[] = await fetchCampaigns();
 
   return (
     <div className="flex flex-col">
       <div className="overflow-x-auto">
         <div className="py-2 align-middle inline-block min-w-full">
-          <CreateOrganizationDialog />
+          <CreateCampaignDialog />
           <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
@@ -27,19 +28,25 @@ const OrganizationsPage = async () => {
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Email
+                    Description
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    City
+                    Location
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Phone
+                    Start Time
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    End Time
                   </th>
                   <th scope="col" className="relative px-6 py-3">
                     <span className="sr-only">Actions</span>
@@ -47,18 +54,22 @@ const OrganizationsPage = async () => {
                 </tr>
                 </thead>
                 <tbody>
-                {organizations.map((organization, organizationIdx) => (
-                  <tr key={organization.id} className={organizationIdx % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                {campaigns.map((campaign, campaignIdx) => (
+                  <tr key={campaign.id} className={campaignIdx % 2 === 0 ? "bg-white" : "bg-gray-50"}>
                     <td
-                      className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{organization.name}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{organization.email}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{organization.city}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{organization.phone}</td>
+                      className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{campaign.name}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{campaign.description}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{campaign.location}</td>
+                    <td
+                      className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{campaign.start_time}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{campaign.end_time}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <div className="flex justify-end items-center">
-                        <EditOrganizationDialog organization={organization} />
+                        <EditCampaignDialog campaign={campaign} />
                         <span className="mx-2"></span>
-                        <DeleteOrganizationDialog organization={organization} />
+                        <DeleteCampaignDialog campaign={campaign} />
+                        <span className="mx-2"></span>
+                        <CampaignParticipantsDialog campaign={campaign} />
                       </div>
                     </td>
                   </tr>
@@ -73,4 +84,4 @@ const OrganizationsPage = async () => {
   );
 };
 
-export default OrganizationsPage;
+export default CampaignsPage;

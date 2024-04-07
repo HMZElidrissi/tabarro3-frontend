@@ -11,7 +11,7 @@
     "prefix": ""
   },
   "aliases": {
-    "components": "@/app/ui",
+    "components": "@/app/ui/components",
     "utils": "@/app/lib/utils"
   }
 }

@@ -2,4 +2,6 @@
 // TODO: Generate user avatar
 // TODO: Update the use case diagram (s'authentifier => include) and class diagram
 // TODO: Make sequence diagram for authentication
-// TODO: Implement register + forgot password
+// TODO: forgot password
+// TODO: sign out as a dialog
+// TODO: Inspo for home page: https://portfolio-next.smakosh.com/

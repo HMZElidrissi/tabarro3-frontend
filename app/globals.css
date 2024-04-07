@@ -41,6 +41,10 @@
         @apply inline-flex items-center justify-center whitespace-nowrap py-1 px-4 border border-transparent rounded-md bg-black/70 text-white shadow hover:bg-black/80;
     }
 
+    .table-button-outline {
+        @apply inline-flex items-center justify-center whitespace-nowrap py-1 px-4 border border-black/70 rounded-md text-black/70 font-medium shadow hover:bg-black/10;
+    }
+
     .delete-button {
         @apply inline-flex items-center justify-center whitespace-nowrap py-1 px-4 border border-transparent rounded-md bg-red-500 text-white shadow hover:bg-red-600;
     }
