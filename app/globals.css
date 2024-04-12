@@ -52,4 +52,20 @@
     .badge-blood-group {
         @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 text-primary-800;
     }
+
+    .desktop-button {
+        @apply inline-flex items-center justify-center whitespace-nowrap py-1 px-6 border border-transparent rounded-lg bg-primary-500 text-white shadow hover:bg-primary-600 mr-2 font-medium;
+    }
+
+    .desktop-button-outline {
+        @apply inline-flex items-center justify-center whitespace-nowrap py-1 px-6 border border-primary-500 rounded-lg text-primary-500 shadow hover:bg-primary-50 mr-2 font-medium;
+    }
+
+    .donate-button {
+        @apply inline-block mt-8 px-8 py-3 bg-white text-primary-500 font-semibold rounded-lg shadow-lg cursor-pointer hover:shadow-xl transition-shadow duration-300 hover:bg-primary-400 hover:text-white;
+    }
+
+    .criteria-card {
+        @apply bg-primary-500 text-white shadow-lg p-6 rounded-lg;
+    }
 }
