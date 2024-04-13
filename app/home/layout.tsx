@@ -60,14 +60,7 @@ const Layout = ({
                     {mobileMenu.map((item) => (
                       <div key={item.name} className="flow-root">
                         <Link href={item.href} className={item.className}>
-                          {item.icon ? (
-                            <>
-                              <item.icon className="h-6 w-6 mr-2" />
-                              {item.name}
-                            </>
-                          ) : (
-                            item.name
-                          )}
+                          {item.name}
                         </Link>
                       </div>
                     ))}

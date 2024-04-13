@@ -131,13 +131,12 @@ export const mobileMenu = [
   {
     name: "Create an account",
     href: "/register",
-    className: "mobile-button-outline",
+    className: "mobile-navbar-item font-bold border-t border-gray-200",
   },
   {
     name: "Sign in",
     href: "/login",
-    className: "mobile-button",
-    icon: ArrowRightEndOnRectangleIcon,
+    className: "mobile-navbar-item font-bold border-b border-gray-200",
   },
 ];
 
