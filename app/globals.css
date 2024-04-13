@@ -54,11 +54,27 @@
     }
 
     .desktop-button {
-        @apply inline-flex items-center justify-center whitespace-nowrap py-1 px-6 border border-transparent rounded-lg bg-primary-500 text-white shadow hover:bg-primary-600 mr-2 font-medium;
+        @apply inline-flex items-center justify-center whitespace-nowrap py-1 px-6 border border-transparent rounded-lg bg-primary-500 text-white shadow hover:bg-primary-600 mr-2 font-medium cursor-pointer text-sm;
     }
 
     .desktop-button-outline {
-        @apply inline-flex items-center justify-center whitespace-nowrap py-1 px-6 border border-primary-500 rounded-lg text-primary-500 shadow hover:bg-primary-50 mr-2 font-medium;
+        @apply inline-flex items-center justify-center whitespace-nowrap py-1 px-6 border border-primary-500 rounded-lg text-primary-500 shadow hover:bg-primary-50 mr-2 font-medium cursor-pointer text-sm;
+    }
+
+    .desktop-navbar-item {
+        @apply inline-flex items-center justify-center whitespace-nowrap py-1 px-2 text-primary-500 mr-1 font-semibold cursor-pointer hover:text-primary-700 transition-colors duration-300 text-sm;
+    }
+
+    .mobile-button {
+        @apply inline-block mt-4 px-8 py-3 bg-primary-500 text-white font-semibold rounded-lg shadow-lg cursor-pointer hover:shadow-xl transition-shadow duration-300;
+    }
+
+    .mobile-button-outline {
+        @apply inline-block mt-4 px-8 py-3 bg-white text-primary-500 font-semibold rounded-lg shadow-lg cursor-pointer hover:shadow-xl transition-shadow duration-300;
+    }
+
+    .mobile-navbar-item {
+        @apply -m-2 p-2 block font-medium text-primary-500 hover:bg-primary-50 hover:text-primary-700 transition-colors duration-300;
     }
 
     .donate-button {

@@ -65,6 +65,31 @@ export const userNavigation = [
 
 export const desktopMenu = [
   {
+    name: "Blood Requests",
+    href: "/requests",
+    className: "desktop-navbar-item",
+  },
+  {
+    name: "New Campaigns",
+    href: "/campaigns",
+    className: "desktop-navbar-item",
+  },
+  {
+    name: "Donation Centers",
+    href: "/home#map",
+    className: "desktop-navbar-item",
+  },
+  {
+    name: "Why Donate Blood?",
+    href: "/home#benefits",
+    className: "desktop-navbar-item",
+  },
+  {
+    name: "Who Can Donate Blood?",
+    href: "/home#criterias",
+    className: "desktop-navbar-item",
+  },
+  {
     name: "Create an account",
     href: "/register",
     className: "desktop-button-outline",
@@ -79,14 +104,40 @@ export const desktopMenu = [
 
 export const mobileMenu = [
   {
+    name: "Blood Requests",
+    href: "/requests",
+    className: "mobile-navbar-item",
+  },
+  {
+    name: "New Campaigns",
+    href: "/campaigns",
+    className: "mobile-navbar-item",
+  },
+  {
+    name: "Donation Centers",
+    href: "/home#map",
+    className: "mobile-navbar-item",
+  },
+  {
+    name: "Why Donate Blood?",
+    href: "/home#benefits",
+    className: "mobile-navbar-item",
+  },
+  {
+    name: "Who Can Donate Blood?",
+    href: "/home#criterias",
+    className: "mobile-navbar-item",
+  },
+  {
     name: "Create an account",
     href: "/register",
-    className: "-m-2 p-2 block font-medium text-gray-600",
+    className: "mobile-button-outline",
   },
   {
     name: "Sign in",
     href: "/login",
-    className: "-m-2 p-2 block font-medium text-gray-600",
+    className: "mobile-button",
+    icon: ArrowRightEndOnRectangleIcon,
   },
 ];
 
@@ -136,3 +187,66 @@ export const criterias = [
 ];
 
 export const bloodGroups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
+
+export const donationCenters = [
+  {
+    id: 1,
+    name: "Rabat Regional Blood Donation Center",
+    latitude: 34.020882,
+    longitude: -6.84165,
+  },
+  {
+    id: 2,
+    name: "Casablanca Regional Blood Donation Center",
+    latitude: 33.57311,
+    longitude: -7.589843,
+  },
+  {
+    id: 3,
+    name: "Marrakech Regional Blood Donation Center",
+    latitude: 31.629472,
+    longitude: -7.981084,
+  },
+  {
+    id: 4,
+    name: "Fez Regional Blood Donation Center",
+    latitude: 34.033125,
+    longitude: -5.000875,
+  },
+  {
+    id: 5,
+    name: "Tangier Regional Blood Donation Center",
+    latitude: 35.759465,
+    longitude: -5.834009,
+  },
+  {
+    id: 6,
+    name: "Agadir Regional Blood Donation Center",
+    latitude: 30.427755,
+    longitude: -9.598107,
+  },
+  {
+    id: 7,
+    name: "Oujda Regional Blood Donation Center",
+    latitude: 34.677874,
+    longitude: -1.929306,
+  },
+  {
+    id: 8,
+    name: "Meknes Regional Blood Donation Center",
+    latitude: 33.893791,
+    longitude: -5.54727,
+  },
+  {
+    id: 9,
+    name: "Tetouan Regional Blood Donation Center",
+    latitude: 35.570175,
+    longitude: -5.374278,
+  },
+  {
+    id: 10,
+    name: "Kenitra Regional Blood Donation Center",
+    latitude: 34.26101,
+    longitude: -6.5802,
+  },
+];
