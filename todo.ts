@@ -4,4 +4,3 @@
 // TODO: Make sequence diagram for authentication
 // TODO: forgot password
 // TODO: sign out as a dialog
-// TODO: Inspo for home page: https://portfolio-next.smakosh.com/

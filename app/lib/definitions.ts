@@ -2,7 +2,6 @@
 // It describes the shape of the data, and what data type each property should accept.
 
 import {
-  ArrowRightEndOnRectangleIcon,
   BuildingOffice2Icon,
   CalendarIcon,
   ChartBarIcon,
@@ -89,17 +88,6 @@ export const desktopMenu = [
     href: "/home#criterias",
     className: "desktop-navbar-item",
   },
-  {
-    name: "Create an account",
-    href: "/register",
-    className: "desktop-button-outline",
-  },
-  {
-    name: "Sign in",
-    href: "/login",
-    className: "desktop-button",
-    icon: ArrowRightEndOnRectangleIcon,
-  },
 ];
 
 export const mobileMenu = [
@@ -127,16 +115,6 @@ export const mobileMenu = [
     name: "Who Can Donate Blood?",
     href: "/home#criterias",
     className: "mobile-navbar-item",
-  },
-  {
-    name: "Create an account",
-    href: "/register",
-    className: "mobile-navbar-item font-bold border-t border-gray-200",
-  },
-  {
-    name: "Sign in",
-    href: "/login",
-    className: "mobile-navbar-item font-bold border-b border-gray-200",
   },
 ];
 

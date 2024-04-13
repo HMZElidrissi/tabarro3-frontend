@@ -3,7 +3,8 @@ import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Bars2Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import { desktopMenu, mobileMenu } from "@/app/lib/definitions";
+import DesktopMenu from "@/app/ui/home/desktop-menu";
+import MobileMenu from "@/app/ui/home/mobile-menu";
 
 const Layout = ({
   children,
@@ -54,18 +55,8 @@ const Layout = ({
                     <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                   </button>
                 </div>
-
-                <div className="border-t border-gray-200 py-6 px-4 space-y-6">
-                  <>
-                    {mobileMenu.map((item) => (
-                      <div key={item.name} className="flow-root">
-                        <Link href={item.href} className={item.className}>
-                          {item.name}
-                        </Link>
-                      </div>
-                    ))}
-                  </>
-                </div>
+                <MobileMenu />
+                {/* Links */}
               </div>
             </Transition.Child>
           </Dialog>
@@ -101,31 +92,13 @@ const Layout = ({
                   </div>
 
                   {/* Logo (lg-) */}
-                  <a href="#" className="lg:hidden">
+                  <Link href="/" className="lg:hidden">
                     <span className="sr-only">tabaro3</span>
                     <img src="/logo.svg" alt="tabaro3" className="h-8 w-auto" />
-                  </a>
+                  </Link>
 
-                  <div className="hidden lg:flex flex-1 items-center justify-end">
-                    <div className="flex items-center lg:ml-8">
-                      <>
-                        {desktopMenu.map((item) => (
-                          <div key={item.name} className="flow-root">
-                            <Link href={item.href} className={item.className}>
-                              {item.icon ? (
-                                <>
-                                  <item.icon className="h-6 w-6 mr-2" />
-                                  {item.name}
-                                </>
-                              ) : (
-                                item.name
-                              )}
-                            </Link>
-                          </div>
-                        ))}
-                      </>
-                    </div>
-                  </div>
+                  {/* Desktop menu (lg+) */}
+                  <DesktopMenu />
                 </div>
               </div>
             </div>

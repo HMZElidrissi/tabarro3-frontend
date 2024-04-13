@@ -61,6 +61,10 @@
         @apply inline-flex items-center justify-center whitespace-nowrap py-1 px-6 border border-primary-500 rounded-lg text-primary-500 shadow hover:bg-primary-50 mr-2 font-medium cursor-pointer text-sm;
     }
 
+    .navbar-username {
+        @apply inline-flex items-center justify-center whitespace-nowrap py-1 px-4 text-primary-600 font-semibold text-sm border border-primary-600 rounded-lg mr-2;
+    }
+
     .desktop-navbar-item {
         @apply inline-flex items-center justify-center whitespace-nowrap py-1 px-2 text-primary-500 mr-1 font-semibold cursor-pointer hover:text-primary-700 transition-colors duration-300 text-sm;
     }
