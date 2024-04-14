@@ -30,7 +30,7 @@
     }
 
     .outline-button {
-        @apply inline-flex items-center justify-center whitespace-nowrap py-1 px-4 border border-primary-500 rounded-md text-primary-500 font-medium shadow hover:bg-primary-50;
+        @apply inline-flex items-center justify-center whitespace-nowrap py-1 px-4 border border-primary-700 rounded-md text-primary-600 font-medium shadow hover:bg-primary-50 text-sm;
     }
 
     .cancel-button {
