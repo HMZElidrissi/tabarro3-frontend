@@ -108,6 +108,17 @@ export async function openBloodRequest(id: number) {
   }
 }
 
+export async function fetchAllBloodRequests() {
+  noStore();
+  try {
+    const response = await axiosClient.get("/blood-requests/all");
+    return response.data;
+  } catch (error) {
+    console.error("There was an error!", error);
+    throw error;
+  }
+}
+
 export async function updateParticipant(participant: Participant) {
   const { id } = participant;
 
