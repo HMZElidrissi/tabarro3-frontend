@@ -1,4 +1,9 @@
-import { Participant, Organization, Campaign } from "@/app/lib/definitions";
+import {
+  BloodRequest,
+  Campaign,
+  Organization,
+  Participant,
+} from "@/app/lib/definitions";
 import { unstable_noStore as noStore } from "next/cache";
 import axiosClient from "@/app/lib/axiosClient";
 
@@ -38,7 +43,64 @@ export async function fetchCampaigns() {
 export async function fetchCampaignParticipants(campaignId: number) {
   noStore();
   try {
-    const response = await axiosClient.get(`/campaigns/${campaignId}/participants`);
+    const response = await axiosClient.get(
+      `/campaigns/${campaignId}/participants`,
+    );
+    return response.data;
+  } catch (error) {
+    console.error("There was an error!", error);
+    throw error;
+  }
+}
+
+export async function fetchBloodRequests() {
+  noStore();
+  try {
+    const response = await axiosClient.get("/blood-requests");
+    return response.data;
+  } catch (error) {
+    console.error("There was an error!", error);
+    throw error;
+  }
+}
+
+export async function createBloodRequest(bloodRequest: BloodRequest) {
+  try {
+    const response = await axiosClient.post("/blood-requests", bloodRequest);
+    return response.data;
+  } catch (error) {
+    console.error("There was an error!", error);
+    throw error;
+  }
+}
+
+export async function deleteBloodRequest(id: number) {
+  try {
+    const response = await axiosClient.delete(`/blood-requests/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("There was an error!", error);
+    throw error;
+  }
+}
+
+export async function closeBloodRequest(id: number) {
+  try {
+    const response = await axiosClient.put(`/blood-requests/${id}/close`, {
+      status: "closed",
+    });
+    return response.data;
+  } catch (error) {
+    console.error("There was an error!", error);
+    throw error;
+  }
+}
+
+export async function openBloodRequest(id: number) {
+  try {
+    const response = await axiosClient.put(`/blood-requests/${id}/open`, {
+      status: "open",
+    });
     return response.data;
   } catch (error) {
     console.error("There was an error!", error);
@@ -72,7 +134,10 @@ export async function updateOrganization(organization: Organization) {
   const { id } = organization;
 
   try {
-    const response = await axiosClient.put(`/organizations/${id}`, organization);
+    const response = await axiosClient.put(
+      `/organizations/${id}`,
+      organization,
+    );
     return response.data;
   } catch (error) {
     console.error("There was an error!", error);

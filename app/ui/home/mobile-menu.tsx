@@ -13,9 +13,16 @@ const MobileMenu = () => {
           </Link>
         </div>
       ))}
-      {status === "loading" && <div>Loading...</div>}
+      {status === "loading" && (
+        <div className="text-primary-600 font-semibold text-sm">Loading...</div>
+      )}
       {status === "authenticated" && (
         <>
+          <div className="flow-root">
+            <Link href="/myrequests" className="mobile-navbar-item">
+              Dashboard
+            </Link>
+          </div>
           <div className="flow-root mobile-navbar-item font-bold border-t border-gray-200">
             Welcome, {session.user?.name} 🩸
           </div>

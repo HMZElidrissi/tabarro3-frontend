@@ -41,6 +41,14 @@ export type Campaign = {
   location: string;
 };
 
+export type BloodRequest = {
+  id?: number;
+  description: string;
+  blood_group: string;
+  city: string;
+  status: "open" | "closed";
+};
+
 export const navigation = [
   { name: "Dashboard", href: "#", icon: HomeIcon },
   { name: "Team", href: "/test", icon: UsersIcon },
@@ -75,17 +83,17 @@ export const desktopMenu = [
   },
   {
     name: "Donation Centers",
-    href: "/home#map",
+    href: "/#map",
     className: "desktop-navbar-item",
   },
   {
     name: "Why Donate Blood?",
-    href: "/home#benefits",
+    href: "/#benefits",
     className: "desktop-navbar-item",
   },
   {
     name: "Who Can Donate Blood?",
-    href: "/home#criterias",
+    href: "/#criterias",
     className: "desktop-navbar-item",
   },
 ];
@@ -103,17 +111,17 @@ export const mobileMenu = [
   },
   {
     name: "Donation Centers",
-    href: "/home#map",
+    href: "/#map",
     className: "mobile-navbar-item",
   },
   {
     name: "Why Donate Blood?",
-    href: "/home#benefits",
+    href: "/#benefits",
     className: "mobile-navbar-item",
   },
   {
     name: "Who Can Donate Blood?",
-    href: "/home#criterias",
+    href: "/#criterias",
     className: "mobile-navbar-item",
   },
 ];

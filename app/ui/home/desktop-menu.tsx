@@ -19,11 +19,17 @@ const DesktopMenu = () => {
             </Link>
           </div>
         ))}
-        {status === "loading" && <div>Loading...</div>}
+        {status === "loading" && (
+          <div className="text-primary-600 font-semibold text-sm">
+            Loading...
+          </div>
+        )}
         {status === "authenticated" && (
           <>
-            <div className="flow-root navbar-username">
-              Welcome, {session.user?.name} 🩸
+            <div className="flow-root">
+              <Link href="/profile" className="desktop-button-outline">
+                Welcome, {session.user?.name} 🩸
+              </Link>
             </div>
             <div className="flow-root">
               <Link href="/signout" className="desktop-button">
