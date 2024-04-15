@@ -1,14 +1,23 @@
 import { mobileMenu } from "@/app/lib/definitions";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
+import clsx from "clsx";
+import { usePathname } from "next/navigation";
 
 const MobileMenu = () => {
   const { status, data: session } = useSession();
+  const pathname = usePathname();
+
   return (
     <div className="border-t border-gray-200 py-6 px-4 space-y-6">
       {mobileMenu.map((item) => (
         <div key={item.name} className="flow-root">
-          <Link href={item.href} className={item.className}>
+          <Link
+            href={item.href}
+            className={clsx(item.className, {
+              "text-primary-700": pathname === item.href,
+            })}
+          >
             {item.name}
           </Link>
         </div>

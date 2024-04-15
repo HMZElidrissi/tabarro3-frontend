@@ -39,6 +39,9 @@ export type Campaign = {
   start_time: string;
   end_time: string;
   location: string;
+  organization?: Organization;
+  participants?: Participant[];
+  is_participating?: boolean;
 };
 
 export type BloodRequest = {

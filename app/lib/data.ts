@@ -119,6 +119,42 @@ export async function fetchAllBloodRequests() {
   }
 }
 
+export async function fetchAllCampaigns() {
+  noStore();
+  try {
+    const response = await axiosClient.get("/campaigns/all");
+    return response.data;
+  } catch (error) {
+    console.error("There was an error!", error);
+    throw error;
+  }
+}
+
+export async function searchCampaigns(search: string) {
+  noStore();
+  try {
+    const response = await axiosClient.get(
+      `/campaigns/search?search=${search}`,
+    );
+    return response.data;
+  } catch (error) {
+    console.error("There was an error!", error);
+    throw error;
+  }
+}
+
+export async function participateInCampaign(campaignId: number) {
+  try {
+    const response = await axiosClient.post(
+      `/campaigns/${campaignId}/participate`,
+    );
+    return response.data;
+  } catch (error) {
+    console.error("There was an error!", error);
+    throw error;
+  }
+}
+
 export async function updateParticipant(participant: Participant) {
   const { id } = participant;
 

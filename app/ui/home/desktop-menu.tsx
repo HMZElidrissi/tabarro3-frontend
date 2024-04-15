@@ -5,16 +5,24 @@ import {
   ArrowRightEndOnRectangleIcon,
 } from "@heroicons/react/24/outline";
 import { useSession } from "next-auth/react";
+import { usePathname } from "next/navigation";
+import clsx from "clsx";
 
 const DesktopMenu = () => {
   const { status, data: session } = useSession();
+  const pathname = usePathname();
 
   return (
     <div className="hidden lg:flex flex-1 items-center justify-end">
       <div className="flex items-center lg:ml-8">
         {desktopMenu.map((item) => (
           <div key={item.name} className="flow-root">
-            <Link href={item.href} className={item.className}>
+            <Link
+              href={item.href}
+              className={clsx(item.className, {
+                "text-primary-700": pathname === item.href,
+              })}
+            >
               {item.name}
             </Link>
           </div>
