@@ -6,4 +6,3 @@
 // TODO: sign out as a dialog
 // TODO: Add a loading spinner
 // TODO: the donate button should be changed if a user is authenticated
-// TODO: Not found page
