@@ -19,7 +19,6 @@ export async function fetchParticipants() {
 }
 
 export async function fetchOrganizations() {
-  noStore();
   try {
     const response = await axiosClient.get("/organizations");
     return response.data;
@@ -30,7 +29,6 @@ export async function fetchOrganizations() {
 }
 
 export async function fetchCampaigns() {
-  noStore();
   try {
     const response = await axiosClient.get("/campaigns");
     return response.data;
@@ -41,7 +39,6 @@ export async function fetchCampaigns() {
 }
 
 export async function fetchCampaignParticipants(campaignId: number) {
-  noStore();
   try {
     const response = await axiosClient.get(
       `/campaigns/${campaignId}/participants`,
@@ -54,7 +51,6 @@ export async function fetchCampaignParticipants(campaignId: number) {
 }
 
 export async function fetchBloodRequests() {
-  noStore();
   try {
     const response = await axiosClient.get("/blood-requests");
     return response.data;
@@ -109,7 +105,6 @@ export async function openBloodRequest(id: number) {
 }
 
 export async function fetchAllBloodRequests() {
-  noStore();
   try {
     const response = await axiosClient.get("/blood-requests/all");
     return response.data;
@@ -120,7 +115,6 @@ export async function fetchAllBloodRequests() {
 }
 
 export async function fetchAllCampaigns() {
-  noStore();
   try {
     const response = await axiosClient.get("/campaigns/all");
     return response.data;
@@ -131,11 +125,20 @@ export async function fetchAllCampaigns() {
 }
 
 export async function searchCampaigns(search: string) {
-  noStore();
   try {
     const response = await axiosClient.get(
       `/campaigns/search?search=${search}`,
     );
+    return response.data;
+  } catch (error) {
+    console.error("There was an error!", error);
+    throw error;
+  }
+}
+
+export async function fetchStats() {
+  try {
+    const response = await axiosClient.get("/stats");
     return response.data;
   } catch (error) {
     console.error("There was an error!", error);

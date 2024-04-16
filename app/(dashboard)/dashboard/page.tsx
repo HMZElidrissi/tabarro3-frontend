@@ -1,18 +1,20 @@
 "use client";
 import { useSession } from "next-auth/react";
+import OrganizationStats from "@/app/ui/stats/organization-stats";
+import AdminStats from "@/app/ui/stats/admin-stats";
 
 const Page = () => {
-  const { status, data: session } = useSession();
+  const { data: session } = useSession();
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      {status === "loading" && <p>Loading...</p>}
-      {status === "authenticated" && (
-        <p>
-          Welcome, {session.user?.name} You have role {session.user?.role}
-        </p>
-      )}
-      {status === "unauthenticated" && <p>You are not signed in</p>}
+    <div className="container mx-auto px-6 md:px-12 xl:px-24">
+      <p className="text-2xl font-bold text-center my-6 text-gray-700">
+        Welcome back, {session?.user?.name} 👋
+      </p>
+      <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {session?.user?.role === 1 && <AdminStats />}
+        {session?.user?.role === 2 && <OrganizationStats />}
+      </dl>
     </div>
   );
 };
