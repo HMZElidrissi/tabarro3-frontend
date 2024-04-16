@@ -4,10 +4,7 @@
 import {
   BuildingOffice2Icon,
   CalendarIcon,
-  ChartBarIcon,
-  FolderIcon,
   HomeIcon,
-  InboxIcon,
   UsersIcon,
 } from "@heroicons/react/24/outline";
 import { Activity, HospitalIcon } from "lucide-react";
@@ -53,25 +50,25 @@ export type BloodRequest = {
   user?: Participant;
 };
 
-export const navigation = [
-  { name: "Dashboard", href: "#", icon: HomeIcon },
-  { name: "Team", href: "/test", icon: UsersIcon },
-  { name: "Projects", href: "#", icon: FolderIcon },
-  { name: "Calendar", href: "#", icon: CalendarIcon },
-  { name: "Documents", href: "#", icon: InboxIcon },
-  { name: "Reports", href: "#", icon: ChartBarIcon },
+export const adminNavigation = [
+  { name: "Dashboard", href: "/dashboard", icon: HomeIcon },
   { name: "Participants", href: "/admin/participants", icon: UsersIcon },
   {
     name: "Organizations",
     href: "/admin/organizations",
     icon: BuildingOffice2Icon,
   },
+];
+
+export const organizationNavigation = [
+  { name: "Dashboard", href: "/dashboard", icon: HomeIcon },
   { name: "Campaigns", href: "/organization/campaigns", icon: CalendarIcon },
 ];
+
 export const userNavigation = [
   { name: "Your Profile", href: "#" },
   { name: "Settings", href: "#" },
-  { name: "Sign out", href: "#" },
+  { name: "Sign out", href: "/signout" },
 ];
 
 export const desktopMenu = [

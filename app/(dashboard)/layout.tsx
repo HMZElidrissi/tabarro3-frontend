@@ -10,8 +10,13 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { navigation, userNavigation } from "../lib/definitions";
+import {
+  adminNavigation,
+  organizationNavigation,
+  userNavigation,
+} from "../lib/definitions";
 import clsx from "clsx";
+import { useSession } from "next-auth/react";
 
 export default function DashboardLayout({
   children,
@@ -20,6 +25,11 @@ export default function DashboardLayout({
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const pathname = usePathname();
+  const { data: session } = useSession();
+  let navigation;
+  session?.user?.role === 1
+    ? (navigation = adminNavigation)
+    : (navigation = organizationNavigation);
 
   return (
     <>

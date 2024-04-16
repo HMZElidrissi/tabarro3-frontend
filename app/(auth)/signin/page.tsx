@@ -1,6 +1,5 @@
 "use client";
-import { signIn } from "next-auth/react";
-import { getCsrfToken } from "next-auth/react";
+import { getCsrfToken, signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import Error from "../error/page";
