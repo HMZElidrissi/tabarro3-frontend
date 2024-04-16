@@ -1,11 +1,12 @@
 "use client";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
+import axiosClient from "@/app/lib/axiosClient";
 
 const SignOutPage = () => {
   const handleSignout = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    await axiosClient.post("/logout");
     await signOut({
       callbackUrl: "/",
     });

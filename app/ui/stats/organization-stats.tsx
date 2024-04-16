@@ -1,5 +1,5 @@
-import { CalendarCheck, MaximizeIcon, MinimizeIcon } from "lucide-react";
-import { Suspense, useEffect, useState } from "react";
+import { CalendarCheck, TrendingDown, TrendingUp } from "lucide-react";
+import { useEffect, useState } from "react";
 import { fetchStats } from "@/app/lib/data";
 
 interface OrganizationStatsProps {
@@ -21,30 +21,25 @@ const OrganizationStats = () => {
   }, []);
   return (
     <>
-      <Suspense fallback={<div>...HELLO</div>}>
-        <div className="relative bg-white pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden">
-          <dt>
-            <div className="absolute bg-primary-500 rounded-md p-3">
-              <CalendarCheck
-                className="h-6 w-6 text-white"
-                aria-hidden="true"
-              />
-            </div>
-            <p className="ml-16 text-sm font-medium text-gray-500 truncate">
-              Number of Campaigns
-            </p>
-          </dt>
-          <dd className="ml-16 flex items-baseline">
-            <p className="text-2xl font-semibold text-gray-900">
-              {stats.campaigns}
-            </p>
-          </dd>
-        </div>
-      </Suspense>
       <div className="relative bg-white pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden">
         <dt>
           <div className="absolute bg-primary-500 rounded-md p-3">
-            <MaximizeIcon className="h-6 w-6 text-white" aria-hidden="true" />
+            <CalendarCheck className="h-6 w-6 text-white" aria-hidden="true" />
+          </div>
+          <p className="ml-16 text-sm font-medium text-gray-500 truncate">
+            Number of Campaigns
+          </p>
+        </dt>
+        <dd className="ml-16 flex items-baseline">
+          <p className="text-2xl font-semibold text-gray-900">
+            {stats.campaigns}
+          </p>
+        </dd>
+      </div>
+      <div className="relative bg-white pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden">
+        <dt>
+          <div className="absolute bg-primary-500 rounded-md p-3">
+            <TrendingUp className="h-6 w-6 text-white" aria-hidden="true" />
           </div>
           <p className="ml-16 text-sm font-medium text-gray-500">
             Campaign with most participants
@@ -59,7 +54,7 @@ const OrganizationStats = () => {
       <div className="relative bg-white pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden">
         <dt>
           <div className="absolute bg-primary-500 rounded-md p-3">
-            <MinimizeIcon className="h-6 w-6 text-white" aria-hidden="true" />
+            <TrendingDown className="h-6 w-6 text-white" aria-hidden="true" />
           </div>
           <p className="ml-16 text-sm font-medium text-gray-500">
             Campaign with least participants
