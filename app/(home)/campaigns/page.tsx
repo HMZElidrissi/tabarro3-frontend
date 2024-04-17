@@ -13,7 +13,6 @@ const Page = () => {
   useEffect(() => {
     const loadCampaigns = () => {
       fetchAllCampaigns().then((data) => {
-        console.log(data);
         setCampaigns(data);
       });
     };
