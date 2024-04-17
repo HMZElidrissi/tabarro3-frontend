@@ -5,6 +5,7 @@ import { Bars2Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import DesktopMenu from "@/app/ui/home/desktop-menu";
 import MobileMenu from "@/app/ui/home/mobile-menu";
+import Image from "next/image";
 
 const Layout = ({
   children,
@@ -71,7 +72,7 @@ const Layout = ({
                   <div className="hidden lg:flex-1 lg:flex lg:items-center">
                     <Link href="/">
                       <span className="sr-only">tabaro3</span>
-                      <img
+                      <Image
                         className="h-8 w-auto"
                         src="/logo.svg"
                         alt="tabaro3"
@@ -94,7 +95,11 @@ const Layout = ({
                   {/* Logo (lg-) */}
                   <Link href="/" className="lg:hidden">
                     <span className="sr-only">tabaro3</span>
-                    <img src="/logo.svg" alt="tabaro3" className="h-8 w-auto" />
+                    <Image
+                      src="/logo.svg"
+                      alt="tabaro3"
+                      className="h-8 w-auto"
+                    />
                   </Link>
 
                   {/* Desktop menu (lg+) */}
