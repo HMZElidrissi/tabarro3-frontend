@@ -3,28 +3,29 @@ import Image from "next/image";
 import Link from "next/link";
 import axiosClient from "@/app/lib/axiosClient";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 const Page = () => {
+  const token = useSearchParams().get("token");
+  console.log(token);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
-  const router = useRouter();
   const handleReset = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     const formData = new FormData(e.currentTarget);
-    const email = String(formData.get("email"));
+    const payload = {
+      email: String(formData.get("email")),
+      password: String(formData.get("password")),
+      password_confirmation: String(formData.get("password_confirmation")),
+      token: token,
+    };
 
     axiosClient
-      .post("/password/email", { email })
+      .post("/password/reset", payload)
       .then((response) => {
         setMessage(response.data.message);
       })
       .catch((error) => {
-        if (error.response.status === 404) {
-          setError(error.response.data.message);
-          return;
-        }
         setError("An error occurred. Please try again later.");
       });
   };
@@ -69,10 +70,34 @@ const Page = () => {
                   placeholder="Your email ..."
                 />
               </div>
+              <div>
+                <label htmlFor="password" className="form-label">
+                  Password
+                </label>
+                <input
+                  className="form-input"
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Your password ..."
+                />
+              </div>
+              <div>
+                <label htmlFor="password_confirmation" className="form-label">
+                  Confirm Password
+                </label>
+                <input
+                  className="form-input"
+                  type="password"
+                  id="password_confirmation"
+                  name="password_confirmation"
+                  placeholder="Confirm your password ..."
+                />
+              </div>
 
               <div>
                 <button type="submit" className="submit-button">
-                  Send password reset link
+                  Reset Password
                 </button>
               </div>
             </form>
