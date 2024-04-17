@@ -27,13 +27,10 @@ const MobileMenu = () => {
       )}
       {status === "authenticated" && (
         <>
-          <div className="flow-root">
-            <Link href="/myrequests" className="mobile-navbar-item">
-              Dashboard
-            </Link>
-          </div>
           <div className="flow-root mobile-navbar-item font-bold border-t border-gray-200">
-            Welcome, {session.user?.name} 🩸
+            <Link href="/profile" className="mobile-navbar-item">
+              Welcome, {session.user?.name} 🩸
+            </Link>
           </div>
           <div className="flow-root">
             <Link

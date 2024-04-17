@@ -59,7 +59,7 @@ const Page = () => {
                         <MapPinIcon className="h-4 w-4 inline-block mr-2" />
                         {campaign.location}
                       </div>
-                      <div className="mt-2 text-gray-800 text-sm font-medium flex items-center">
+                      <div className="mt-2 text-diesel-700 text-sm font-medium flex items-center">
                         <TimerIcon className="h-4 w-4 inline-block mr-2" />
                         {formatDistanceToNow(parseISO(campaign.start_time), {
                           addSuffix: true,
