@@ -6,6 +6,7 @@ import { PhoneIcon, TimerIcon, UserCircle } from "lucide-react";
 import ParticipateButton from "@/app/ui/campaigns/ParticipateButton";
 import SearchField from "@/app/ui/campaigns/search";
 import { useEffect, useState } from "react";
+import { formatDistanceToNow, parseISO } from "date-fns";
 
 const Page = () => {
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
@@ -60,7 +61,9 @@ const Page = () => {
                       </div>
                       <div className="mt-2 text-gray-800 text-sm font-medium flex items-center">
                         <TimerIcon className="h-4 w-4 inline-block mr-2" />
-                        {campaign.start_time} - {campaign.end_time}
+                        {formatDistanceToNow(parseISO(campaign.start_time), {
+                          addSuffix: true,
+                        })}
                       </div>
                       <div className="mt-2 text-gray-600 text-sm font-medium flex items-center">
                         <UserCircle className="h-4 w-4 inline-block mr-2" />

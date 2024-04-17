@@ -62,13 +62,16 @@ const Page = async () => {
                 </div>
                 <div>
                   <div className="-mt-px flex divide-x divide-gray-200">
-                    <button className="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500">
+                    <a
+                      href={`mailto:${request.user!.email}`}
+                      className="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500"
+                    >
                       <Contact2Icon
                         className="w-5 h-5 text-gray-400"
                         aria-hidden="true"
                       />
                       <span className="ml-3">Contact</span>
-                    </button>
+                    </a>
                   </div>
                 </div>
               </li>

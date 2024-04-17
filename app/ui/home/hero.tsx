@@ -34,7 +34,7 @@ const HeroComponent = () => {
                 significantly contribute to maintaining a sufficient supply for
                 your community.
               </p>
-              <Link href="/donate" className="donate-button">
+              <Link href="/requests" className="donate-button">
                 <HeartHandshake className="mr-2 h-6 w-6 inline-block" />
                 Donate Now
               </Link>
