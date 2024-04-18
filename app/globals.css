@@ -94,6 +94,6 @@
     }
 
     .avatar-fallback {
-        @apply flex items-center justify-center h-9 w-9 rounded-full bg-primary-100 text-primary-800 text-sm font-semibold uppercase;
+        @apply flex items-center justify-center h-9 w-9 rounded-full bg-primary-100 text-primary-800 text-sm font-bold uppercase;
     }
 }

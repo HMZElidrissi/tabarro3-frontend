@@ -9,7 +9,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   adminNavigation,
   organizationNavigation,
@@ -26,11 +26,16 @@ export default function DashboardLayout({
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const pathname = usePathname();
-  const { data: session } = useSession();
+  const router = useRouter();
+  const { status, data: session } = useSession();
   let navigation;
   session?.user?.role === 1
     ? (navigation = adminNavigation)
     : (navigation = organizationNavigation);
+
+  if (status === "unauthenticated") {
+    router.push("/signin");
+  }
 
   return (
     <>

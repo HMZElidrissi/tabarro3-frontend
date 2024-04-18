@@ -99,7 +99,7 @@ const SignInPage = () => {
 
               <div className="text-center">
                 <Link
-                  href="/register"
+                  href="/signup"
                   className="text-sm font-medium text-diesel-950 hover:underline"
                 >
                   Don&apos;t have an account? Register
