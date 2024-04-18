@@ -88,4 +88,12 @@
     .badge-open {
         @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800;
     }
+
+    .avatar-root {
+        @apply flex items-center justify-center h-9 w-9 rounded-full bg-primary-500 text-white;
+    }
+
+    .avatar-fallback {
+        @apply flex items-center justify-center h-9 w-9 rounded-full bg-primary-100 text-primary-800 text-sm font-semibold uppercase;
+    }
 }

@@ -75,6 +75,8 @@ const Layout = ({
                       <Image
                         className="h-8 w-auto"
                         src="/logo.svg"
+                        height={32}
+                        width={32}
                         alt="tabaro3"
                       />
                     </Link>
@@ -98,6 +100,8 @@ const Layout = ({
                     <Image
                       src="/logo.svg"
                       alt="tabaro3"
+                      height={32}
+                      width={32}
                       className="h-8 w-auto"
                     />
                   </Link>

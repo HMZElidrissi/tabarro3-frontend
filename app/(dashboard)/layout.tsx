@@ -17,6 +17,7 @@ import {
 } from "../lib/definitions";
 import clsx from "clsx";
 import { useSession } from "next-auth/react";
+import * as Avatar from "@radix-ui/react-avatar";
 
 export default function DashboardLayout({
   children,
@@ -217,13 +218,18 @@ export default function DashboardLayout({
                 <div>
                   <Menu.Button className="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-700">
                     <span className="sr-only">Open user menu</span>
-                    <Image
+                    {/*<Image
                       className="inline-block h-9 w-9 rounded-full"
                       src="/photo.avif"
                       alt="Profile image"
                       width={36}
                       height={36}
-                    />
+                    />*/}
+                    <Avatar.Root className="avatar-root">
+                      <Avatar.Fallback className="avatar-fallback">
+                        {session?.user?.name?.slice(0, 2)}
+                      </Avatar.Fallback>
+                    </Avatar.Root>
                   </Menu.Button>
                 </div>
                 <Transition
