@@ -1,0 +1,72 @@
+{
+  "Welcome": "مرحبًا",
+  "User": "المستخدم",
+  "Create an account": "إنشاء حساب",
+  "Sign in": "تسجيل الدخول",
+  "Sign out": "تسجيل الخروج",
+  "menu.bloodRequests": "طلبات الدم",
+  "menu.newCampaigns": "حملات جديدة",
+  "menu.donationCenters": "مراكز التبرع",
+  "menu.whyDonateBlood": "لماذا التبرع بالدم؟",
+  "menu.whoCanDonateBlood": "من يمكنه التبرع بالدم؟",
+  "benefits.title": "فوائد التبرع بالدم",
+  "benefits.description": "التبرع بالدم ليس مفيدًا فقط لأولئك الذين يتلقونه. يمكن للمتبرعين أيضًا الاستفادة من العديد من المزايا، مثل:",
+
+  "benefits.freeHealthCheckUp.title": "فحص صحي مجاني",
+  "benefits.freeHealthCheckUp.description": "قبل التبرع بالدم، يجب الخضوع لفحص صحي. يقوم به موظف مدرب يتحقق من: النبض، ضغط الدم، درجة حرارة الجسم، مستويات الهيموجلوبين",
+
+  "benefits.improvedCardiovascularHealth.title": "تحسين صحة القلب والأوعية الدموية",
+  "benefits.improvedCardiovascularHealth.description": "يساعد التبرع بالدم في تقليل مخزون الحديد الضار. هذا يمكن أن يقلل من خطر الإصابة بأمراض القلب والنوبات القلبية.",
+
+  "benefits.emotionalSatisfaction.title": "الرضا النفسي",
+  "benefits.emotionalSatisfaction.description": "التبرع بالدم يمنحك شعورًا جيدًا عن نفسك، ويساعدك على الشعور بالانتماء لمجتمعك.",
+
+  "benefits.reducedRiskOfCancer.title": "تقليل خطر الإصابة بالسرطان",
+  "benefits.reducedRiskOfCancer.description": "يمكن أن يساعد التبرع بالدم في تقليل خطر الإصابة بالسرطان من خلال تقليل خطر زيادة الحديد في الجسم.",
+
+  "criterias.title": "معايير الأهلية للتبرع بالدم",
+
+  "criterias.ageAndWeight.title": "العمر والوزن",
+  "criterias.ageAndWeight.description": "يجب أن يتراوح عمر المتبرعين بين 18 و65 عامًا وأن يزن وزنهم 50 كجم على الأقل.",
+
+  "criterias.generalHealth.title": "الصحة العامة",
+  "criterias.generalHealth.description": "أن يكون بصحة جيدة وخالٍ من الأمراض التي تنتقل عن طريق الدم.",
+
+  "criterias.donationFrequency.title": "معدل التبرع",
+  "criterias.donationFrequency.description": "يمكن للرجال التبرع كل ثلاثة أشهر، وللنساء كل أربعة أشهر.",
+  "tabaro3_logo_alt": "شعار تبرع",
+  "hero_title": "تبرع بالدم.. أنقذ حياة",
+  "hero_description": "التبرع بالدم عمل حيوي ينقذ الأرواح يومياً. يمكن لتبرع واحد أن يساعد حتى ثلاثة أشخاص ويستخدم في حالات طبية متنوعة، من العمليات الجراحية إلى علاجات السرطان. من خلال التبرع بانتظام، تلعب دوراً أساسياً في الحفاظ على إمدادات كافية من الدم لمجتمعك.",
+  "donate_button": "تبرع الآن",
+  "carousel_image_alt": "صورة التبرع بالدم {number}",
+
+  "map.title": "\uD83C\uDDF2\uD83C\uDDE6 خريطة المراكز الجهوية للتبرع بالدم في المغرب",
+  "footer.tabaro3": "تبرع",
+  "footer.byRotaract": "بواسطة Rotaract Les Mérinides",
+  "footer.allRightsReserved": "كل الحقوق محفوظة.",
+
+  "New Campaigns": "حملات التبرع الجديدة",
+  "No campaigns found.": "لم يتم العثور على أي حملة.",
+  "Participate": "تسجيل",
+  "Participating": "قيد التنفيذ",
+  "Blood Requests": "طلبات التبرع بالدم",
+  "Blood Request": "طلب تبرع بالدم",
+  "No blood requests found": "لم يتم العثور على أي طلبات للتبرع بالدم.",
+  "Contact": "تواصل",
+  "My Blood Requests": "طلبات الدم الخاصة بي",
+  "Blood Group": "فصيلة الدم",
+  "Close": "مغلق",
+  "Open": "مفتوح",
+  "You are going to change the status of your blood request.": "ستقوم بتغيير حالة طلب الدم الخاص بك.",
+  "New Blood Request": "طلب تبرع بالدم جديد",
+  "Fill in the form below to create a new blood request.": "املأ النموذج أدناه لإنشاء طلب تبرع بالدم جديد.",
+  "City": "المدينة",
+  "Save": "حفظ",
+  "metadata": {
+    "title": "تبرع - تبرع بالدم.. أنقذ حياة",
+    "description": "التبرع بالدم عمل حيوي ينقذ الأرواح يومياً. يمكن لتبرع واحد أن يساعد حتى ثلاثة أشخاص ويستخدم في حالات طبية متنوعة، من العمليات الجراحية إلى علاجات السرطان. من خلال التبرع بانتظام، تلعب دوراً أساسياً في الحفاظ على إمدادات كافية من الدم لمجتمعك.",
+    "keywords": "تبرع بالدم، نقل الدم، تبرع بالدم في المغرب، تبرع"
+  },
+  "Loading...": "جار التحميل...",
+  "Select Language": "اختر اللغة"
+}

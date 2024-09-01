@@ -6,18 +6,16 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  DialogClose
+  DialogClose,
 } from "@/app/ui/components/dialog";
 import { EyeIcon } from "@heroicons/react/24/outline";
 import { Campaign, Participant } from "@/app/lib/definitions";
 import { fetchCampaignParticipants } from "@/app/lib/data";
 
-const EditCampaignDialog = async ({
-                                    campaign
-                                  }: {
-  campaign: Campaign;
-}) => {
-  const participants: Participant[] = await fetchCampaignParticipants(campaign.id as number);
+const EditCampaignDialog = async ({ campaign }: { campaign: Campaign }) => {
+  const participants: Participant[] = await fetchCampaignParticipants(
+    campaign.id as number,
+  );
 
   return (
     <Dialog>
@@ -41,15 +39,23 @@ const EditCampaignDialog = async ({
                 <div className="sm:col-span-1">
                   <dt className="text-sm font-medium text-gray-500">Name</dt>
                   {participants.map((participant, participantIdx) => (
-                    <dd key={participant.id} className="mt-1 text-sm text-gray-900">
+                    <dd
+                      key={participant.id}
+                      className="mt-1 text-sm text-gray-900"
+                    >
                       {participant.name}
                     </dd>
                   ))}
                 </div>
                 <div className="sm:col-span-1">
-                  <dt className="text-sm font-medium text-gray-500">Blood Group</dt>
+                  <dt className="text-sm font-medium text-gray-500">
+                    Blood Group
+                  </dt>
                   {participants.map((participant, participantIdx) => (
-                    <dd key={participant.id} className="mt-1 text-sm text-gray-900">
+                    <dd
+                      key={participant.id}
+                      className="mt-1 text-sm text-gray-900"
+                    >
                       {participant.blood_group}
                     </dd>
                   ))}
@@ -57,7 +63,6 @@ const EditCampaignDialog = async ({
               </dl>
             </div>
           </div>
-
         </div>
       </DialogContent>
     </Dialog>

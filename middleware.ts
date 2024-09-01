@@ -1,7 +1,50 @@
 import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
 
-export default async function middleware(req: NextRequest) {
+const locales = ["en", "fr", "ar"];
+const defaultLocale = "fr";
+
+function isAssetPath(pathname: string) {
+  const assetExtensions = [
+    ".jpg",
+    ".jpeg",
+    ".png",
+    ".gif",
+    ".svg",
+    ".ico",
+    ".css",
+    ".js",
+  ];
+  return (
+    assetExtensions.some((ext) => pathname.endsWith(ext)) ||
+    pathname.startsWith("/_next")
+  );
+}
+
+export async function middleware(req: NextRequest) {
+  const pathname = req.nextUrl.pathname;
+
+  if (isAssetPath(pathname)) {
+    return NextResponse.next();
+  }
+
+  // Handle root path explicitly
+  if (pathname === "/") {
+    return NextResponse.redirect(new URL(`/${defaultLocale}`, req.url));
+  }
+
+  const pathnameIsMissingLocale = locales.every(
+    (locale) =>
+      !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
+  );
+
+  // Redirect if there is no locale
+  if (pathnameIsMissingLocale) {
+    return NextResponse.redirect(
+      new URL(`/${defaultLocale}${pathname}`, req.url),
+    );
+  }
+
   const token = await getToken({ req });
   const isAuthenticated = !!token;
   const role = token?.role as number;
@@ -41,22 +84,36 @@ export default async function middleware(req: NextRequest) {
   };
   const protectedRoutes = [...ROUTES.organization, ...ROUTES.admin, "/profile"];
 
-  if (protectedRoutes.includes(req.nextUrl.pathname) && !isAuthenticated) {
-    return NextResponse.redirect(new URL("/signin", req.url));
+  // Strip locale from pathname for route checking
+  const pathnameWithoutLocale = pathname.replace(/^\/[a-z]{2}/, "");
+
+  // Existing authentication and role-based routing
+  if (protectedRoutes.includes(pathnameWithoutLocale) && !isAuthenticated) {
+    return NextResponse.redirect(new URL(`/${defaultLocale}/signin`, req.url));
   }
 
   if (
-    protectedRoutes.includes(req.nextUrl.pathname) &&
-    !canAccess(req.nextUrl.pathname, role)
+    protectedRoutes.includes(pathnameWithoutLocale) &&
+    !canAccess(pathnameWithoutLocale, role)
   ) {
-    return NextResponse.redirect(new URL(redirectByRole(role), req.url));
+    return NextResponse.redirect(
+      new URL(`/${defaultLocale}${redirectByRole(role)}`, req.url),
+    );
   }
 
   if (
-    ROUTES.participant.includes(req.nextUrl.pathname) &&
+    ROUTES.participant.includes(pathnameWithoutLocale) &&
     isAuthenticated &&
     role !== ROLES.PARTICIPANT
   ) {
-    return NextResponse.redirect(new URL("/dashboard", req.url));
+    return NextResponse.redirect(
+      new URL(`/${defaultLocale}/dashboard`, req.url),
+    );
   }
+
+  return NextResponse.next();
 }
+
+export const config = {
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+};

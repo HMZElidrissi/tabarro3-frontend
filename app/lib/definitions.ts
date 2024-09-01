@@ -73,27 +73,27 @@ export const userNavigation = [
 
 export const desktopMenu = [
   {
-    name: "Blood Requests",
+    name: "menu.bloodRequests",
     href: "/requests",
     className: "desktop-navbar-item",
   },
   {
-    name: "New Campaigns",
+    name: "menu.newCampaigns",
     href: "/campaigns",
     className: "desktop-navbar-item",
   },
   {
-    name: "Donation Centers",
+    name: "menu.donationCenters",
     href: "/#map",
     className: "desktop-navbar-item",
   },
   {
-    name: "Why Donate Blood?",
+    name: "menu.whyDonateBlood",
     href: "/#benefits",
     className: "desktop-navbar-item",
   },
   {
-    name: "Who Can Donate Blood?",
+    name: "menu.whoCanDonateBlood",
     href: "/#criterias",
     className: "desktop-navbar-item",
   },
@@ -101,27 +101,27 @@ export const desktopMenu = [
 
 export const mobileMenu = [
   {
-    name: "Blood Requests",
+    name: "menu.bloodRequests",
     href: "/requests",
     className: "mobile-navbar-item",
   },
   {
-    name: "New Campaigns",
+    name: "menu.newCampaigns",
     href: "/campaigns",
     className: "mobile-navbar-item",
   },
   {
-    name: "Donation Centers",
+    name: "menu.donationCenters",
     href: "/#map",
     className: "mobile-navbar-item",
   },
   {
-    name: "Why Donate Blood?",
+    name: "menu.whyDonateBlood",
     href: "/#benefits",
     className: "mobile-navbar-item",
   },
   {
-    name: "Who Can Donate Blood?",
+    name: "menu.whoCanDonateBlood",
     href: "/#criterias",
     className: "mobile-navbar-item",
   },
@@ -129,46 +129,39 @@ export const mobileMenu = [
 
 export const benefits = [
   {
-    name: "Free Health Check-Up",
-    description:
-      "In order to give blood, you’re required to undergo a health screening. A trained staff member performs this checkup. They’ll check your: pulse, blood pressure, body temperature, hemoglobin levels",
+    name: "benefits.freeHealthCheckUp.title",
+    description: "benefits.freeHealthCheckUp.description",
     icon: Activity,
   },
   {
-    name: "Improved Cardiovascular Health",
-    description:
-      "Donating blood can help reduce harmful iron stores. This can reduce the risk of heart disease. It can also reduce the risk of heart attack.",
+    name: "benefits.improvedCardiovascularHealth.title",
+    description: "benefits.improvedCardiovascularHealth.description",
     icon: HospitalIcon,
   },
   {
-    name: "Emotional Satisfaction",
-    description:
-      "Donating blood can help you feel good about yourself. It can also help you feel more connected to your community.",
+    name: "benefits.emotionalSatisfaction.title",
+    description: "benefits.emotionalSatisfaction.description",
     icon: UsersIcon,
   },
   {
-    name: "Reduced Risk of Cancer",
-    description:
-      "Donating blood can help reduce the risk of cancer. This is because it can reduce the risk of iron overload in the body.",
+    name: "benefits.reducedRiskOfCancer.title",
+    description: "benefits.reducedRiskOfCancer.description",
     icon: HeartIcon,
   },
 ];
 
 export const criterias = [
   {
-    name: "Age and Weight",
-    description:
-      "Donors must be between 18 and 65 years old and weigh at least 50 kg.",
+    name: "criterias.ageAndWeight.title",
+    description: "criterias.ageAndWeight.description",
   },
   {
-    name: "General Health",
-    description:
-      "Be in good general health and not suffering from any diseases transmissible by blood.",
+    name: "criterias.generalHealth.title",
+    description: "criterias.generalHealth.description",
   },
   {
-    name: "Donation Frequency",
-    description:
-      "Men can donate every three months, and women every four months.",
+    name: "criterias.donationFrequency.title",
+    description: "criterias.donationFrequency.description",
   },
 ];
 

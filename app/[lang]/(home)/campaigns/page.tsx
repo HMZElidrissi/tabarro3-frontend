@@ -7,9 +7,11 @@ import ParticipateButton from "@/app/ui/campaigns/ParticipateButton";
 import SearchField from "@/app/ui/campaigns/search";
 import { useEffect, useState } from "react";
 import { formatDistanceToNow, parseISO } from "date-fns";
+import { useTranslation } from "@/app/lib/useTranslation";
 
 const Page = () => {
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const loadCampaigns = () => {
@@ -25,13 +27,13 @@ const Page = () => {
       <div className="container mx-auto px-6 md:px-12 xl:px-24">
         <div className="lg:text-center">
           <p className="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
-            New Campaigns
+            {t("campaigns.title")}
           </p>
         </div>
         <SearchField setCampaigns={setCampaigns} />
         {campaigns.length === 0 && (
           <div className="w-full text-gray-500 py-6 text-center">
-            No campaigns found.
+            {t("campaigns.noCampaigns")}
           </div>
         )}
         {campaigns.length > 0 && (

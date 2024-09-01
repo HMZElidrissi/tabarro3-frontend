@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  DialogClose
+  DialogClose,
 } from "@/app/ui/components/dialog";
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
 import { Organization } from "@/app/lib/definitions";
@@ -15,8 +15,8 @@ import { updateOrganization } from "@/app/lib/data";
 import { useRouter } from "next/navigation";
 
 const EditOrganizationDialog = ({
-                                  organization
-                                }: {
+  organization,
+}: {
   organization: Organization;
 }) => {
   const router = useRouter();
@@ -29,7 +29,7 @@ const EditOrganizationDialog = ({
       name: String(formData.get("name")),
       email: String(formData.get("email")),
       city: String(formData.get("city")),
-      phone: String(formData.get("phone"))
+      phone: String(formData.get("phone")),
     };
     await updateOrganization(editedOrganization);
     router.refresh();

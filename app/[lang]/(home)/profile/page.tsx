@@ -1,22 +1,27 @@
 import { BloodRequest } from "@/app/lib/definitions";
-import { fetchAllBloodRequests } from "@/app/lib/data";
-import { InboxIcon, MapPinIcon } from "@heroicons/react/24/outline";
-import { Contact2Icon, PhoneIcon, UserCircle } from "lucide-react";
+import { fetchBloodRequests } from "@/app/lib/data";
+import CreateBloodRequestDialog from "@/app/ui/requests/CreateBloodRequestDialog";
+import DeleteBloodRequestDialog from "@/app/ui/requests/DeleteBloodRequestDialog";
+import ChangeRequestStatusDialog from "@/app/ui/requests/ChangeRequestStatusDialog";
+import { MapPinIcon } from "@heroicons/react/24/outline";
+import { useTranslation } from "@/app/lib/useTranslation";
 
 const Page = async () => {
-  const requests: BloodRequest[] = await fetchAllBloodRequests();
+  const requests: BloodRequest[] = await fetchBloodRequests();
+  const { t } = useTranslation();
 
   return (
     <div className=" py-20">
       <div className="container mx-auto px-6 md:px-12 xl:px-24">
         <div className="lg:text-center">
           <p className="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Blood Requests
+            {t("My Blood Requests")}
           </p>
+          <CreateBloodRequestDialog />
         </div>
         {requests.length === 0 && (
           <div className="w-full text-gray-500 py-6 text-center">
-            No blood requests found
+            {t("No blood requests found")}
           </div>
         )}
         {requests.length > 0 && (
@@ -33,7 +38,7 @@ const Page = async () => {
                   <div className="flex-1 truncate">
                     <div className="flex items-center space-x-3">
                       <h3 className="text-gray-900 text-sm font-bold">
-                        Blood Group:
+                        {t("Blood Group")}:
                       </h3>
                       <span className="flex-shrink-0 inline-block px-2 py-0.5 badge-blood-group">
                         {request.blood_group}
@@ -43,35 +48,26 @@ const Page = async () => {
                       <MapPinIcon className="h-4 w-4 inline-block mr-2" />
                       {request.city}
                     </div>
-                    <p className="mt-2 text-gray-500 text-sm">
+                    <p className="mt-1 text-gray-500 text-sm">
                       {request.description}
                     </p>
-                    <div className="mt-2 text-gray-600 text-sm font-medium flex items-center">
-                      <UserCircle className="h-4 w-4 inline-block mr-2" />
-                      {request.user!.name}
-                    </div>
-                    <div className="mt-1 text-gray-600 text-sm font-medium flex items-center">
-                      <InboxIcon className="h-4 w-4 inline-block mr-2" />
-                      {request.user!.email}
-                    </div>
-                    <div className="mt-1 text-gray-600 text-sm font-medium flex items-center">
-                      <PhoneIcon className="h-4 w-4 inline-block mr-2" />
-                      {request.user!.phone}
+                    <div className="mt-2">
+                      {request.status === "open" ? (
+                        <span className="badge-open">{t("Open")}</span>
+                      ) : (
+                        <span className="badge-closed">{t("Close")}</span>
+                      )}
                     </div>
                   </div>
                 </div>
                 <div>
                   <div className="-mt-px flex divide-x divide-gray-200">
-                    <a
-                      href={`mailto:${request.user!.email}`}
-                      className="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500"
-                    >
-                      <Contact2Icon
-                        className="w-5 h-5 text-gray-400"
-                        aria-hidden="true"
-                      />
-                      <span className="ml-3">Contact</span>
-                    </a>
+                    <div className="w-0 flex-1 flex">
+                      <ChangeRequestStatusDialog bloodRequest={request} />
+                    </div>
+                    <div className="-ml-px w-0 flex-1 flex">
+                      <DeleteBloodRequestDialog bloodRequest={request} />
+                    </div>
                   </div>
                 </div>
               </li>

@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  DialogClose
+  DialogClose,
 } from "@/app/ui/components/dialog";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { createCampaign } from "@/app/lib/data";
@@ -24,7 +24,7 @@ const CreateCampaignDialog = () => {
       description: String(formData.get("description")),
       location: String(formData.get("location")),
       start_time: String(formData.get("start_time")),
-      end_time: String(formData.get("end_time"))
+      end_time: String(formData.get("end_time")),
     };
     await createCampaign(newCampaign);
     router.refresh();
@@ -44,7 +44,8 @@ const CreateCampaignDialog = () => {
         <DialogHeader>
           <DialogTitle>Create Campaign</DialogTitle>
           <DialogDescription>
-            Create a new Campaign, Fill in the form and click save to create a new Campaign.
+            Create a new Campaign, Fill in the form and click save to create a
+            new Campaign.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">

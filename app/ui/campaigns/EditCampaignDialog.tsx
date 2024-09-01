@@ -7,18 +7,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  DialogClose
+  DialogClose,
 } from "@/app/ui/components/dialog";
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
 import { Campaign } from "@/app/lib/definitions";
 import { updateCampaign } from "@/app/lib/data";
 import { useRouter } from "next/navigation";
 
-const EditCampaignDialog = ({
-                              campaign
-                            }: {
-  campaign: Campaign;
-}) => {
+const EditCampaignDialog = ({ campaign }: { campaign: Campaign }) => {
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -30,7 +26,7 @@ const EditCampaignDialog = ({
       description: String(formData.get("description")),
       location: String(formData.get("location")),
       start_time: String(formData.get("start_time")),
-      end_time: String(formData.get("end_time"))
+      end_time: String(formData.get("end_time")),
     };
     await updateCampaign(editedCampaign);
     router.refresh();
@@ -56,12 +52,7 @@ const EditCampaignDialog = ({
             className="grid grid-cols-4 items-center gap-4"
             onSubmit={handleSubmit}
           >
-            <input
-              id="id"
-              type="hidden"
-              name="id"
-              defaultValue={campaign.id}
-            />
+            <input id="id" type="hidden" name="id" defaultValue={campaign.id} />
             <label htmlFor="name" className="form-label text-right">
               Name
             </label>

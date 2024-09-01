@@ -14,7 +14,7 @@ import {
   adminNavigation,
   organizationNavigation,
   userNavigation,
-} from "../lib/definitions";
+} from "@/app/lib/definitions";
 import clsx from "clsx";
 import { useSession } from "next-auth/react";
 import * as Avatar from "@radix-ui/react-avatar";

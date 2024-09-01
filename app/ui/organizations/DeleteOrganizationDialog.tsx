@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  DialogClose
+  DialogClose,
 } from "@/app/ui/components/dialog";
 import { TrashIcon } from "@heroicons/react/24/outline";
 import { Organization } from "@/app/lib/definitions";
@@ -15,8 +15,8 @@ import { deleteOrganization } from "@/app/lib/data";
 import { useRouter } from "next/navigation";
 
 const DeleteOrganizationDialog = ({
-                                    organization
-                                  }: {
+  organization,
+}: {
   organization: Organization;
 }) => {
   const router = useRouter();
@@ -39,9 +39,13 @@ const DeleteOrganizationDialog = ({
         </DialogHeader>
         <DialogFooter>
           <DialogClose asChild>
-            <button className="save-button" onClick={() => {
-              handleClick();
-            }}>Delete
+            <button
+              className="save-button"
+              onClick={() => {
+                handleClick();
+              }}
+            >
+              Delete
             </button>
           </DialogClose>
         </DialogFooter>

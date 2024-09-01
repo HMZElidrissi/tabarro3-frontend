@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  DialogClose
+  DialogClose,
 } from "@/app/ui/components/dialog";
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
 import { bloodGroups, Participant } from "@/app/lib/definitions";
@@ -15,8 +15,8 @@ import { updateParticipant } from "@/app/lib/data";
 import { useRouter } from "next/navigation";
 
 const EditParticipantDialog = ({
-                                 participant
-                               }: {
+  participant,
+}: {
   participant: Participant;
 }) => {
   const router = useRouter();
@@ -30,7 +30,7 @@ const EditParticipantDialog = ({
       email: String(formData.get("email")),
       city: String(formData.get("city")),
       phone: String(formData.get("phone")),
-      blood_group: String(formData.get("bloodGroup"))
+      blood_group: String(formData.get("bloodGroup")),
     };
     await updateParticipant(editedParticipant);
     router.refresh();

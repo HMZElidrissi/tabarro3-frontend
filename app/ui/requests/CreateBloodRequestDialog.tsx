@@ -13,9 +13,11 @@ import { PlusIcon } from "@heroicons/react/24/outline";
 import { createBloodRequest } from "@/app/lib/data";
 import { useRouter } from "next/navigation";
 import { bloodGroups, BloodRequest } from "@/app/lib/definitions";
+import { useTranslation } from "@/app/lib/useTranslation";
 
 const CreateBloodRequestDialog = () => {
   const router = useRouter();
+  const { t } = useTranslation();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -42,9 +44,9 @@ const CreateBloodRequestDialog = () => {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>New Blood Request</DialogTitle>
+          <DialogTitle>{t("New Blood Request")}</DialogTitle>
           <DialogDescription>
-            Fill in the form below to create a new blood request
+            {t("Fill in the form below to create a new blood request.")}
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
@@ -64,7 +66,7 @@ const CreateBloodRequestDialog = () => {
               placeholder="Blood Request Description ..."
             />
             <label htmlFor="blood_group" className="form-label text-right">
-              Blood Group
+              {t("Blood Group")}
             </label>
             <select
               id="blood_group"
@@ -79,7 +81,7 @@ const CreateBloodRequestDialog = () => {
               ))}
             </select>
             <label htmlFor="city" className="form-label text-right">
-              City
+              {t("City")}
             </label>
             <input
               id="city"
@@ -92,7 +94,7 @@ const CreateBloodRequestDialog = () => {
             <DialogFooter className="col-span-4">
               <DialogClose asChild>
                 <button type="submit" className="save-button">
-                  Save
+                  {t("Save")}
                 </button>
               </DialogClose>
             </DialogFooter>

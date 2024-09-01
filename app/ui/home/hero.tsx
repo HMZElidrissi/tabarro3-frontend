@@ -1,64 +1,72 @@
+import React, { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { HeartHandshake } from "lucide-react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/app/ui/components/carousel";
+import { useTranslation } from "@/app/lib/useTranslation";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 
 const HeroComponent = () => {
+  const { t } = useTranslation();
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay()]);
+
+  useEffect(() => {
+    if (emblaApi) {
+      console.log("Embla carousel is ready");
+    }
+  }, [emblaApi]);
+
   return (
-    <div className="bg-primary-500 py-20" id="hero">
+    <div
+      className="bg-gradient-to-r from-primary-600 to-primary-400 py-24"
+      id="hero"
+    >
       <div className="container mx-auto px-6 md:px-12 xl:px-24">
-        <div className="text-center space-y-4">
-          <div className="py-8 px-6 sm:pt-10 sm:px-16 lg:py-6 lg:pr-0 xl:py-6 xl:px-20">
+        <div className="text-center space-y-8">
+          <div className="py-8 px-6 sm:pt-10 sm:px-16 lg:py-6 lg:pr-0 xl:py-6 xl:px-20 bg-white bg-opacity-10 rounded-lg shadow-xl">
             <div className="lg:self-center">
               <Image
-                src="/logo_white.svg"
-                alt="tabaro3"
-                className="mx-auto mb-4"
-                width={200}
-                height={200}
+                src="/hero.svg"
+                alt={t("tabaro3_logo_alt")}
+                className="mx-auto transform hover:scale-105 transition-transform duration-300"
+                width={900}
+                height={900}
               />
-              <p className="block text-2xl text-white font-bold">
-                DONATE BLOOD .. SAVE LIVES
+              <h1 className="text-3xl md:text-4xl text-white font-extrabold mb-4 tracking-tight">
+                {t("hero_title")}
+              </h1>
+              <p className="text-lg leading-7 text-white max-w-3xl mx-auto">
+                {t("hero_description")}
               </p>
-              <p className="mt-4 text-lg leading-6 text-white">
-                Blood donation is a vital act that saves lives every day. Each
-                donation can treat up to three individuals and may be used in a
-                variety of medical situations, including surgeries, cancer
-                treatments, and medical emergencies. By donating regularly, you
-                significantly contribute to maintaining a sufficient supply for
-                your community.
-              </p>
-              <Link href="/requests" className="donate-button">
-                <HeartHandshake className="mr-2 h-6 w-6 inline-block" />
-                Donate Now
+              <Link
+                href="/requests"
+                className="mt-8 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-primary-600 bg-white hover:bg-primary-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105"
+              >
+                <HeartHandshake className="mr-2 h-6 w-6" />
+                {t("donate_button")}
               </Link>
             </div>
           </div>
-          <div className="-mt-6 aspect-w-5 aspect-h-3 md:aspect-w-2 md:aspect-h-1">
-            <Carousel>
-              <CarouselContent>
+          <div className="mt-12 aspect-w-16 aspect-h-9 md:aspect-w-2 md:aspect-h-1">
+            <div
+              className="rounded-xl overflow-hidden shadow-2xl"
+              ref={emblaRef}
+            >
+              <div className="flex">
                 {Array.from({ length: 12 }).map((_, index) => (
-                  <CarouselItem key={index} className="sm:basis-1/3">
+                  <div key={index} className="flex-[0_0_33.33%] min-w-0">
                     <Image
                       src={`/carousel/${index + 1}.jpeg`}
-                      alt={`Carousel item ${index + 1}`}
+                      alt={`${t("carousel_image_alt")} ${index + 1}`}
                       width={800}
                       height={600}
+                      className="object-cover w-full h-full"
                       loading="lazy"
                     />
-                  </CarouselItem>
+                  </div>
                 ))}
-                <CarouselItem className="basis-1/4"></CarouselItem>
-              </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
-            </Carousel>
+              </div>
+            </div>
           </div>
         </div>
       </div>

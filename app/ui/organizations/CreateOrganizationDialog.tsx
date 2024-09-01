@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  DialogClose
+  DialogClose,
 } from "@/app/ui/components/dialog";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { createOrganization } from "@/app/lib/data";
@@ -25,7 +25,7 @@ const CreateOrganizationDialog = () => {
       password: String(formData.get("password")),
       password_confirmation: String(formData.get("password_confirmation")),
       city: String(formData.get("city")),
-      phone: String(formData.get("phone"))
+      phone: String(formData.get("phone")),
     };
     await createOrganization(newOrganization);
     router.refresh();
@@ -86,7 +86,10 @@ const CreateOrganizationDialog = () => {
               required
               placeholder="Organization Password ..."
             />
-            <label htmlFor="password_confirmation" className="form-label text-right">
+            <label
+              htmlFor="password_confirmation"
+              className="form-label text-right"
+            >
               Confirm Password
             </label>
             <input

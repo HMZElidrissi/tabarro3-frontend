@@ -5,9 +5,11 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { Verified } from "lucide-react";
+import { useTranslation } from "@/app/lib/useTranslation";
 
 const ParticipateButton = ({ campaign }: { campaign: Campaign }) => {
   const { status, data: session } = useSession();
+  const { t } = useTranslation();
   const router = useRouter();
 
   const handleParticipate = async () => {
@@ -25,7 +27,7 @@ const ParticipateButton = ({ campaign }: { campaign: Campaign }) => {
       {campaign.is_participating ? (
         <div className="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg">
           <Verified className="w-5 h-5 text-gray-400" aria-hidden="true" />
-          <span className="ml-3">Participating</span>
+          <span className="ml-3">{t("campaigns.participating")}</span>
         </div>
       ) : (
         <button
@@ -33,7 +35,7 @@ const ParticipateButton = ({ campaign }: { campaign: Campaign }) => {
           onClick={handleParticipate}
         >
           <PlusIcon className="w-5 h-5 text-gray-400" aria-hidden="true" />
-          <span className="ml-3">Participate</span>
+          <span className="ml-3">{t("campaigns.participate")}</span>
         </button>
       )}
     </div>

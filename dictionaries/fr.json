@@ -1,0 +1,71 @@
+{
+  "Welcome": "Bienvenue",
+  "User": "Utilisateur",
+  "Create an account": "S'inscrire",
+  "Sign in": "Se connecter",
+  "Sign out": "Se déconnecter",
+  "menu.bloodRequests": "Demandes de sang",
+  "menu.newCampaigns": "Nouvelles campagnes",
+  "menu.donationCenters": "Centres de transfusion",
+  "menu.whyDonateBlood": "Pourquoi donner ?",
+  "menu.whoCanDonateBlood": "Qui peut donner ?",
+  "benefits.title": "Avantages du don de sang",
+  "benefits.description": "Le don de sang n'est pas seulement bénéfique pour ceux qui le reçoivent. Les donneurs peuvent également profiter de nombreux avantages, tels que :",
+
+  "benefits.freeHealthCheckUp.title": "Bilan de santé gratuit",
+  "benefits.freeHealthCheckUp.description": "Avant chaque don, un examen de santé est obligatoire. Un professionnel de santé qualifié effectue ce bilan. Il vérifiera votre : pouls, tension artérielle, température corporelle, taux d'hémoglobine",
+
+  "benefits.improvedCardiovascularHealth.title": "Meilleure santé cardiovasculaire",
+  "benefits.improvedCardiovascularHealth.description": "Le don de sang peut aider à réduire les réserves de fer nocives. Cela peut diminuer le risque de maladies cardiaques et d'infarctus.",
+
+  "benefits.emotionalSatisfaction.title": "Satisfaction émotionnelle",
+  "benefits.emotionalSatisfaction.description": "Donner son sang procure un sentiment de bien-être. Cela peut aussi vous faire sentir plus proche de votre communauté.",
+
+  "benefits.reducedRiskOfCancer.title": "Risque réduit de cancer",
+  "benefits.reducedRiskOfCancer.description": "Le don de sang peut contribuer à réduire le risque de cancer en diminuant le risque de surcharge en fer dans l'organisme.",
+
+  "criterias.title": "Critères d'éligibilité pour le don de sang",
+
+  "criterias.ageAndWeight.title": "Âge et poids",
+  "criterias.ageAndWeight.description": "Les donneurs doivent avoir entre 18 et 65 ans et peser au moins 50 kg.",
+
+  "criterias.generalHealth.title": "État de santé général",
+  "criterias.generalHealth.description": "Être en bonne santé générale et ne pas souffrir de maladies transmissibles par le sang.",
+
+  "criterias.donationFrequency.title": "Fréquence des dons",
+  "criterias.donationFrequency.description": "Les hommes peuvent donner tous les trois mois, et les femmes tous les quatre mois.",
+  "tabaro3_logo_alt": "Logo Tabaro3",
+  "hero_title": "Donnez du sang, sauvez des vies",
+  "hero_description": "Le don de sang est un geste vital qui sauve des vies quotidiennement. Un seul don peut aider jusqu'à trois personnes et est utilisé dans diverses situations médicales, des chirurgies aux traitements contre le cancer. En donnant régulièrement, vous jouez un rôle essentiel dans le maintien d'un approvisionnement en sang suffisant pour votre communauté.",
+  "donate_button": "Faire un don",
+  "carousel_image_alt": "Image de don de sang {number}",
+  "map.title": "La carte des centres régionaux de transfusion sanguine au Maroc 🇲🇦!",
+  "footer.tabaro3": "tabaro3",
+  "footer.byRotaract": "par le Rotaract Les Mérinides",
+  "footer.allRightsReserved": "Tous droits réservés.",
+
+  "New Campaigns": "Nouvelles campagnes",
+  "No campaigns found.": "Aucune campagne trouvée.",
+  "Participate": "Participer",
+  "Participating": "Participation",
+  "Blood Requests": "Demandes de sang",
+  "Blood Request": "Demande de sang",
+  "No blood requests found": "Aucune demande de sang trouvée.",
+  "Contact": "Contact",
+  "My Blood Requests": "Mes demandes de sang",
+  "Blood Group": "Groupe sanguin",
+  "Close": "Fermée",
+  "Open": "Ouverte",
+  "You are going to change the status of your blood request.": "Vous allez changer le statut de votre demande de sang.",
+  "New Blood Request": "Nouvelle demande de sang",
+  "Fill in the form below to create a new blood request.": "Remplissez le formulaire ci-dessous pour créer une nouvelle demande de sang.",
+  "City": "Ville",
+  "Save": "Enregistrer",
+  "metadata": {
+    "title": "tabaro3 - Donnez du sang, sauvez des vies",
+    "description": "Le don de sang est un acte crucial qui sauve des vies quotidiennement. Un seul don peut aider jusqu'à trois personnes et est utilisé dans diverses situations médicales, des chirurgies aux traitements contre le cancer. En donnant régulièrement, vous jouez un rôle essentiel dans le maintien d'un approvisionnement en sang suffisant pour votre communauté.",
+    "keywords": "don de sang, transfusion sanguine, don de sang au Maroc, tabaro3"
+  },
+  "Loading...": "Chargement...",
+  "Select Language": "Choisir la langue"
+}

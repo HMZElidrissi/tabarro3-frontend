@@ -7,18 +7,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  DialogClose
+  DialogClose,
 } from "@/app/ui/components/dialog";
 import { TrashIcon } from "@heroicons/react/24/outline";
 import { Campaign } from "@/app/lib/definitions";
 import { deleteCampaign } from "@/app/lib/data";
 import { useRouter } from "next/navigation";
 
-const DeleteCampaignDialog = ({
-                                campaign
-                              }: {
-  campaign: Campaign;
-}) => {
+const DeleteCampaignDialog = ({ campaign }: { campaign: Campaign }) => {
   const router = useRouter();
   const handleClick = async () => {
     await deleteCampaign(campaign.id as number);
@@ -39,9 +35,13 @@ const DeleteCampaignDialog = ({
         </DialogHeader>
         <DialogFooter>
           <DialogClose asChild>
-            <button className="save-button" onClick={() => {
-              handleClick();
-            }}>Delete
+            <button
+              className="save-button"
+              onClick={() => {
+                handleClick();
+              }}
+            >
+              Delete
             </button>
           </DialogClose>
         </DialogFooter>

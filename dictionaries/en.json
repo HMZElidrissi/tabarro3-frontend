@@ -1,0 +1,73 @@
+{
+  "Welcome": "Welcome",
+  "User": "User",
+  "Create an account": "Create an account",
+  "Sign in": "Sign in",
+  "Sign out": "Sign out",
+  "benefits.title": "Benefits of Blood Donation",
+  "benefits.description": "Donating blood is not only beneficial for those who receive it. Donors can also enjoy many advantages, such as:",
+
+  "menu.bloodRequests": "Blood Requests",
+  "menu.newCampaigns": "New Campaigns",
+  "menu.donationCenters": "Donation Centers",
+  "menu.whyDonateBlood": "Why Donate Blood?",
+  "menu.whoCanDonateBlood": "Who Can Donate Blood?",
+
+  "benefits.freeHealthCheckUp.title": "Free Health Check-Up",
+  "benefits.freeHealthCheckUp.description": "In order to give blood, you're required to undergo a health screening. A trained staff member performs this checkup. They'll check your: pulse, blood pressure, body temperature, hemoglobin levels",
+
+  "benefits.improvedCardiovascularHealth.title": "Improved Cardiovascular Health",
+  "benefits.improvedCardiovascularHealth.description": "Donating blood can help reduce harmful iron stores. This can reduce the risk of heart disease. It can also reduce the risk of heart attack.",
+
+  "benefits.emotionalSatisfaction.title": "Emotional Satisfaction",
+  "benefits.emotionalSatisfaction.description": "Donating blood can help you feel good about yourself. It can also help you feel more connected to your community.",
+
+  "benefits.reducedRiskOfCancer.title": "Reduced Risk of Cancer",
+  "benefits.reducedRiskOfCancer.description": "Donating blood can help reduce the risk of cancer. This is because it can reduce the risk of iron overload in the body.",
+
+  "criterias.title": "Eligibility Criteria for Blood Donation",
+
+  "criterias.ageAndWeight.title": "Age and Weight",
+  "criterias.ageAndWeight.description": "Donors must be between 18 and 65 years old and weigh at least 50 kg.",
+
+  "criterias.generalHealth.title": "General Health",
+  "criterias.generalHealth.description": "Be in good general health and not suffering from any diseases transmissible by blood.",
+
+  "criterias.donationFrequency.title": "Donation Frequency",
+  "criterias.donationFrequency.description": "Men can donate every three months, and women every four months.",
+  "tabaro3_logo_alt": "Tabaro3 logo",
+  "hero_title": "Give Blood, Save Lives",
+  "hero_description": "Blood donation is a crucial act that saves lives daily. A single donation can help up to three people and is used in various medical situations, from surgeries to cancer treatments. By donating regularly, you play a vital role in maintaining a healthy blood supply for your community.",
+  "donate_button": "Donate Now",
+  "carousel_image_alt": "Blood donation image {number}",
+
+  "map.title": "Map of Regional Blood Transfusion Centers in Morocco 🇲🇦!",
+  "footer.tabaro3": "tabaro3",
+  "footer.byRotaract": "by Rotaract Les Mérinides",
+  "footer.allRightsReserved": "All rights reserved.",
+
+  "New Campaigns": "New Campaigns",
+  "No campaigns found.": "No campaigns found.",
+  "Participate": "Participate",
+  "Participating": "Participating",
+  "Blood Requests": "Blood Requests",
+  "Blood Request": "Blood Request",
+  "No blood requests found": "No blood requests found.",
+  "Contact": "Contact",
+  "My Blood Requests": "My Blood Requests",
+  "Blood Group": "Blood Group",
+  "Close": "Closed",
+  "Open": "Opened",
+  "You are going to change the status of your blood request.": "You are going to change the status of your blood request.",
+  "New Blood Request": "New Blood Request",
+  "Fill in the form below to create a new blood request.": "Fill in the form below to create a new blood request.",
+  "City": "City",
+  "Save": "Save",
+  "metadata": {
+    "title": "tabaro3 - Give Blood, Save Lives",
+    "description": "Give blood, save lives. Learn about the benefits of blood donation, eligibility criteria, and find donation centers near you. Join us in making a difference!",
+    "keywords": "blood donation, blood donation platform, blood donation benefits, blood donation eligibility, blood donation centers"
+  },
+  "Loading...": "Loading...",
+  "Select Language": "Select Language"
+}
