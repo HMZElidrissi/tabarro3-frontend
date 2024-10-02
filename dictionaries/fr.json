@@ -77,6 +77,7 @@
   "campaigns.participate": "Participer",
   "campaigns.participating": "Déjà participé",
   "campaigns.loading": "Chargement des campagnes...",
+  "requests.loading": "Chargement des demandes de sang...",
   "Delete": "Supprimer",
   "delete_confirmation": "Êtes-vous absolument sûr ?",
   "delete_confirmation_description": "Cette action est irréversible.",

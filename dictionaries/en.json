@@ -79,6 +79,7 @@
   "campaigns.participate": "Participate",
   "campaigns.participating": "Participated",
   "campaigns.loading": "Loading campaigns...",
+  "requests.loading": "Loading blood requests...",
   "Delete": "Delete",
   "delete_confirmation": "Are you absolutely sure?",
   "delete_confirmation_description": "This action cannot be undone.",

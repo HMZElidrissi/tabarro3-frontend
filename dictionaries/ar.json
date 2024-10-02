@@ -78,6 +78,7 @@
   "campaigns.participate": "تسجيل",
   "campaigns.participating": "تم التسجيل",
   "campaigns.loading": "جاري تحميل الحملات...",
+  "requests.loading": "جاري تحميل طلبات التبرع بالدم...",
   "Delete": "حذف",
   "delete_confirmation": "هل أنت متأكد تمامًا؟",
   "delete_confirmation_description": "هذا الإجراء لا يمكن التراجع عنه.",
