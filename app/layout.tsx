@@ -26,11 +26,11 @@ export async function generateMetadata({
     openGraph: {
       title: "tabarro3",
       description: dict.metadata.description,
-      url: "https://tabarro3.vercel.app",
+      url: "https://tabarro3.ma",
       siteName: "tabarro3",
       images: [
         {
-          url: "https://tabarro3.ma/og-image.jpg",
+          url: "https://tabarro3.ma/og-image.png",
           width: 1200,
           height: 630,
           alt: "tabarro3 - Give Blood, Save Lives",
@@ -43,7 +43,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: "tabarro3",
       description: dict.metadata.description,
-      images: ["https://tabarro3.vercel.app/og-image.png"],
+      images: ["https://tabarro3.ma/og-image.png"],
     },
   };
 }
