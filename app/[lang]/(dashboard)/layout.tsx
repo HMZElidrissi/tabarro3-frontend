@@ -138,13 +138,15 @@ export default function DashboardLayout({
         {/* Sidebar component, swap this element with another sidebar if you like */}
         <div className="flex flex-col flex-grow border-r border-gray-200 pt-5 bg-white overflow-y-auto">
           <div className="flex items-center flex-shrink-0 px-4">
-            <Image
-              className="mx-auto"
-              src="/logo.svg"
-              alt="tabarro3"
-              width={120}
-              height={100}
-            />
+            <Link href="/">
+              <Image
+                className="mx-auto"
+                src="/logo.svg"
+                alt="tabarro3"
+                width={120}
+                height={100}
+              />
+            </Link>
           </div>
           <div className="mt-5 flex-grow flex flex-col">
             <nav className="flex-1 px-2 pb-4 space-y-1">

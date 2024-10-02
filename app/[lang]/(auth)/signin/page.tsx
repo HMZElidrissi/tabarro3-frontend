@@ -3,8 +3,11 @@ import { getCsrfToken, signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import Error from "../error/page";
+import { useTranslation } from "@/app/lib/useTranslation";
 
 const SignInPage = () => {
+  const { t } = useTranslation();
+
   const handleSignin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -48,26 +51,26 @@ const SignInPage = () => {
             >
               <div>
                 <label htmlFor="email" className="form-label">
-                  Email
+                  {t("form_email")}
                 </label>
                 <input
                   className="form-input"
                   type="email"
                   id="email"
                   name="email"
-                  placeholder="Your email ..."
+                  placeholder={t("form_email_placeholder")}
                 />
               </div>
               <div>
                 <label htmlFor="password" className="form-label">
-                  Password
+                  {t("form_password")}
                 </label>
                 <input
                   className="form-input"
                   type="password"
                   id="password"
                   name="password"
-                  placeholder="Your password ..."
+                  placeholder={t("form_password_placeholder")}
                 />
               </div>
 
@@ -83,7 +86,7 @@ const SignInPage = () => {
                     htmlFor="remember-me"
                     className="ml-2 block text-sm text-gray-900"
                   >
-                    Remember me
+                    {t("form_remember_me")}
                   </label>
                 </div>
 
@@ -92,7 +95,7 @@ const SignInPage = () => {
                     href="/password/forgot"
                     className="font-medium text-diesel-900 hover:text-diesel-950"
                   >
-                    Forgot your password?
+                    {t("form_forgot_password")}
                   </Link>
                 </div>
               </div>
@@ -102,13 +105,13 @@ const SignInPage = () => {
                   href="/signup"
                   className="text-sm font-medium text-diesel-950 hover:underline"
                 >
-                  Don&apos;t have an account? Register
+                  {t("form_dont_have_account")}
                 </Link>
               </div>
 
               <div>
                 <button type="submit" className="submit-button">
-                  Sign in
+                  {t("form_sign_in")}
                 </button>
               </div>
             </form>

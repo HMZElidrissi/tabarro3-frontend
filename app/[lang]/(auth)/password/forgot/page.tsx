@@ -4,8 +4,11 @@ import Link from "next/link";
 import axiosClient from "@/app/lib/axiosClient";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslation } from "@/app/lib/useTranslation";
 
 const Page = () => {
+  const { t } = useTranslation();
+
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
@@ -59,20 +62,20 @@ const Page = () => {
               )}
               <div>
                 <label htmlFor="email" className="form-label">
-                  Email
+                  {t("form_email")}
                 </label>
                 <input
                   className="form-input"
                   type="email"
                   id="email"
                   name="email"
-                  placeholder="Your email ..."
+                  placeholder={t("form_email_placeholder")}
                 />
               </div>
 
               <div>
                 <button type="submit" className="submit-button">
-                  Send password reset link
+                  {t("form_send_password_reset_link")}
                 </button>
               </div>
             </form>

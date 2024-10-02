@@ -5,8 +5,11 @@ import Link from "next/link";
 import axiosClient from "@/app/lib/axiosClient";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslation } from "@/app/lib/useTranslation";
 
 const SignUpPage = () => {
+  const { t } = useTranslation();
+
   const [errors, setErrors] = useState({
     name: "",
     email: "",
@@ -73,14 +76,14 @@ const SignUpPage = () => {
               )}
               <div>
                 <label htmlFor="name" className="form-label">
-                  Name
+                  {t("form_name")}
                 </label>
                 <input
                   className="form-input"
                   type="text"
                   id="name"
                   name="name"
-                  placeholder="Your name ..."
+                  placeholder={t("form_name_placeholder")}
                 />
               </div>
               {errors && (
@@ -90,14 +93,14 @@ const SignUpPage = () => {
               )}
               <div>
                 <label htmlFor="email" className="form-label">
-                  Email
+                  {t("form_email")}
                 </label>
                 <input
                   className="form-input"
                   type="email"
                   id="email"
                   name="email"
-                  placeholder="Your email ..."
+                  placeholder={t("form_email_placeholder")}
                 />
               </div>
               {errors && (
@@ -107,14 +110,14 @@ const SignUpPage = () => {
               )}
               <div>
                 <label htmlFor="password" className="form-label">
-                  Password
+                  {t("form_password")}
                 </label>
                 <input
                   className="form-input"
                   type="password"
                   id="password"
                   name="password"
-                  placeholder="Your password ..."
+                  placeholder={t("form_password_placeholder")}
                 />
               </div>
               {errors && (
@@ -124,14 +127,14 @@ const SignUpPage = () => {
               )}
               <div>
                 <label htmlFor="password_confirmation" className="form-label">
-                  Confirm Password
+                  {t("form_password_confirmation")}
                 </label>
                 <input
                   className="form-input"
                   type="password"
                   id="password_confirmation"
                   name="password_confirmation"
-                  placeholder="Confirm your password ..."
+                  placeholder={t("form_password_confirmation_placeholder")}
                 />
               </div>
               {errors && (
@@ -141,14 +144,14 @@ const SignUpPage = () => {
               )}
               <div>
                 <label htmlFor="city" className="form-label">
-                  City
+                  {t("form_city")}
                 </label>
                 <input
                   className="form-input"
                   type="text"
                   id="city"
                   name="city"
-                  placeholder="Your city ..."
+                  placeholder={t("form_city_placeholder")}
                 />
               </div>
               {errors && (
@@ -158,14 +161,14 @@ const SignUpPage = () => {
               )}
               <div>
                 <label htmlFor="phone" className="form-label">
-                  Phone
+                  {t("form_phone")}
                 </label>
                 <input
                   className="form-input"
                   type="text"
                   id="phone"
                   name="phone"
-                  placeholder="Your phone ..."
+                  placeholder={t("form_phone_placeholder")}
                 />
               </div>
               {errors && (
@@ -175,14 +178,14 @@ const SignUpPage = () => {
               )}
               <div>
                 <label htmlFor="blood_group" className="form-label">
-                  Blood Group
+                  {t("form_blood_group")}
                 </label>
                 <select
                   className="form-select"
                   id="blood_group"
                   name="blood_group"
                 >
-                  <option value="">Select your blood group</option>
+                  <option value="">{t("form_blood_group_placeholder")}</option>
                   {bloodGroups.map((group) => (
                     <option key={group} value={group}>
                       {group}
@@ -196,13 +199,13 @@ const SignUpPage = () => {
                   href="/signin"
                   className="text-sm font-medium text-diesel-950 hover:underline"
                 >
-                  Already have an account? Sign in
+                  {t("form_have_account")}
                 </Link>
               </div>
 
               <div>
                 <button type="submit" className="submit-button">
-                  Sign up
+                  {t("form_button")}
                 </button>
               </div>
             </form>

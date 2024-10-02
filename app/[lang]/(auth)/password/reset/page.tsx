@@ -4,8 +4,11 @@ import Link from "next/link";
 import axiosClient from "@/app/lib/axiosClient";
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { useTranslation } from "@/app/lib/useTranslation";
 
 const Page = () => {
+  const { t } = useTranslation();
+
   const token = useSearchParams().get("token");
   console.log(token);
   const [message, setMessage] = useState("");
@@ -60,26 +63,26 @@ const Page = () => {
               )}
               <div>
                 <label htmlFor="email" className="form-label">
-                  Email
+                  {t("form_email")}
                 </label>
                 <input
                   className="form-input"
                   type="email"
                   id="email"
                   name="email"
-                  placeholder="Your email ..."
+                  placeholder={t("form_email_placeholder")}
                 />
               </div>
               <div>
                 <label htmlFor="password" className="form-label">
-                  Password
+                  {t("form_password")}
                 </label>
                 <input
                   className="form-input"
                   type="password"
                   id="password"
                   name="password"
-                  placeholder="Your password ..."
+                  placeholder={t("form_password_placeholder")}
                 />
               </div>
               <div>
@@ -97,7 +100,7 @@ const Page = () => {
 
               <div>
                 <button type="submit" className="submit-button">
-                  Reset Password
+                  {t("form_reset_password")}
                 </button>
               </div>
             </form>
