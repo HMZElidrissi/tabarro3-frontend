@@ -67,5 +67,10 @@
     "keywords": "don de sang, transfusion sanguine, don de sang au Maroc, tabarro3"
   },
   "Loading...": "Chargement...",
-  "Select Language": "Choisir la langue"
+  "Select Language": "Choisir la langue",
+  "campaigns.title": "Campagnes",
+  "campaigns.noCampaigns": "Aucune campagne trouvée.",
+  "campaigns.search": "Rechercher des campagnes...",
+  "campaigns.participate": "Participer",
+  "campaigns.participating": "Déjà participé"
 }

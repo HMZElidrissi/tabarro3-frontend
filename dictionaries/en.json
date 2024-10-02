@@ -69,5 +69,10 @@
     "keywords": "blood donation, blood donation platform, blood donation benefits, blood donation eligibility, blood donation centers"
   },
   "Loading...": "Loading...",
-  "Select Language": "Select Language"
+  "Select Language": "Select Language",
+  "campaigns.title": "Campaigns",
+  "campaigns.noCampaigns": "No campaigns found.",
+  "campaigns.search": "Search campaigns...",
+  "campaigns.participate": "Participate",
+  "campaigns.participating": "Participated"
 }

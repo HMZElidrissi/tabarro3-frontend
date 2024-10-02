@@ -112,7 +112,7 @@ const MobileMenu = ({
               className="block py-2 px-4 rounded-md bg-gray-200 text-gray-700 font-semibold transition-colors duration-200 hover:bg-gray-300"
               onClick={handleLinkClick}
             >
-              {t("Sign Out")}
+              {t("Sign out")}
             </Link>
           </motion.div>
         </>

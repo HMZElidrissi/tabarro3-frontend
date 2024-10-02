@@ -68,5 +68,10 @@
     "keywords": "تبرع بالدم، نقل الدم، تبرع بالدم في المغرب، تبرع"
   },
   "Loading...": "جار التحميل...",
-  "Select Language": "اختر اللغة"
+  "Select Language": "اختر اللغة",
+  "campaigns.title": "الحملات",
+  "campaigns.noCampaigns": "لم يتم العثور على أي حملة.",
+  "campaigns.search": "البحث في الحملات...",
+  "campaigns.participate": "تسجيل",
+  "campaigns.participating": "تم التسجيل"
 }
