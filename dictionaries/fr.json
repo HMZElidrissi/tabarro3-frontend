@@ -76,6 +76,7 @@
   "campaigns.search": "Rechercher des campagnes...",
   "campaigns.participate": "Participer",
   "campaigns.participating": "Déjà participé",
+  "campaigns.loading": "Chargement des campagnes...",
   "Delete": "Supprimer",
   "delete_confirmation": "Êtes-vous absolument sûr ?",
   "delete_confirmation_description": "Cette action est irréversible.",

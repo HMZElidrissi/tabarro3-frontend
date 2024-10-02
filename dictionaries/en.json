@@ -78,6 +78,7 @@
   "campaigns.search": "Search campaigns...",
   "campaigns.participate": "Participate",
   "campaigns.participating": "Participated",
+  "campaigns.loading": "Loading campaigns...",
   "Delete": "Delete",
   "delete_confirmation": "Are you absolutely sure?",
   "delete_confirmation_description": "This action cannot be undone.",
