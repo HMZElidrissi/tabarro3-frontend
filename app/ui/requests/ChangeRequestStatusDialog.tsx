@@ -56,10 +56,7 @@ const ChangeRequestStatusDialog = ({
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>
-            {bloodRequest.status === "open" ? t("close") : t("open")}{" "}
-            {t("Blood Request")}
-          </DialogTitle>
+          <DialogTitle>{t("change_blood_request_status")}</DialogTitle>
           <DialogDescription>
             {t("You are going to change the status of your blood request.")}
           </DialogDescription>
@@ -72,8 +69,9 @@ const ChangeRequestStatusDialog = ({
                 handleClick();
               }}
             >
-              {bloodRequest.status === "open" ? t("close") : t("open")}{" "}
-              {t("Blood Request")}
+              {bloodRequest.status === "open"
+                ? t("close_blood_request")
+                : t("open_blood_request")}
             </button>
           </DialogClose>
         </DialogFooter>

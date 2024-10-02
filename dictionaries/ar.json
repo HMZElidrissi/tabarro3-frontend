@@ -55,8 +55,11 @@
   "Contact": "تواصل",
   "My Blood Requests": "طلبات الدم الخاصة بي",
   "Blood Group": "فصيلة الدم",
-  "Close": "مغلق",
   "Open": "مفتوح",
+  "Close": "مغلق",
+  "close_blood_request": "إغلاق",
+  "open_blood_request": "فتح",
+  "change_blood_request_status": "تغيير الحالة",
   "You are going to change the status of your blood request.": "ستقوم بتغيير حالة طلب الدم الخاص بك.",
   "New Blood Request": "طلب تبرع بالدم جديد",
   "Fill in the form below to create a new blood request.": "املأ النموذج أدناه لإنشاء طلب تبرع بالدم جديد.",
@@ -73,5 +76,8 @@
   "campaigns.noCampaigns": "لم يتم العثور على أي حملة.",
   "campaigns.search": "البحث في الحملات...",
   "campaigns.participate": "تسجيل",
-  "campaigns.participating": "تم التسجيل"
+  "campaigns.participating": "تم التسجيل",
+  "Delete": "حذف",
+  "delete_confirmation": "هل أنت متأكد تمامًا؟",
+  "delete_confirmation_description": "هذا الإجراء لا يمكن التراجع عنه."
 }

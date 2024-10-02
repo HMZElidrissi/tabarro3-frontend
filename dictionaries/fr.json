@@ -54,8 +54,11 @@
   "Contact": "Contact",
   "My Blood Requests": "Mes demandes de sang",
   "Blood Group": "Groupe sanguin",
-  "Close": "Fermée",
   "Open": "Ouverte",
+  "Close": "Fermée",
+  "close_blood_request": "fermer",
+  "open_blood_request": "ouvrir",
+  "change_blood_request_status": "Changer le statut",
   "You are going to change the status of your blood request.": "Vous allez changer le statut de votre demande de sang.",
   "New Blood Request": "Nouvelle demande de sang",
   "Fill in the form below to create a new blood request.": "Remplissez le formulaire ci-dessous pour créer une nouvelle demande de sang.",
@@ -72,5 +75,8 @@
   "campaigns.noCampaigns": "Aucune campagne trouvée.",
   "campaigns.search": "Rechercher des campagnes...",
   "campaigns.participate": "Participer",
-  "campaigns.participating": "Déjà participé"
+  "campaigns.participating": "Déjà participé",
+  "Delete": "Supprimer",
+  "delete_confirmation": "Êtes-vous absolument sûr ?",
+  "delete_confirmation_description": "Cette action est irréversible."
 }

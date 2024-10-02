@@ -56,8 +56,11 @@
   "Contact": "Contact",
   "My Blood Requests": "My Blood Requests",
   "Blood Group": "Blood Group",
-  "Close": "Closed",
   "Open": "Opened",
+  "Close": "Closed",
+  "close_blood_request": "fermer",
+  "open_blood_request": "ouvrir",
+  "change_blood_request_status": "Change Status",
   "You are going to change the status of your blood request.": "You are going to change the status of your blood request.",
   "New Blood Request": "New Blood Request",
   "Fill in the form below to create a new blood request.": "Fill in the form below to create a new blood request.",
@@ -74,5 +77,8 @@
   "campaigns.noCampaigns": "No campaigns found.",
   "campaigns.search": "Search campaigns...",
   "campaigns.participate": "Participate",
-  "campaigns.participating": "Participated"
+  "campaigns.participating": "Participated",
+  "Delete": "Delete",
+  "delete_confirmation": "Are you absolutely sure?",
+  "delete_confirmation_description": "This action cannot be undone."
 }

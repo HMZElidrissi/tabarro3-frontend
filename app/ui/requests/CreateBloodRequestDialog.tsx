@@ -38,7 +38,7 @@ const CreateBloodRequestDialog = () => {
         <div className="flex justify-start mr-6 my-4">
           <button className="outline-button flex items-center">
             <PlusIcon className="w-5 h-5 mr-2" />
-            New Blood Request
+            {t("New Blood Request")}
           </button>
         </div>
       </DialogTrigger>

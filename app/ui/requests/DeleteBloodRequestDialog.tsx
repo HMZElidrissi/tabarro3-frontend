@@ -13,6 +13,7 @@ import { TrashIcon } from "@heroicons/react/24/outline";
 import { BloodRequest } from "@/app/lib/definitions";
 import { deleteBloodRequest } from "@/app/lib/data";
 import { useRouter } from "next/navigation";
+import { useTranslation } from "@/app/lib/useTranslation";
 
 const DeleteBloodRequestDialog = ({
   bloodRequest,
@@ -20,6 +21,7 @@ const DeleteBloodRequestDialog = ({
   bloodRequest: BloodRequest;
 }) => {
   const router = useRouter();
+  const { t } = useTranslation();
   const handleClick = async () => {
     await deleteBloodRequest(bloodRequest.id as number);
     router.refresh();
@@ -29,13 +31,15 @@ const DeleteBloodRequestDialog = ({
       <DialogTrigger asChild>
         <button className="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-br-lg hover:text-gray-500">
           <TrashIcon className="w-5 h-5 text-gray-400" aria-hidden="true" />
-          <span className="ml-3">Delete</span>
+          <span className="ml-3">{t("Delete")}</span>
         </button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Are you absolutely sure?</DialogTitle>
-          <DialogDescription>This action cannot be undone.</DialogDescription>
+          <DialogTitle>{t("delete_confirmation")}</DialogTitle>
+          <DialogDescription>
+            {t("delete_confirmation_description")}
+          </DialogDescription>
         </DialogHeader>
         <DialogFooter>
           <DialogClose asChild>
@@ -45,7 +49,7 @@ const DeleteBloodRequestDialog = ({
                 handleClick();
               }}
             >
-              Delete
+              {t("Delete")}
             </button>
           </DialogClose>
         </DialogFooter>
