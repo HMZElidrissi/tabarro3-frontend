@@ -4,6 +4,8 @@ import "./globals.css";
 import AuthProvider from "./contexts/AuthProvider";
 import { getDictionary } from "./dictionaries";
 import { i18n } from "./i18n-config";
+import Script from "next/script";
+import { TranslationProvider } from "@/app/contexts/TranslationProvider";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -19,19 +21,19 @@ export async function generateMetadata({
   const dict = await getDictionary(lang as "en" | "fr" | "ar");
 
   return {
-    title: "tabaro3",
+    title: "tabarro3",
     description: dict.metadata.description,
     openGraph: {
-      title: "tabaro3",
+      title: "tabarro3",
       description: dict.metadata.description,
-      url: "https://tabaro3.vercel.app",
-      siteName: "tabaro3",
+      url: "https://tabarro3.vercel.app",
+      siteName: "tabarro3",
       images: [
         {
-          url: "https://tabaro3.com/og-image.jpg",
+          url: "https://tabarro3.ma/og-image.jpg",
           width: 1200,
           height: 630,
-          alt: "tabaro3 - Give Blood, Save Lives",
+          alt: "tabarro3 - Give Blood, Save Lives",
         },
       ],
       locale: lang,
@@ -39,9 +41,9 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: "tabaro3",
+      title: "tabarro3",
       description: dict.metadata.description,
-      images: ["https://tabaro3.vercel.app/og-image.png"],
+      images: ["https://tabarro3.vercel.app/og-image.png"],
     },
   };
 }
@@ -61,8 +63,15 @@ export default async function RootLayout({
 
   return (
     <html lang={lang} dir={lang === "ar" ? "rtl" : "ltr"}>
+      <head>
+        <Script id="preload-translations" strategy="beforeInteractive">
+          {`window.__TRANSLATIONS__ = ${JSON.stringify(dict)};`}
+        </Script>
+      </head>
       <body className={dmSans.className}>
-        <AuthProvider>{children}</AuthProvider>
+        <TranslationProvider lang={lang}>
+          <AuthProvider>{children}</AuthProvider>
+        </TranslationProvider>
       </body>
     </html>
   );

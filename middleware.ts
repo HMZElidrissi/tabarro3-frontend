@@ -4,6 +4,19 @@ import { NextRequest, NextResponse } from "next/server";
 const locales = ["en", "fr", "ar"];
 const defaultLocale = "fr";
 
+const ROLES = {
+  ADMIN: 1,
+  ORGANIZATION: 2,
+  PARTICIPANT: 3,
+};
+
+const ROUTES = {
+  guest: ["/signin", "/signup", "/api/auth/signin"],
+  organization: ["/organization/campaigns", "/dashboard"],
+  admin: ["/admin/participants", "/admin/organizations", "/dashboard"],
+  participant: ["/", "/profile"],
+};
+
 function isAssetPath(pathname: string) {
   const assetExtensions = [
     ".jpg",
@@ -21,9 +34,35 @@ function isAssetPath(pathname: string) {
   );
 }
 
+function canAccess(route: string, role: number) {
+  switch (role) {
+    case ROLES.ORGANIZATION:
+      return ROUTES.organization.includes(route);
+    case ROLES.ADMIN:
+      return ROUTES.admin.includes(route);
+    case ROLES.PARTICIPANT:
+      return ROUTES.participant.includes(route);
+    default:
+      return false;
+  }
+}
+
+function redirectByRole(role: number) {
+  switch (role) {
+    case ROLES.ORGANIZATION:
+    case ROLES.ADMIN:
+      return "/dashboard";
+    case ROLES.PARTICIPANT:
+      return "/";
+    default:
+      return "/signin";
+  }
+}
+
 export async function middleware(req: NextRequest) {
   const pathname = req.nextUrl.pathname;
 
+  // Skip middleware for asset paths
   if (isAssetPath(pathname)) {
     return NextResponse.next();
   }
@@ -33,6 +72,7 @@ export async function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL(`/${defaultLocale}`, req.url));
   }
 
+  // Check if the pathname is missing a locale
   const pathnameIsMissingLocale = locales.every(
     (locale) =>
       !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
@@ -45,51 +85,21 @@ export async function middleware(req: NextRequest) {
     );
   }
 
-  const token = await getToken({ req });
-  const isAuthenticated = !!token;
-  const role = token?.role as number;
-  const ROLES = {
-    ADMIN: 1,
-    ORGANIZATION: 2,
-    PARTICIPANT: 3,
-  };
-  const ROUTES = {
-    guest: ["/signin", "/signup", "/api/auth/signin"],
-    organization: ["/organization/campaigns", "/dashboard"],
-    admin: ["/admin/participants", "/admin/organizations", "/dashboard"],
-    participant: ["/", "/profile"],
-  };
-  const canAccess = (route: string, role: number) => {
-    switch (role) {
-      case ROLES.ORGANIZATION:
-        return ROUTES.organization.includes(route);
-      case ROLES.ADMIN:
-        return ROUTES.admin.includes(route);
-      case ROLES.PARTICIPANT:
-        return ROUTES.participant.includes(route);
-      default:
-        return false;
-    }
-  };
-  const redirectByRole = (role: number) => {
-    switch (role) {
-      case ROLES.ORGANIZATION:
-      case ROLES.ADMIN:
-        return "/dashboard";
-      case ROLES.PARTICIPANT:
-        return "/";
-      default:
-        return "/signin";
-    }
-  };
-  const protectedRoutes = [...ROUTES.organization, ...ROUTES.admin, "/profile"];
+  // Extract locale from pathname
+  const locale = pathname.split("/")[1];
 
   // Strip locale from pathname for route checking
   const pathnameWithoutLocale = pathname.replace(/^\/[a-z]{2}/, "");
 
-  // Existing authentication and role-based routing
+  // Authentication and role-based routing
+  const token = await getToken({ req });
+  const isAuthenticated = !!token;
+  const role = token?.role as number;
+
+  const protectedRoutes = [...ROUTES.organization, ...ROUTES.admin, "/profile"];
+
   if (protectedRoutes.includes(pathnameWithoutLocale) && !isAuthenticated) {
-    return NextResponse.redirect(new URL(`/${defaultLocale}/signin`, req.url));
+    return NextResponse.redirect(new URL(`/${locale}/signin`, req.url));
   }
 
   if (
@@ -97,7 +107,7 @@ export async function middleware(req: NextRequest) {
     !canAccess(pathnameWithoutLocale, role)
   ) {
     return NextResponse.redirect(
-      new URL(`/${defaultLocale}${redirectByRole(role)}`, req.url),
+      new URL(`/${locale}${redirectByRole(role)}`, req.url),
     );
   }
 

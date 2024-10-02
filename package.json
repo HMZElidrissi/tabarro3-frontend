@@ -1,6 +1,6 @@
 {
-  "name": "tabaro3-frontend-2",
-  "version": "0.1.0",
+  "name": "tabarro3-frontend",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",

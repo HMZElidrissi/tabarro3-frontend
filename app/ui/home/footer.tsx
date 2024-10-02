@@ -8,12 +8,12 @@ const Footer = () => {
   const socialLinks = [
     {
       icon: FaInstagram,
-      href: "https://instagram.com/tabaro3",
+      href: "https://www.instagram.com/rotaract_les_merinides/",
       label: "Instagram",
     },
     {
       icon: FaLinkedin,
-      href: "https://linkedin.com/company/tabaro3",
+      href: "https://www.linkedin.com/company/rotaract-les-merinides/",
       label: "LinkedIn",
     },
   ];
@@ -25,7 +25,7 @@ const Footer = () => {
           <div className="mb-6 md:mb-0">
             <Image
               src="/logo_white.svg"
-              alt="Tabaro3 Logo"
+              alt="tabarro3 Logo"
               width={20}
               height={20}
               className="w-auto"
@@ -49,7 +49,7 @@ const Footer = () => {
         </div>
         <div className="mt-8 border-t border-primary-500 pt-8 flex justify-center items-center">
           <p className="text-sm text-primary-200">
-            © {new Date().getFullYear()} tabaro3.{" "}
+            © {new Date().getFullYear()} tabarro3.{" "}
             {t("footer.allRightsReserved")}
           </p>
         </div>

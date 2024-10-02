@@ -35,14 +35,14 @@
 
   "criterias.donationFrequency.title": "Donation Frequency",
   "criterias.donationFrequency.description": "Men can donate every three months, and women every four months.",
-  "tabaro3_logo_alt": "Tabaro3 logo",
+  "tabarro3_logo_alt": "tabarro3 logo",
   "hero_title": "Give Blood, Save Lives",
   "hero_description": "Blood donation is a crucial act that saves lives daily. A single donation can help up to three people and is used in various medical situations, from surgeries to cancer treatments. By donating regularly, you play a vital role in maintaining a healthy blood supply for your community.",
   "donate_button": "Donate Now",
   "carousel_image_alt": "Blood donation image {number}",
 
   "map.title": "Map of Regional Blood Transfusion Centers in Morocco 🇲🇦!",
-  "footer.tabaro3": "tabaro3",
+  "footer.tabarro3": "tabarro3",
   "footer.byRotaract": "by Rotaract Les Mérinides",
   "footer.allRightsReserved": "All rights reserved.",
 
@@ -64,7 +64,7 @@
   "City": "City",
   "Save": "Save",
   "metadata": {
-    "title": "tabaro3 - Give Blood, Save Lives",
+    "title": "tabarro3 - Give Blood, Save Lives",
     "description": "Give blood, save lives. Learn about the benefits of blood donation, eligibility criteria, and find donation centers near you. Join us in making a difference!",
     "keywords": "blood donation, blood donation platform, blood donation benefits, blood donation eligibility, blood donation centers"
   },

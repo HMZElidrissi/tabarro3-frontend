@@ -58,7 +58,7 @@ const SignUpPage = () => {
               width={200}
               height={200}
               src="/logo.svg"
-              alt="tabaro3"
+              alt="tabarro3"
             />
           </Link>
         </div>

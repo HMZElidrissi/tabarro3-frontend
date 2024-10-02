@@ -22,11 +22,11 @@ export default function NotFound() {
               </Link>
               <div className="flex-shrink-0 flex justify-center">
                 <Link href="/" className="inline-flex">
-                  <span className="sr-only">tabaro3</span>
+                  <span className="sr-only">tabarro3</span>
                   <Image
                     className="mx-auto"
                     src="/logo_white.svg"
-                    alt="tabaro3"
+                    alt="tabarro3"
                     width={100}
                     height={100}
                   />

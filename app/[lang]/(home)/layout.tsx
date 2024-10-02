@@ -28,13 +28,13 @@ const HomeLayout = ({
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <Link href="/" className="flex-shrink-0">
-                <span className="sr-only">tabaro3</span>
+                <span className="sr-only">tabarro3</span>
                 <Image
                   className="h-10 w-auto"
                   src="/logo.svg"
                   height={40}
                   width={40}
-                  alt="tabaro3"
+                  alt="tabarro3"
                 />
               </Link>
             </div>

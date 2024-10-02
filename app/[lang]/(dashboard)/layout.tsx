@@ -93,7 +93,7 @@ export default function DashboardLayout({
                 <Image
                   className="mx-auto"
                   src="/logo.svg"
-                  alt="tabaro3"
+                  alt="tabarro3"
                   width={120}
                   height={100}
                 />
@@ -141,7 +141,7 @@ export default function DashboardLayout({
             <Image
               className="mx-auto"
               src="/logo.svg"
-              alt="tabaro3"
+              alt="tabarro3"
               width={120}
               height={100}
             />
