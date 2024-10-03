@@ -1,24 +1,14 @@
 import { CalendarCheck, TrendingDown, TrendingUp } from "lucide-react";
-import { useEffect, useState } from "react";
-import { fetchStats } from "@/app/lib/data";
 
 interface OrganizationStatsProps {
-  campaigns: number;
-  most_participated_campaign: string;
-  least_participated_campaign: string;
+  stats: {
+    campaigns: number;
+    most_participated_campaign: string;
+    least_participated_campaign: string;
+  };
 }
 
-const OrganizationStats = () => {
-  const [stats, setStats] = useState<OrganizationStatsProps>({
-    campaigns: 0,
-    most_participated_campaign: "",
-    least_participated_campaign: "",
-  });
-  useEffect(() => {
-    fetchStats().then((data) => {
-      setStats(data);
-    });
-  }, []);
+const OrganizationStats: React.FC<OrganizationStatsProps> = ({ stats }) => {
   return (
     <>
       <div className="relative bg-white pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden">

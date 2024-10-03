@@ -1,4 +1,6 @@
 "use client";
+
+import { useState } from "react";
 import { getCsrfToken, signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,9 +9,11 @@ import { useTranslation } from "@/app/lib/useTranslation";
 
 const SignInPage = () => {
   const { t } = useTranslation();
+  const [error, setError] = useState<string | null>(null);
 
   const handleSignin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError(null);
 
     const email = e.currentTarget.email.value;
     const password = e.currentTarget.password.value;
@@ -41,7 +45,13 @@ const SignInPage = () => {
 
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-            <Error />
+            {error && (
+              <div className="alert alert-error text-center mb-4">
+                <div className="text-sm font-medium text-red-600">
+                  {t("signin_error")}
+                </div>
+              </div>
+            )}
 
             <form
               className="space-y-6"

@@ -152,7 +152,7 @@ const DesktopMenu = () => {
       ) : (
         <div className="flex items-center space-x-2 ml-2">
           <Link
-            href="/create-account"
+            href="/signup"
             className="px-3 py-2 rounded-md bg-primary-500 text-white text-sm font-medium hover:bg-primary-600 transition-colors duration-200 flex items-center justify-center min-h-[40px]"
           >
             <span className="inline-block">{t("Create an account")}</span>

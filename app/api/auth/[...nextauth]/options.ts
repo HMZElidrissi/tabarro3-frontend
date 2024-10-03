@@ -8,13 +8,12 @@ export const authOptions: NextAuthOptions = {
       name: "Credentials",
       credentials: {
         email: { label: "Email", type: "email" },
-        password: {
-          label: "Password",
-          type: "password",
-        },
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) return null;
+        if (!credentials?.email || !credentials?.password) {
+          throw new Error("Email and password are required");
+        }
 
         try {
           const response = await fetch(
@@ -26,14 +25,17 @@ export const authOptions: NextAuthOptions = {
             },
           );
 
-          if (response.ok) {
-            const { user, token } = await response.json();
-            return { ...user, token };
+          const data = await response.json();
+
+          if (response.ok && data.status === "success") {
+            return { ...data.user, token: data.token };
+          } else {
+            throw new Error(data.message || "Invalid credentials");
           }
-          return null;
         } catch (error) {
-          console.error(error);
-          return null;
+          throw new Error(
+            (error as Error).message || "An unexpected error occurred",
+          );
         }
       },
     }),

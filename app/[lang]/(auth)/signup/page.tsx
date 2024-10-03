@@ -20,6 +20,7 @@ const SignUpPage = () => {
     blood_group: "",
   });
   const router = useRouter();
+
   const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -69,11 +70,6 @@ const SignUpPage = () => {
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
             <form className="space-y-6" onSubmit={handleSignup}>
-              {errors && (
-                <div className="text-center text-red-500 text-sm mb-2">
-                  {errors.name}
-                </div>
-              )}
               <div>
                 <label htmlFor="name" className="form-label">
                   {t("form_name")}
@@ -85,12 +81,13 @@ const SignUpPage = () => {
                   name="name"
                   placeholder={t("form_name_placeholder")}
                 />
+                {errors.name && (
+                  <div className="text-center text-red-500 text-sm mt-1">
+                    {errors.name}
+                  </div>
+                )}
               </div>
-              {errors && (
-                <div className="text-center text-red-500 text-sm mb-2">
-                  {errors.email}
-                </div>
-              )}
+
               <div>
                 <label htmlFor="email" className="form-label">
                   {t("form_email")}
@@ -102,12 +99,13 @@ const SignUpPage = () => {
                   name="email"
                   placeholder={t("form_email_placeholder")}
                 />
+                {errors.email && (
+                  <div className="text-center text-red-500 text-sm mt-1">
+                    {errors.email}
+                  </div>
+                )}
               </div>
-              {errors && (
-                <div className="text-center text-red-500 text-sm mb-2">
-                  {errors.password}
-                </div>
-              )}
+
               <div>
                 <label htmlFor="password" className="form-label">
                   {t("form_password")}
@@ -119,12 +117,13 @@ const SignUpPage = () => {
                   name="password"
                   placeholder={t("form_password_placeholder")}
                 />
+                {errors.password && (
+                  <div className="text-center text-red-500 text-sm mt-1">
+                    {errors.password}
+                  </div>
+                )}
               </div>
-              {errors && (
-                <div className="text-center text-red-500 text-sm mb-2">
-                  {errors.password_confirmation}
-                </div>
-              )}
+
               <div>
                 <label htmlFor="password_confirmation" className="form-label">
                   {t("form_password_confirmation")}
@@ -136,12 +135,13 @@ const SignUpPage = () => {
                   name="password_confirmation"
                   placeholder={t("form_password_confirmation_placeholder")}
                 />
+                {errors.password_confirmation && (
+                  <div className="text-center text-red-500 text-sm mt-1">
+                    {errors.password_confirmation}
+                  </div>
+                )}
               </div>
-              {errors && (
-                <div className="text-center text-red-500 text-sm mb-2">
-                  {errors.city}
-                </div>
-              )}
+
               <div>
                 <label htmlFor="city" className="form-label">
                   {t("form_city")}
@@ -153,12 +153,13 @@ const SignUpPage = () => {
                   name="city"
                   placeholder={t("form_city_placeholder")}
                 />
+                {errors.city && (
+                  <div className="text-center text-red-500 text-sm mt-1">
+                    {errors.city}
+                  </div>
+                )}
               </div>
-              {errors && (
-                <div className="text-center text-red-500 text-sm mb-2">
-                  {errors.phone}
-                </div>
-              )}
+
               <div>
                 <label htmlFor="phone" className="form-label">
                   {t("form_phone")}
@@ -170,12 +171,13 @@ const SignUpPage = () => {
                   name="phone"
                   placeholder={t("form_phone_placeholder")}
                 />
+                {errors.phone && (
+                  <div className="text-center text-red-500 text-sm mt-1">
+                    {errors.phone}
+                  </div>
+                )}
               </div>
-              {errors && (
-                <div className="text-center text-red-500 text-sm mb-2">
-                  {errors.blood_group}
-                </div>
-              )}
+
               <div>
                 <label htmlFor="blood_group" className="form-label">
                   {t("form_blood_group")}
@@ -186,12 +188,22 @@ const SignUpPage = () => {
                   name="blood_group"
                 >
                   <option value="">{t("form_blood_group_placeholder")}</option>
+                  <option value="">{t("form_blood_group_dont_know")}</option>
                   {bloodGroups.map((group) => (
                     <option key={group} value={group}>
                       {group}
                     </option>
                   ))}
                 </select>
+                {errors.blood_group && (
+                  <div className="text-center text-red-500 text-sm mt-1">
+                    {errors.blood_group}
+                  </div>
+                )}
+              </div>
+
+              <div className="text-sm text-gray-500">
+                {t("consent_message")}
               </div>
 
               <div className="text-center">

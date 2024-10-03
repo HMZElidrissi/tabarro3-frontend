@@ -1,25 +1,15 @@
 import { UsersIcon } from "@heroicons/react/24/outline";
 import { BuildingIcon, CalendarCheck } from "lucide-react";
-import { useEffect, useState } from "react";
-import { fetchStats } from "@/app/lib/data";
 
 interface AdminStatsProps {
-  participants: number;
-  organizations: number;
-  campaigns: number;
+  stats: {
+    participants: number;
+    organizations: number;
+    campaigns: number;
+  };
 }
 
-const AdminStats = () => {
-  const [stats, setStats] = useState<AdminStatsProps>({
-    participants: 0,
-    organizations: 0,
-    campaigns: 0,
-  });
-  useEffect(() => {
-    fetchStats().then((data) => {
-      setStats(data);
-    });
-  }, []);
+const AdminStats: React.FC<AdminStatsProps> = ({ stats }) => {
   return (
     <>
       <div className="relative bg-white pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden">
@@ -63,7 +53,7 @@ const AdminStats = () => {
         </dt>
         <dd className="ml-16 flex items-baseline">
           <p className="text-2xl font-semibold text-gray-900">
-            {stats.organizations}
+            {stats.campaigns}
           </p>
         </dd>
       </div>

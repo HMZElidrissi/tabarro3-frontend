@@ -1,4 +1,5 @@
 "use client";
+
 import { Fragment, useState } from "react";
 import { Dialog, Menu, Transition } from "@headlessui/react";
 import {
@@ -18,6 +19,7 @@ import {
 import clsx from "clsx";
 import { useSession } from "next-auth/react";
 import * as Avatar from "@radix-ui/react-avatar";
+import { DashboardSkeleton } from "@/app/ui/components/loading";
 
 export default function DashboardLayout({
   children,
@@ -35,6 +37,10 @@ export default function DashboardLayout({
 
   if (status === "unauthenticated") {
     router.push("/signin");
+  }
+
+  if (status === "loading") {
+    return <DashboardSkeleton />;
   }
 
   return (
@@ -105,18 +111,18 @@ export default function DashboardLayout({
                       key={item.name}
                       href={item.href}
                       className={clsx(
-                        "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md",
-                        {
-                          "bg-gray-100 text-gray-900": pathname === item.href,
-                        },
+                        "group flex items-center px-2 py-2 text-sm font-medium rounded-md",
+                        pathname.replace(/^\/[^/]+/, "") === item.href
+                          ? "bg-gray-100 text-gray-900"
+                          : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
                       )}
                     >
                       <item.icon
                         className={clsx(
-                          "text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6",
-                          {
-                            "text-gray-500": pathname === item.href,
-                          },
+                          "mr-3 flex-shrink-0 h-6 w-6",
+                          pathname.replace(/^\/[^/]+/, "") === item.href
+                            ? "text-gray-500"
+                            : "text-gray-400 group-hover:text-gray-500",
                         )}
                         aria-hidden="true"
                       />
@@ -135,7 +141,6 @@ export default function DashboardLayout({
 
       {/* Static sidebar for desktop */}
       <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
-        {/* Sidebar component, swap this element with another sidebar if you like */}
         <div className="flex flex-col flex-grow border-r border-gray-200 pt-5 bg-white overflow-y-auto">
           <div className="flex items-center flex-shrink-0 px-4">
             <Link href="/">
@@ -155,19 +160,18 @@ export default function DashboardLayout({
                   key={item.name}
                   href={item.href}
                   className={clsx(
-                    "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
                     "group flex items-center px-2 py-2 text-sm font-medium rounded-md",
-                    {
-                      "bg-gray-100 text-gray-900": pathname === item.href,
-                    },
+                    pathname.replace(/^\/[^/]+/, "") === item.href
+                      ? "bg-gray-100 text-gray-900"
+                      : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
                   )}
                 >
                   <item.icon
                     className={clsx(
-                      "text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6",
-                      {
-                        "text-gray-500": pathname === item.href,
-                      },
+                      "mr-3 flex-shrink-0 h-6 w-6",
+                      pathname.replace(/^\/[^/]+/, "") === item.href
+                        ? "text-gray-500"
+                        : "text-gray-400 group-hover:text-gray-500",
                     )}
                     aria-hidden="true"
                   />
@@ -225,13 +229,6 @@ export default function DashboardLayout({
                 <div>
                   <Menu.Button className="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-700">
                     <span className="sr-only">Open user menu</span>
-                    {/*<Image
-                      className="inline-block h-9 w-9 rounded-full"
-                      src="/photo.avif"
-                      alt="Profile image"
-                      width={36}
-                      height={36}
-                    />*/}
                     <Avatar.Root className="avatar-root">
                       <Avatar.Fallback className="avatar-fallback">
                         {session?.user?.name?.slice(0, 2)}
@@ -254,7 +251,7 @@ export default function DashboardLayout({
                         <Link
                           href={item.href}
                           className={clsx(
-                            pathname === item.href
+                            pathname.replace(/^\/[^/]+/, "") === item.href
                               ? "bg-gray-100"
                               : "block px-4 py-2 text-sm text-gray-700",
                           )}

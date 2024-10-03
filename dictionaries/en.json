@@ -105,5 +105,8 @@
   "form_dont_have_account": "Don't have an account? Sign up",
   "form_sign_in": "Sign in",
   "form_reset_password": "Reset Password",
-  "form_send_password_reset_link": "Send Password Reset Link"
+  "form_send_password_reset_link": "Send Password Reset Link",
+  "signin_error": "Sign in failed. Check the details you provided are correct.",
+  "consent_message": "By signing up, I agree to receive notifications about blood donation needs in my region. I understand that my information will be used to match me with local donation opportunities.",
+  "form_blood_group_dont_know": "Don't know"
 }
