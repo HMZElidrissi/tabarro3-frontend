@@ -72,7 +72,7 @@ const ParticipantsPage = async () => {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         <span className="badge-blood-group">
-                          {participant.blood_group}
+                          {participant.blood_group || "N/A"}
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">

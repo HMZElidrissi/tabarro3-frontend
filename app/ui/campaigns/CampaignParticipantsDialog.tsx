@@ -56,7 +56,7 @@ const EditCampaignDialog = async ({ campaign }: { campaign: Campaign }) => {
                       key={participant.id}
                       className="mt-1 text-sm text-gray-900"
                     >
-                      {participant.blood_group}
+                      {participant.blood_group || "N/A"}
                     </dd>
                   ))}
                 </div>
