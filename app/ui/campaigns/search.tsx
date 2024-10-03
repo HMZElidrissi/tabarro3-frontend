@@ -1,21 +1,21 @@
 "use client";
-import { searchCampaigns } from "@/app/lib/data";
-import { Campaign } from "@/app/lib/definitions";
+
 import { useTranslation } from "@/app/lib/useTranslation";
 
 interface SearchFieldProps {
-  setCampaigns: (campaigns: Campaign[]) => void;
+  onSearch: (search: string) => void;
 }
 
-const SearchField: React.FC<SearchFieldProps> = ({ setCampaigns }) => {
+const SearchField: React.FC<SearchFieldProps> = ({ onSearch }) => {
   const { t } = useTranslation();
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const search = formData.get("search") as string;
-    const campaigns = await searchCampaigns(search);
-    setCampaigns(campaigns);
+    onSearch(search);
   };
+
   return (
     <div className="w-full text-gray-500 py-6 text-center">
       <form className="flex items-center" onSubmit={handleSubmit}>
