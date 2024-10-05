@@ -93,6 +93,7 @@ const CreateCampaignDialog = () => {
               type="datetime-local"
               className="form-input col-span-3"
               name="start_time"
+              value={new Date().toISOString().slice(0, 16)}
               required
             />
             <label htmlFor="end_time" className="form-label text-right">
@@ -103,6 +104,7 @@ const CreateCampaignDialog = () => {
               type="datetime-local"
               className="form-input col-span-3"
               name="end_time"
+              value={new Date().toISOString().slice(0, 16)}
               required
             />
             <DialogFooter className="col-span-4">

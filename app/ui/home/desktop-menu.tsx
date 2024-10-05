@@ -101,7 +101,7 @@ const DesktopMenu = () => {
                 className="mr-2 h-5 w-5 text-gray-400"
                 aria-hidden="true"
               />
-              <span>
+              <span className="inline-block truncate">
                 {t("Welcome")}, {getUserName()}
               </span>
               <ChevronDownIcon
