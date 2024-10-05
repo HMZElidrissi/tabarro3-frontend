@@ -9,6 +9,59 @@ import axiosClient from "@/app/lib/axiosClient";
 
 const fetcher = (url: string) => axiosClient.get(url).then((res) => res.data);
 
+const BloodRequestItem = ({
+  request,
+  t,
+}: {
+  request: BloodRequest;
+  t: (key: string) => string;
+}) => (
+  <li className="col-span-1 bg-white rounded-lg shadow divide-y divide-gray-200">
+    <div className="w-full flex items-center justify-between p-6 space-x-6">
+      <div className="flex-1">
+        <div className="flex items-center space-x-3">
+          <h3 className="text-gray-900 text-sm font-bold">
+            {t("Blood Group")}:
+          </h3>
+          <span className="flex-shrink-0 inline-block px-2 py-0.5 badge-blood-group">
+            {request.blood_group}
+          </span>
+        </div>
+        <div className="mt-2 text-gray-800 text-sm font-medium flex items-center">
+          <MapPinIcon className="h-4 w-4 inline-block mr-2" />
+          {request.city}
+        </div>
+        <p className="mt-1 text-gray-500 text-sm whitespace-pre-wrap">
+          {request.description}
+        </p>
+        <div className="mt-2 text-gray-600 text-sm font-medium flex items-center">
+          <UserCircle className="h-4 w-4 inline-block mr-2" />
+          {request.user!.name}
+        </div>
+        <div className="mt-1 text-gray-600 text-sm font-medium flex items-center">
+          <InboxIcon className="h-4 w-4 inline-block mr-2" />
+          {request.user!.email}
+        </div>
+        <div className="mt-1 text-gray-600 text-sm font-medium flex items-center">
+          <PhoneIcon className="h-4 w-4 inline-block mr-2" />
+          {request.user!.phone}
+        </div>
+      </div>
+    </div>
+    <div>
+      <div className="-mt-px flex divide-x divide-gray-200">
+        <a
+          href={`mailto:${request.user!.email}`}
+          className="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500"
+        >
+          <Contact2Icon className="w-5 h-5 text-gray-400" aria-hidden="true" />
+          <span className="ml-3">{t("Contact")}</span>
+        </a>
+      </div>
+    </div>
+  </li>
+);
+
 const BloodRequestsClient = () => {
   const { t } = useTranslation();
   const {
@@ -45,56 +98,7 @@ const BloodRequestsClient = () => {
           >
             {requests &&
               requests.map((request) => (
-                <li
-                  key={request.id}
-                  className="col-span-1 bg-white rounded-lg shadow divide-y divide-gray-200"
-                >
-                  <div className="w-full flex items-center justify-between p-6 space-x-6">
-                    <div className="flex-1 truncate">
-                      <div className="flex items-center space-x-3">
-                        <h3 className="text-gray-900 text-sm font-bold">
-                          {t("Blood Group")}:
-                        </h3>
-                        <span className="flex-shrink-0 inline-block px-2 py-0.5 badge-blood-group">
-                          {request.blood_group}
-                        </span>
-                      </div>
-                      <div className="mt-2 text-gray-800 text-sm font-medium flex items-center">
-                        <MapPinIcon className="h-4 w-4 inline-block mr-2" />
-                        {request.city}
-                      </div>
-                      <p className="mt-1 text-gray-500 text-sm break-words">
-                        {request.description}
-                      </p>
-                      <div className="mt-2 text-gray-600 text-sm font-medium flex items-center">
-                        <UserCircle className="h-4 w-4 inline-block mr-2" />
-                        {request.user!.name}
-                      </div>
-                      <div className="mt-1 text-gray-600 text-sm font-medium flex items-center">
-                        <InboxIcon className="h-4 w-4 inline-block mr-2" />
-                        {request.user!.email}
-                      </div>
-                      <div className="mt-1 text-gray-600 text-sm font-medium flex items-center">
-                        <PhoneIcon className="h-4 w-4 inline-block mr-2" />
-                        {request.user!.phone}
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="-mt-px flex divide-x divide-gray-200">
-                      <a
-                        href={`mailto:${request.user!.email}`}
-                        className="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500"
-                      >
-                        <Contact2Icon
-                          className="w-5 h-5 text-gray-400"
-                          aria-hidden="true"
-                        />
-                        <span className="ml-3">{t("Contact")}</span>
-                      </a>
-                    </div>
-                  </div>
-                </li>
+                <BloodRequestItem key={request.id} request={request} t={t} />
               ))}
           </ul>
         )}
