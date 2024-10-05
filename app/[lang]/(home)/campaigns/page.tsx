@@ -72,7 +72,7 @@ const Page = () => {
                           {campaign.name}
                         </h3>
                       </div>
-                      <p className="mt-1 text-gray-500 text-sm">
+                      <p className="mt-1 text-gray-500 text-sm break-words">
                         {campaign.description}
                       </p>
                       <div className="mt-2 text-gray-800 text-sm font-medium flex items-center">

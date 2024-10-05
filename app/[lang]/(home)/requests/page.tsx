@@ -63,7 +63,7 @@ const BloodRequestsClient = () => {
                         <MapPinIcon className="h-4 w-4 inline-block mr-2" />
                         {request.city}
                       </div>
-                      <p className="mt-1 text-gray-500 text-sm">
+                      <p className="mt-1 text-gray-500 text-sm break-words">
                         {request.description}
                       </p>
                       <div className="mt-2 text-gray-600 text-sm font-medium flex items-center">

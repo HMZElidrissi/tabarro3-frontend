@@ -96,14 +96,15 @@ export default function DashboardLayout({
                 </div>
               </Transition.Child>
               <div className="flex-shrink-0 flex items-center px-4">
-                <Link href="/" className="mx-auto">
-                  <Image
-                    className="mx-auto"
-                    src="/logo.svg"
-                    alt="tabarro3"
-                    width={120}
-                    height={100}
-                  />
+                <Link href="/">
+                  <div className="flex items-center">
+                    <Image
+                      src="/logo.svg"
+                      alt="tabarro3"
+                      width={120}
+                      height={100}
+                    />
+                  </div>
                 </Link>
               </div>
               <div className="mt-5 flex-1 h-0 overflow-y-auto">
