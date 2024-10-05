@@ -60,7 +60,8 @@ function redirectByRole(role: number) {
 }
 
 export async function middleware(req: NextRequest) {
-  const pathname = req.nextUrl.pathname;
+  const url = req.nextUrl.clone();
+  const pathname = url.pathname;
 
   // Skip middleware for asset paths
   if (isAssetPath(pathname)) {
@@ -77,6 +78,12 @@ export async function middleware(req: NextRequest) {
     (locale) =>
       !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
   );
+
+  // Handle root path and password reset path explicitly
+  if (pathname === "/" || pathname.startsWith("/password/reset")) {
+    url.pathname = `/${defaultLocale}${pathname}`;
+    return NextResponse.redirect(url);
+  }
 
   // Redirect if there is no locale
   if (pathnameIsMissingLocale) {
