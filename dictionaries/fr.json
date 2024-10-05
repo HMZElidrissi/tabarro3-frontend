@@ -82,7 +82,7 @@
   "delete_confirmation": "Êtes-vous absolument sûr ?",
   "delete_confirmation_description": "Cette action est irréversible.",
   "sign_out_confirmation": "Voulez-vous vous déconnecter ?",
-  "form_name": "Nom",
+  "form_name": "Nom complet",
   "form_name_placeholder": "Votre nom ...",
   "form_email": "Email",
   "form_email_placeholder": "Votre email ...",

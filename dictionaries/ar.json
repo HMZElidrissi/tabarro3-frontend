@@ -83,7 +83,7 @@
   "delete_confirmation": "هل أنت متأكد تمامًا؟",
   "delete_confirmation_description": "هذا الإجراء لا يمكن التراجع عنه.",
   "sign_out_confirmation": "هل تريد تسجيل الخروج؟",
-  "form_name": "الاسم",
+  "form_name": "الاسم الكامل",
   "form_name_placeholder": "اسمك ...",
   "form_email": "البريد الإلكتروني",
   "form_email_placeholder": "بريدك الإلكتروني ...",

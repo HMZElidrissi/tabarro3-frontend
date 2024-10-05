@@ -84,7 +84,7 @@
   "delete_confirmation": "Are you absolutely sure?",
   "delete_confirmation_description": "This action cannot be undone.",
   "sign_out_confirmation": "Are you sure you want to sign out?",
-  "form_name": "Name",
+  "form_name": "Full Name",
   "form_name_placeholder": "Your name ...",
   "form_email": "Email",
   "form_email_placeholder": "Your email ...",
