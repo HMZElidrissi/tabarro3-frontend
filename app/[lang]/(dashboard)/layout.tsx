@@ -95,16 +95,16 @@ export default function DashboardLayout({
                   </button>
                 </div>
               </Transition.Child>
-              <div className="flex-shrink-0 flex items-center px-4">
-                <Link href="/">
-                  <div className="flex items-center">
-                    <Image
-                      src="/logo.svg"
-                      alt="tabarro3"
-                      width={120}
-                      height={100}
-                    />
-                  </div>
+              <div className="flex-shrink-0 flex items-center justify-center px-4">
+                <Link href="/" className="flex items-center justify-center">
+                  <Image
+                    className="h-20 w-auto"
+                    src="/logo.svg"
+                    alt="tabarro3"
+                    width={120}
+                    height={100}
+                    objectFit="contain"
+                  />
                 </Link>
               </div>
               <div className="mt-5 flex-1 h-0 overflow-y-auto">
@@ -145,14 +145,15 @@ export default function DashboardLayout({
       {/* Static sidebar for desktop */}
       <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
         <div className="flex flex-col flex-grow border-r border-gray-200 pt-5 bg-white overflow-y-auto">
-          <div className="flex items-center flex-shrink-0 px-4">
-            <Link href="/">
+          <div className="flex items-center flex-shrink-0 px-4 justify-center">
+            <Link href="/" className="flex items-center justify-center">
               <Image
-                className="mx-auto"
+                className="h-20 w-auto"
                 src="/logo.svg"
                 alt="tabarro3"
                 width={120}
                 height={100}
+                objectFit="contain"
               />
             </Link>
           </div>
