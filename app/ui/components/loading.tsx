@@ -1,3 +1,5 @@
+import { UsersIcon, BuildingIcon, CalendarCheckIcon } from "lucide-react";
+
 const shimmer =
   "before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_1s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/60 before:to-transparent";
 
@@ -72,5 +74,31 @@ export function DashboardSkeleton() {
         </main>
       </div>
     </div>
+  );
+}
+
+export function StatsSkeleton() {
+  const StatCard = ({ Icon }: { Icon: React.ElementType }) => (
+    <div
+      className={`relative bg-white pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden ${shimmer}`}
+    >
+      <dt>
+        <div className="absolute bg-gray-200 rounded-md p-3">
+          <Icon className="h-6 w-6 text-gray-400" aria-hidden="true" />
+        </div>
+        <div className="ml-16 h-4 w-36 bg-gray-200 rounded" />
+      </dt>
+      <dd className="ml-16 mt-6">
+        <div className="h-8 w-24 bg-gray-200 rounded" />
+      </dd>
+    </div>
+  );
+
+  return (
+    <>
+      <StatCard Icon={UsersIcon} />
+      <StatCard Icon={BuildingIcon} />
+      <StatCard Icon={CalendarCheckIcon} />
+    </>
   );
 }
