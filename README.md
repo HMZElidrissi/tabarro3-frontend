@@ -30,3 +30,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Backend
 
 > The Backend is available at [tabarro3 Backend](https://github.com/HMZElidrissi/tabarro3)
+
+## Future Tasks
+
+- [ ] Integrate WhatsApp API for notifications
+
+
