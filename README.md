@@ -34,5 +34,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Future Tasks
 
 - [ ] Integrate WhatsApp API for notifications
+- [ ] Fix language issues as it always defaults to French
 
 

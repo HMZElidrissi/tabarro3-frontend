@@ -90,7 +90,7 @@ const EditCampaignDialog = ({ campaign }: { campaign: Campaign }) => {
             </label>
             <input
               id="start_time"
-              type="datetime-local"
+              type="date"
               className="form-input col-span-3"
               name="start_time"
               defaultValue={campaign.start_time}
@@ -101,7 +101,7 @@ const EditCampaignDialog = ({ campaign }: { campaign: Campaign }) => {
             </label>
             <input
               id="end_time"
-              type="datetime-local"
+              type="date"
               className="form-input col-span-3"
               name="end_time"
               defaultValue={campaign.end_time}
