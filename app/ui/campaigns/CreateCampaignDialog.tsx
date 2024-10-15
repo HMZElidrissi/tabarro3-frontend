@@ -1,4 +1,6 @@
 "use client";
+
+import { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -11,13 +13,18 @@ import {
 } from "@/app/ui/components/dialog";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { createCampaign } from "@/app/lib/data";
-import { useRouter } from "next/navigation";
+import { Campaign } from "@/app/lib/definitions";
 
-const CreateCampaignDialog = () => {
-  const router = useRouter();
+const CreateCampaignDialog = ({
+  onCampaignCreate,
+}: {
+  onCampaignCreate: (campaign: Campaign) => void;
+}) => {
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
     const formData = new FormData(e.currentTarget);
     const newCampaign = {
       name: String(formData.get("name")),
@@ -26,8 +33,9 @@ const CreateCampaignDialog = () => {
       start_time: String(formData.get("start_time")),
       end_time: String(formData.get("end_time")),
     };
-    await createCampaign(newCampaign);
-    router.refresh();
+    const createdCampaign = await createCampaign(newCampaign);
+    onCampaignCreate(createdCampaign);
+    setIsLoading(false);
   };
 
   return (
@@ -107,8 +115,12 @@ const CreateCampaignDialog = () => {
             />
             <DialogFooter className="col-span-4">
               <DialogClose asChild>
-                <button type="submit" className="save-button">
-                  Save
+                <button
+                  type="submit"
+                  className="save-button"
+                  disabled={isLoading}
+                >
+                  {isLoading ? "Creating..." : "Create"}
                 </button>
               </DialogClose>
             </DialogFooter>

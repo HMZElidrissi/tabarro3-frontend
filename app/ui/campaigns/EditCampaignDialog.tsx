@@ -1,4 +1,6 @@
 "use client";
+
+import { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -12,13 +14,24 @@ import {
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
 import { Campaign } from "@/app/lib/definitions";
 import { updateCampaign } from "@/app/lib/data";
-import { useRouter } from "next/navigation";
 
-const EditCampaignDialog = ({ campaign }: { campaign: Campaign }) => {
-  const router = useRouter();
+const EditCampaignDialog = ({
+  campaign,
+  onCampaignUpdate,
+}: {
+  campaign: Campaign;
+  onCampaignUpdate: (campaign: Campaign) => void;
+}) => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toISOString().split("T")[0];
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
     const formData = new FormData(e.currentTarget);
     const editedCampaign = {
       id: Number(formData.get("id")),
@@ -29,7 +42,8 @@ const EditCampaignDialog = ({ campaign }: { campaign: Campaign }) => {
       end_time: String(formData.get("end_time")),
     };
     await updateCampaign(editedCampaign);
-    router.refresh();
+    onCampaignUpdate(editedCampaign);
+    setIsLoading(false);
   };
 
   return (
@@ -93,7 +107,7 @@ const EditCampaignDialog = ({ campaign }: { campaign: Campaign }) => {
               type="date"
               className="form-input col-span-3"
               name="start_time"
-              defaultValue={campaign.start_time}
+              defaultValue={formatDate(campaign.start_time)}
               required
             />
             <label htmlFor="end_time" className="form-label text-right">
@@ -104,13 +118,17 @@ const EditCampaignDialog = ({ campaign }: { campaign: Campaign }) => {
               type="date"
               className="form-input col-span-3"
               name="end_time"
-              defaultValue={campaign.end_time}
+              defaultValue={formatDate(campaign.end_time)}
               required
             />
             <DialogFooter className="col-span-4">
               <DialogClose asChild>
-                <button type="submit" className="save-button">
-                  Save
+                <button
+                  type="submit"
+                  className="save-button"
+                  disabled={isLoading}
+                >
+                  {isLoading ? "Saving..." : "Save"}
                 </button>
               </DialogClose>
             </DialogFooter>

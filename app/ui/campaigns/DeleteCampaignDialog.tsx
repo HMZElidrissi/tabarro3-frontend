@@ -1,4 +1,6 @@
 "use client";
+
+import { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -12,14 +14,23 @@ import {
 import { TrashIcon } from "@heroicons/react/24/outline";
 import { Campaign } from "@/app/lib/definitions";
 import { deleteCampaign } from "@/app/lib/data";
-import { useRouter } from "next/navigation";
 
-const DeleteCampaignDialog = ({ campaign }: { campaign: Campaign }) => {
-  const router = useRouter();
+const DeleteCampaignDialog = ({
+  campaign,
+  onCampaignDelete,
+}: {
+  campaign: Campaign;
+  onCampaignDelete: (id: number) => void;
+}) => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleClick = async () => {
+    setIsLoading(true);
     await deleteCampaign(campaign.id as number);
-    router.refresh();
+    onCampaignDelete(campaign.id as number);
+    setIsLoading(false);
   };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -37,11 +48,10 @@ const DeleteCampaignDialog = ({ campaign }: { campaign: Campaign }) => {
           <DialogClose asChild>
             <button
               className="save-button"
-              onClick={() => {
-                handleClick();
-              }}
+              onClick={handleClick}
+              disabled={isLoading}
             >
-              Delete
+              {isLoading ? "Deleting..." : "Delete"}
             </button>
           </DialogClose>
         </DialogFooter>
