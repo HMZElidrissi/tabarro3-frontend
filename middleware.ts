@@ -1,8 +1,6 @@
 import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
-
-const locales = ["en", "fr", "ar"];
-const defaultLocale = "fr";
+import { i18n } from "./app/i18n-config";
 
 const ROLES = {
   ADMIN: 1,
@@ -47,53 +45,62 @@ function canAccess(route: string, role: number) {
   }
 }
 
-function redirectByRole(role: number) {
+function redirectByRole(role: number, lang: string) {
   switch (role) {
     case ROLES.ORGANIZATION:
     case ROLES.ADMIN:
-      return "/dashboard";
+      return `/${lang}/dashboard`;
     case ROLES.PARTICIPANT:
-      return "/";
+      return `/${lang}`;
     default:
-      return "/signin";
+      return `/${lang}/signin`;
   }
 }
 
 export async function middleware(req: NextRequest) {
   const url = req.nextUrl.clone();
-  const pathname = url.pathname;
+  let pathname = url.pathname;
 
   // Skip middleware for asset paths
   if (isAssetPath(pathname)) {
     return NextResponse.next();
   }
 
-  // Handle root path explicitly
+  // Check for language in the URL
+  const pathnameLocale = pathname.split("/")[1];
+  const isValidLocale = i18n.locales.includes(pathnameLocale as any);
+
+  // Get stored language from cookie
+  let storedLang = req.cookies.get("NEXT_LOCALE")?.value;
+
+  // If there's a valid locale in the URL, update the cookie
+  if (isValidLocale) {
+    storedLang = pathnameLocale;
+  }
+
+  // If no valid stored language, use default
+  if (!i18n.locales.includes(storedLang as any)) {
+    storedLang = i18n.defaultLocale;
+  }
+
+  // Handle root path
   if (pathname === "/") {
-    return NextResponse.redirect(new URL(`/${defaultLocale}`, req.url));
+    const response = NextResponse.redirect(new URL(`/${storedLang}`, req.url));
+    response.cookies.set("NEXT_LOCALE", storedLang as string);
+    return response;
   }
 
-  // Check if the pathname is missing a locale
-  const pathnameIsMissingLocale = locales.every(
-    (locale) =>
-      !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
-  );
-
-  // Handle root path and password reset path explicitly
-  if (pathname === "/" || pathname.startsWith("/password/reset")) {
-    url.pathname = `/${defaultLocale}${pathname}`;
-    return NextResponse.redirect(url);
+  // Redirect if there is no locale in the pathname
+  if (!isValidLocale) {
+    pathname = `/${storedLang}${pathname}`;
+    const response = NextResponse.redirect(new URL(pathname, req.url));
+    response.cookies.set("NEXT_LOCALE", storedLang as string);
+    return response;
   }
 
-  // Redirect if there is no locale
-  if (pathnameIsMissingLocale) {
-    return NextResponse.redirect(
-      new URL(`/${defaultLocale}${pathname}`, req.url),
-    );
-  }
-
-  // Extract locale from pathname
-  const locale = pathname.split("/")[1];
+  // For valid locale paths, ensure the cookie is set
+  const response = NextResponse.next();
+  response.cookies.set("NEXT_LOCALE", storedLang as string);
 
   // Strip locale from pathname for route checking
   const pathnameWithoutLocale = pathname.replace(/^\/[a-z]{2}/, "");
@@ -106,7 +113,7 @@ export async function middleware(req: NextRequest) {
   const protectedRoutes = [...ROUTES.organization, ...ROUTES.admin, "/profile"];
 
   if (protectedRoutes.includes(pathnameWithoutLocale) && !isAuthenticated) {
-    return NextResponse.redirect(new URL(`/${locale}/signin`, req.url));
+    return NextResponse.redirect(new URL(`/${storedLang}/signin`, req.url));
   }
 
   if (
@@ -114,7 +121,7 @@ export async function middleware(req: NextRequest) {
     !canAccess(pathnameWithoutLocale, role)
   ) {
     return NextResponse.redirect(
-      new URL(`/${locale}${redirectByRole(role)}`, req.url),
+      new URL(redirectByRole(role, storedLang as string), req.url),
     );
   }
 
@@ -123,12 +130,10 @@ export async function middleware(req: NextRequest) {
     isAuthenticated &&
     role !== ROLES.PARTICIPANT
   ) {
-    return NextResponse.redirect(
-      new URL(`/${defaultLocale}/dashboard`, req.url),
-    );
+    return NextResponse.redirect(new URL(`/${storedLang}/dashboard`, req.url));
   }
 
-  return NextResponse.next();
+  return response;
 }
 
 export const config = {

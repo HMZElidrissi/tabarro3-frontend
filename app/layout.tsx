@@ -6,6 +6,7 @@ import { getDictionary } from "./dictionaries";
 import { i18n } from "./i18n-config";
 import Script from "next/script";
 import { TranslationProvider } from "@/app/contexts/TranslationProvider";
+import { cookies } from "next/headers";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -59,17 +60,24 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { lang: string };
 }) {
-  const dict = await getDictionary(lang as "en" | "fr" | "ar");
+  const cookieStore = cookies();
+  const storedLang = cookieStore.get("NEXT_LOCALE")?.value;
+  const validLang = i18n.locales.includes(storedLang as any)
+    ? storedLang
+    : lang;
+
+  const dict = await getDictionary(validLang as "en" | "fr" | "ar");
 
   return (
-    <html lang={lang} dir={lang === "ar" ? "rtl" : "ltr"}>
+    // <html lang={validLang} dir={validLang === "ar" ? "rtl" : "ltr"}>
+    <html lang={validLang}>
       <head>
         <Script id="preload-translations" strategy="beforeInteractive">
           {`window.__TRANSLATIONS__ = ${JSON.stringify(dict)};`}
         </Script>
       </head>
       <body className={dmSans.className}>
-        <TranslationProvider lang={lang}>
+        <TranslationProvider lang={validLang as "en" | "fr" | "ar"}>
           <AuthProvider>{children}</AuthProvider>
         </TranslationProvider>
       </body>
