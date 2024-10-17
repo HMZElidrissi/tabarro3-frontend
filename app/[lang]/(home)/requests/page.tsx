@@ -41,6 +41,12 @@ const BloodRequestItem = ({
           <MapPinIcon className="h-4 w-4 inline-block mr-2" />
           {request.city}
         </div>
+        {request.location && (
+          <div className="mt-1 text-gray-600 text-sm font-medium flex items-center">
+            <InboxIcon className="h-4 w-4 inline-block mr-2" />
+            {request.location}
+          </div>
+        )}
         <p className="mt-1 text-gray-500 text-sm whitespace-pre-wrap">
           {request.description}
         </p>
