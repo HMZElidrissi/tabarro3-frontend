@@ -115,6 +115,8 @@
   "password_confirmation_required": "يرجى تأكيد كلمة المرور",
   "passwords_do_not_match": "كلمات المرور غير متطابقة",
   "city_required": "المدينة مطلوبة",
+  "description_required": "الوصف مطلوب",
+  "location_required": "الموقع مطلوب",
   "phone_required": "رقم الهاتف مطلوب",
   "phone_invalid": "يرجى إدخال رقم هاتف صالح مكون من 10 أرقام",
   "blood_group_required": "يرجى اختيار فصيلة دمك",

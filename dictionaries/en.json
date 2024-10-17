@@ -118,6 +118,8 @@
   "password_confirmation_required": "Please confirm your password",
   "passwords_do_not_match": "Passwords do not match",
   "city_required": "City is required",
+  "description_required": "Description is required",
+  "location_required": "Location is required",
   "phone_required": "Phone number is required",
   "phone_invalid": "Please enter a valid 10-digit phone number",
   "blood_group_required": "Please select your blood group",

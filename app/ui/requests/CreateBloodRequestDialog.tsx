@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useState } from "react";
 import {
   Dialog,
   DialogClose,
@@ -24,21 +25,63 @@ const CreateBloodRequestDialog = ({
   const router = useRouter();
   const { t } = useTranslation();
 
+  const [formData, setFormData] = useState({
+    description: "",
+    blood_group: "",
+    city: "",
+    location: "",
+    phone: "",
+  });
+
+  const [errors, setErrors] = useState({
+    description: "",
+    city: "",
+    location: "",
+  });
+
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    // Clear error when user starts typing
+    if (errors[name as keyof typeof errors]) {
+      setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {
+      description: formData.description ? "" : t("description_required"),
+      city: formData.city ? "" : t("city_required"),
+      location: formData.location ? "" : t("location_required"),
+    };
+    setErrors(newErrors);
+    return Object.values(newErrors).every((error) => error === "");
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const newBloodRequest = {
-      description: String(formData.get("description")),
-      blood_group: String(formData.get("blood_group")),
-      city: String(formData.get("city")),
-      location: String(formData.get("location")),
-      phone: String(formData.get("phone")),
-      status: "open",
-    };
-    const createdRequest = await createBloodRequest(
-      newBloodRequest as BloodRequest,
-    );
-    onCreateRequest(createdRequest);
+    if (validateForm()) {
+      const newBloodRequest = {
+        ...formData,
+        status: "open",
+      };
+      const createdRequest = await createBloodRequest(
+        newBloodRequest as BloodRequest,
+      );
+      onCreateRequest(createdRequest);
+      // Reset form after successful submission
+      setFormData({
+        description: "",
+        blood_group: "",
+        city: "",
+        location: "",
+        phone: "",
+      });
+    }
   };
 
   return (
@@ -66,14 +109,23 @@ const CreateBloodRequestDialog = ({
             <label htmlFor="description" className="form-label text-right">
               {t("blood_request_form_description")}
             </label>
-            <textarea
-              id="description"
-              className="form-input col-span-3"
-              name="description"
-              required
-              placeholder={t("blood_request_form_description_placeholder")}
-              rows={3}
-            ></textarea>
+            <div className="col-span-3">
+              <textarea
+                id="description"
+                className={`form-input w-full ${errors.description ? "border-red-500" : ""}`}
+                name="description"
+                required
+                value={formData.description}
+                onChange={handleInputChange}
+                placeholder={t("blood_request_form_description_placeholder")}
+                rows={3}
+              ></textarea>
+              {errors.description && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.description}
+                </p>
+              )}
+            </div>
             <label htmlFor="blood_group" className="form-label text-right">
               {t("Blood Group")}
             </label>
@@ -81,10 +133,12 @@ const CreateBloodRequestDialog = ({
               id="blood_group"
               className="form-input col-span-3"
               name="blood_group"
+              value={formData.blood_group}
+              onChange={handleInputChange}
             >
               <option value="">{t("all_blood_groups")}</option>
               {bloodGroups.map((group) => (
-                <option key={group} defaultValue={group}>
+                <option key={group} value={group}>
                   {group}
                 </option>
               ))}
@@ -92,25 +146,39 @@ const CreateBloodRequestDialog = ({
             <label htmlFor="city" className="form-label text-right">
               {t("City")}
             </label>
-            <input
-              id="city"
-              type="text"
-              className="form-input col-span-3"
-              name="city"
-              required
-              placeholder={t("blood_request_form_city_placeholder")}
-            />
+            <div className="col-span-3">
+              <input
+                id="city"
+                type="text"
+                className={`form-input w-full ${errors.city ? "border-red-500" : ""}`}
+                name="city"
+                required
+                value={formData.city}
+                onChange={handleInputChange}
+                placeholder={t("blood_request_form_city_placeholder")}
+              />
+              {errors.city && (
+                <p className="text-red-500 text-sm mt-1">{errors.city}</p>
+              )}
+            </div>
             <label htmlFor="location" className="form-label text-right">
               {t("blood_request_form_location")}
             </label>
-            <input
-              id="location"
-              type="text"
-              className="form-input col-span-3"
-              name="location"
-              required
-              placeholder={t("blood_request_form_location_placeholder")}
-            />
+            <div className="col-span-3">
+              <input
+                id="location"
+                type="text"
+                className={`form-input w-full ${errors.location ? "border-red-500" : ""}`}
+                name="location"
+                required
+                value={formData.location}
+                onChange={handleInputChange}
+                placeholder={t("blood_request_form_location_placeholder")}
+              />
+              {errors.location && (
+                <p className="text-red-500 text-sm mt-1">{errors.location}</p>
+              )}
+            </div>
             <label htmlFor="phone" className="form-label text-right">
               {t("blood_request_form_phone")}
             </label>
@@ -119,7 +187,8 @@ const CreateBloodRequestDialog = ({
               type="tel"
               className="form-input col-span-3"
               name="phone"
-              required
+              value={formData.phone}
+              onChange={handleInputChange}
               placeholder={t("blood_request_form_phone_placeholder")}
             />
             <DialogFooter className="col-span-4">

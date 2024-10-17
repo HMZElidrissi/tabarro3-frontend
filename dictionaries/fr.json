@@ -116,6 +116,8 @@
   "password_confirmation_required": "Veuillez confirmer votre mot de passe",
   "passwords_do_not_match": "Les mots de passe ne correspondent pas",
   "city_required": "La ville est requise",
+  "description_required": "La description est requise",
+  "location_required": "L'emplacement est requis",
   "phone_required": "Le numéro de téléphone est requis",
   "phone_invalid": "Veuillez entrer un numéro de téléphone valide à 10 chiffres",
   "blood_group_required": "Veuillez sélectionner votre groupe sanguin",
