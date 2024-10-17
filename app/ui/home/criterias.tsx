@@ -5,10 +5,7 @@ import { useTranslation } from "@/app/lib/useTranslation";
 const CriteriasComponent = () => {
   const { t } = useTranslation();
   return (
-    <div
-      className="py-16 bg-gradient-to-b from-gray-50 to-white"
-      id="criterias"
-    >
+    <div className="py-16 bg-white" id="criterias">
       <div className="container mx-auto px-6 md:px-12 xl:px-24">
         <section className="space-y-12">
           <h2 className="text-4xl font-bold text-center text-primary-600 mb-8">

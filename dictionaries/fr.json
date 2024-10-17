@@ -129,5 +129,15 @@
   "blood_request_form_description": "Description",
   "blood_request_form_location": "Emplacement",
   "blood_request_form_phone": "Téléphone",
-  "all_blood_groups": "Tous les groupes sanguins"
+  "all_blood_groups": "Tous les groupes sanguins",
+  "how_it_works_title": "Comment ça marche",
+  "how_it_works_description": "tabarro3 est une plateforme qui met en relation les donneurs de sang et les personnes ayant besoin de sang dans leur région. Voici comment ça marche :",
+  "how_it_works_step1_title": "Créez un compte",
+  "how_it_works_step1_description": "Créez un compte en fournissant votre nom, votre email, votre numéro de téléphone, votre ville et votre groupe sanguin.",
+  "how_it_works_step2_title": "Créez une demande de sang",
+  "how_it_works_step2_description": "Si vous avez besoin de sang, créez une demande en fournissant une description, un emplacement et un numéro de téléphone de contact.",
+  "how_it_works_step3_title": "Notification envoyée",
+  "how_it_works_step3_description": "Le système envoie une notification aux donneurs de sang qui correspondent à votre groupe sanguin et à votre région.",
+  "how_it_works_step4_title": "Les donneurs répondent",
+  "how_it_works_step4_description": "Si vous êtes un donneur correspondant, vous recevrez une notification et pourrez choisir d'aider."
 }

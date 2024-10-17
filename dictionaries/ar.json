@@ -128,5 +128,15 @@
   "blood_request_form_description": "الوصف",
   "blood_request_form_location": "الموقع",
   "blood_request_form_phone": "الهاتف",
-  "all_blood_groups": "جميع فصائل الدم"
+  "all_blood_groups": "جميع فصائل الدم",
+  "how_it_works_title": "كيفاش تبرع تتخدم؟",
+  "how_it_works_description": "تبرع هي منصة كتربط المتبرعين بالدم مع لي محتاجين. هاكيفاش كتخدم",
+  "how_it_works_step1_title": "1- إنشاء حساب",
+  "how_it_works_step1_description": "سجل ودير البروفيل ديالك، وعطي فصيلة الدم ديالك والمعلومات الضرورية الأخرى",
+  "how_it_works_step2_title": "2- طلب الدم",
+  "how_it_works_step2_description": "إلى كنتي محتاج للدم، دير طلب وحدد فصيلة الدم، معلومات الاتصال، والمكان",
+  "how_it_works_step3_title": "3- إرسال الإشعارات",
+  "how_it_works_step3_description": "النظام كيصيفط إشعارات للمتبرعين المناسبين اللي عندهم نفس فصيلة الدم فالمنطقة ديالك عبر الرسائل النصية والاميلات",
+  "how_it_works_step4_title": "4- استجابة المتبرعين",
+  "how_it_works_step4_description": "إلى كنتي متبرع مناسب، غادي يوصلك إشعار ويمكن ليك تختار باش تساعد"
 }

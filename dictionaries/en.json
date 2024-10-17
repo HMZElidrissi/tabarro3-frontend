@@ -131,5 +131,15 @@
   "blood_request_form_description": "Description",
   "blood_request_form_location": "Location",
   "blood_request_form_phone": "Phone",
-  "all_blood_groups": "All Blood Groups"
+  "all_blood_groups": "All Blood Groups",
+  "how_it_works_title": "How It Works",
+  "how_it_works_description": "tabarro3 is a platform that connects blood donors with those in need. Here's how it works:",
+  "how_it_works_step1_title": "Create an Account",
+  "how_it_works_step1_description": "Sign up and create your profile, providing your blood group and other necessary information.",
+  "how_it_works_step2_title": "Create a Blood Request",
+  "how_it_works_step2_description": "If you need blood, create a request specifying the blood group, contact info, and location.",
+  "how_it_works_step3_title": "Notification Sent",
+  "how_it_works_step3_description": "The system sends notifications to matching donors in the specified area via SMS and email.",
+  "how_it_works_step4_title": "Donors Respond",
+  "how_it_works_step4_description": "If you're a matching donor, you'll receive a notification and can choose to help."
 }
