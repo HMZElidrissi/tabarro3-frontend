@@ -55,10 +55,12 @@ const BloodRequestCard = ({
             <MapPinIcon className="h-5 w-5 mr-2 text-gray-400" />
             {request.city}
           </div>
-          <div className="flex items-center">
-            <EnvelopeIcon className="h-5 w-5 mr-2 text-gray-400" />
-            {request.location}
-          </div>
+          {request.location && (
+            <div className="flex items-center">
+              <EnvelopeIcon className="h-5 w-5 mr-2 text-gray-400" />
+              {request.location}
+            </div>
+          )}
           {request.phone && (
             <div className="flex items-center">
               <PhoneIcon className="h-5 w-5 mr-2 text-gray-400" />

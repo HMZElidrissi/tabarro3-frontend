@@ -6,6 +6,7 @@ import { Contact2Icon, PhoneIcon, UserCircle } from "lucide-react";
 import { useTranslation } from "@/app/lib/useTranslation";
 import useSWR from "swr";
 import axiosClient from "@/app/lib/axiosClient";
+import React from "react";
 
 const fetcher = (url: string) => axiosClient.get(url).then((res) => res.data);
 
@@ -23,9 +24,18 @@ const BloodRequestItem = ({
           <h3 className="text-gray-900 text-sm font-bold">
             {t("Blood Group")}:
           </h3>
-          <span className="flex-shrink-0 inline-block px-2 py-0.5 badge-blood-group">
-            {request.blood_group || "N/A"}
-          </span>
+          {/*<span className="flex-shrink-0 inline-block px-2 py-0.5 badge-blood-group">*/}
+          {/*  {request.blood_group || "N/A"}*/}
+          {/*</span>*/}
+          {request.blood_group ? (
+            <span className="px-2 py-1 bg-red-100 text-red-800 rounded-full text-sm">
+              {request.blood_group}
+            </span>
+          ) : (
+            <span className="px-2 py-1 bg-gray-100 text-gray-800 rounded-full text-sm">
+              {t("all_blood_groups")}
+            </span>
+          )}
         </div>
         <div className="mt-2 text-gray-800 text-sm font-medium flex items-center">
           <MapPinIcon className="h-4 w-4 inline-block mr-2" />
