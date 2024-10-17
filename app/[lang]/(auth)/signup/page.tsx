@@ -19,7 +19,6 @@ const SignUpPage = () => {
     password_confirmation: "",
     city: "",
     phone: "",
-    blood_group: "",
   });
 
   const [errors, setErrors] = useState({
@@ -164,7 +163,6 @@ const SignUpPage = () => {
                   className="form-select"
                   id="blood_group"
                   name="blood_group"
-                  value={formData.blood_group}
                   onChange={handleChange}
                 >
                   <option value="">{t("form_blood_group_placeholder")}</option>

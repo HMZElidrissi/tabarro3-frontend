@@ -120,5 +120,14 @@
   "city_required": "City is required",
   "phone_required": "Phone number is required",
   "phone_invalid": "Please enter a valid 10-digit phone number",
-  "blood_group_required": "Please select your blood group"
+  "blood_group_required": "Please select your blood group",
+  "blood_request_form_description_placeholder": "Blood Request Description ...",
+  "blood_request_form_city_placeholder": "City ...",
+  "blood_request_form_location_placeholder": "Specific Location ...",
+  "blood_request_form_phone_placeholder": "Contact Phone Number ...",
+  "Create a new request to get started": "Create a new request to get started",
+  "blood_request_form_description": "Description",
+  "blood_request_form_location": "Location",
+  "blood_request_form_phone": "Phone",
+  "all_blood_groups": "All Blood Groups"
 }

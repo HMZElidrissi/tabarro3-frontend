@@ -46,8 +46,11 @@ export type BloodRequest = {
   description: string;
   blood_group: string;
   city: string;
+  location: string;
+  phone: string;
   status: "open" | "closed";
   user?: Participant;
+  created_at?: string;
 };
 
 export const adminNavigation = [

@@ -11,26 +11,29 @@ import {
 } from "@/app/ui/components/dialog";
 import { BloodRequest } from "@/app/lib/definitions";
 import { closeBloodRequest, openBloodRequest } from "@/app/lib/data";
-import { useRouter } from "next/navigation";
 import { LockClosedIcon } from "@heroicons/react/20/solid";
 import { LockKeyholeOpenIcon } from "lucide-react";
 import { useTranslation } from "@/app/lib/useTranslation";
 
 const ChangeRequestStatusDialog = ({
   bloodRequest,
+  onChangeStatus,
 }: {
   bloodRequest: BloodRequest;
+  onChangeStatus: (updatedRequest: BloodRequest) => void;
 }) => {
-  const router = useRouter();
   const { t } = useTranslation();
+
   const handleClick = async () => {
+    let updatedRequest;
     if (bloodRequest.status === "open") {
-      await closeBloodRequest(bloodRequest.id as number);
+      updatedRequest = await closeBloodRequest(bloodRequest.id as number);
     } else {
-      await openBloodRequest(bloodRequest.id as number);
+      updatedRequest = await openBloodRequest(bloodRequest.id as number);
     }
-    router.refresh();
+    onChangeStatus(updatedRequest);
   };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -63,12 +66,7 @@ const ChangeRequestStatusDialog = ({
         </DialogHeader>
         <DialogFooter>
           <DialogClose asChild>
-            <button
-              className="save-button"
-              onClick={() => {
-                handleClick();
-              }}
-            >
+            <button className="save-button" onClick={handleClick}>
               {bloodRequest.status === "open"
                 ? t("close_blood_request")
                 : t("open_blood_request")}

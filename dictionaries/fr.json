@@ -118,5 +118,14 @@
   "city_required": "La ville est requise",
   "phone_required": "Le numéro de téléphone est requis",
   "phone_invalid": "Veuillez entrer un numéro de téléphone valide à 10 chiffres",
-  "blood_group_required": "Veuillez sélectionner votre groupe sanguin"
+  "blood_group_required": "Veuillez sélectionner votre groupe sanguin",
+  "blood_request_form_description_placeholder": "Description de la demande de sang ...",
+  "blood_request_form_city_placeholder": "Ville ...",
+  "blood_request_form_location_placeholder": "Emplacement spécifique ...",
+  "blood_request_form_phone_placeholder": "Téléphone ...",
+  "Create a new request to get started": "Créez une nouvelle demande pour commencer",
+  "blood_request_form_description": "Description",
+  "blood_request_form_location": "Emplacement",
+  "blood_request_form_phone": "Téléphone",
+  "all_blood_groups": "Tous les groupes sanguins"
 }

@@ -117,5 +117,14 @@
   "city_required": "المدينة مطلوبة",
   "phone_required": "رقم الهاتف مطلوب",
   "phone_invalid": "يرجى إدخال رقم هاتف صالح مكون من 10 أرقام",
-  "blood_group_required": "يرجى اختيار فصيلة دمك"
+  "blood_group_required": "يرجى اختيار فصيلة دمك",
+  "blood_request_form_description_placeholder": "وصف طلب التبرع بالدم ...",
+  "blood_request_form_city_placeholder": "المدينة ...",
+  "blood_request_form_location_placeholder": "الموقع المحدد ...",
+  "blood_request_form_phone_placeholder": "الهاتف ...",
+  "Create a new request to get started": "إنشاء طلب جديد للبدء",
+  "blood_request_form_description": "الوصف",
+  "blood_request_form_location": "الموقع",
+  "blood_request_form_phone": "الهاتف",
+  "all_blood_groups": "جميع فصائل الدم"
 }

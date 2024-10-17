@@ -1,4 +1,5 @@
 "use client";
+
 import {
   Dialog,
   DialogClose,
@@ -15,7 +16,11 @@ import { useRouter } from "next/navigation";
 import { bloodGroups, BloodRequest } from "@/app/lib/definitions";
 import { useTranslation } from "@/app/lib/useTranslation";
 
-const CreateBloodRequestDialog = () => {
+const CreateBloodRequestDialog = ({
+  onCreateRequest,
+}: {
+  onCreateRequest: (newRequest: BloodRequest) => void;
+}) => {
   const router = useRouter();
   const { t } = useTranslation();
 
@@ -26,10 +31,14 @@ const CreateBloodRequestDialog = () => {
       description: String(formData.get("description")),
       blood_group: String(formData.get("blood_group")),
       city: String(formData.get("city")),
+      location: String(formData.get("location")),
+      phone: String(formData.get("phone")),
       status: "open",
     };
-    await createBloodRequest(newBloodRequest as BloodRequest);
-    router.refresh();
+    const createdRequest = await createBloodRequest(
+      newBloodRequest as BloodRequest,
+    );
+    onCreateRequest(createdRequest);
   };
 
   return (
@@ -55,16 +64,16 @@ const CreateBloodRequestDialog = () => {
             onSubmit={handleSubmit}
           >
             <label htmlFor="description" className="form-label text-right">
-              Description
+              {t("blood_request_form_description")}
             </label>
-            <input
+            <textarea
               id="description"
-              type="text"
               className="form-input col-span-3"
               name="description"
               required
-              placeholder="Blood Request Description ..."
-            />
+              placeholder={t("blood_request_form_description_placeholder")}
+              rows={3}
+            ></textarea>
             <label htmlFor="blood_group" className="form-label text-right">
               {t("Blood Group")}
             </label>
@@ -72,8 +81,8 @@ const CreateBloodRequestDialog = () => {
               id="blood_group"
               className="form-input col-span-3"
               name="blood_group"
-              required
             >
+              <option value="">{t("all_blood_groups")}</option>
               {bloodGroups.map((group) => (
                 <option key={group} defaultValue={group}>
                   {group}
@@ -89,7 +98,29 @@ const CreateBloodRequestDialog = () => {
               className="form-input col-span-3"
               name="city"
               required
-              placeholder="Blood Request City ..."
+              placeholder={t("blood_request_form_city_placeholder")}
+            />
+            <label htmlFor="location" className="form-label text-right">
+              {t("blood_request_form_location")}
+            </label>
+            <input
+              id="location"
+              type="text"
+              className="form-input col-span-3"
+              name="location"
+              required
+              placeholder={t("blood_request_form_location_placeholder")}
+            />
+            <label htmlFor="phone" className="form-label text-right">
+              {t("blood_request_form_phone")}
+            </label>
+            <input
+              id="phone"
+              type="tel"
+              className="form-input col-span-3"
+              name="phone"
+              required
+              placeholder={t("blood_request_form_phone_placeholder")}
             />
             <DialogFooter className="col-span-4">
               <DialogClose asChild>

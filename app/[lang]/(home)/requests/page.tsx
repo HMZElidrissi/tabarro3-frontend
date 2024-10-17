@@ -24,7 +24,7 @@ const BloodRequestItem = ({
             {t("Blood Group")}:
           </h3>
           <span className="flex-shrink-0 inline-block px-2 py-0.5 badge-blood-group">
-            {request.blood_group}
+            {request.blood_group || "N/A"}
           </span>
         </div>
         <div className="mt-2 text-gray-800 text-sm font-medium flex items-center">
@@ -38,26 +38,26 @@ const BloodRequestItem = ({
           <UserCircle className="h-4 w-4 inline-block mr-2" />
           {request.user!.name}
         </div>
-        <div className="mt-1 text-gray-600 text-sm font-medium flex items-center">
-          <InboxIcon className="h-4 w-4 inline-block mr-2" />
-          {request.user!.email}
-        </div>
-        <div className="mt-1 text-gray-600 text-sm font-medium flex items-center">
-          <PhoneIcon className="h-4 w-4 inline-block mr-2" />
-          {request.user!.phone}
-        </div>
+        {request.phone && (
+          <div className="mt-1 text-gray-600 text-sm font-medium flex items-center">
+            <PhoneIcon className="h-4 w-4 inline-block mr-2" />
+            {request.phone}
+          </div>
+        )}
       </div>
     </div>
     <div>
-      <div className="-mt-px flex divide-x divide-gray-200">
-        <a
-          href={`mailto:${request.user!.email}`}
-          className="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500"
-        >
-          <Contact2Icon className="w-5 h-5 text-gray-400" aria-hidden="true" />
-          <span className="ml-3">{t("Contact")}</span>
-        </a>
-      </div>
+      {request.phone && (
+        <div className="-mt-px flex divide-x divide-gray-200">
+          <a
+            href={`tel:${request.phone}`}
+            className="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500"
+          >
+            <PhoneIcon className="w-5 h-5 text-gray-400" aria-hidden="true" />
+            <span className="ml-3">{t("Contact")}</span>
+          </a>
+        </div>
+      )}
     </div>
   </li>
 );

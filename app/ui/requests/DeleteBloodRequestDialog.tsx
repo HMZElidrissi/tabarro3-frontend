@@ -1,4 +1,5 @@
 "use client";
+
 import {
   Dialog,
   DialogClose,
@@ -12,20 +13,22 @@ import {
 import { TrashIcon } from "@heroicons/react/24/outline";
 import { BloodRequest } from "@/app/lib/definitions";
 import { deleteBloodRequest } from "@/app/lib/data";
-import { useRouter } from "next/navigation";
 import { useTranslation } from "@/app/lib/useTranslation";
 
 const DeleteBloodRequestDialog = ({
   bloodRequest,
+  onDeleteRequest,
 }: {
   bloodRequest: BloodRequest;
+  onDeleteRequest: (deletedRequestId: number) => void;
 }) => {
-  const router = useRouter();
   const { t } = useTranslation();
+
   const handleClick = async () => {
     await deleteBloodRequest(bloodRequest.id as number);
-    router.refresh();
+    onDeleteRequest(bloodRequest.id as number);
   };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -43,12 +46,7 @@ const DeleteBloodRequestDialog = ({
         </DialogHeader>
         <DialogFooter>
           <DialogClose asChild>
-            <button
-              className="save-button"
-              onClick={() => {
-                handleClick();
-              }}
-            >
+            <button className="save-button" onClick={handleClick}>
               {t("Delete")}
             </button>
           </DialogClose>
