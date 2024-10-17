@@ -63,4 +63,11 @@ export const authOptions: NextAuthOptions = {
     signOut: "/signout",
     error: "/error",
   },
+  session: {
+    strategy: "jwt",
+    maxAge: 2 * 60 * 60, // 2 hours in seconds
+  },
+  jwt: {
+    maxAge: 2 * 60 * 60, // 2 hours in seconds
+  },
 };
