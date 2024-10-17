@@ -1,15 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { getCsrfToken, signIn } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import Error from "../error/page";
 import { useTranslation } from "@/app/lib/useTranslation";
+import { useRouter } from "next/navigation";
 
 const SignInPage = () => {
   const { t } = useTranslation();
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
 
   const handleSignin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -18,14 +19,24 @@ const SignInPage = () => {
     const email = e.currentTarget.email.value;
     const password = e.currentTarget.password.value;
 
-    const csrfToken = (await getCsrfToken()) as string;
+    try {
+      const result = await signIn("credentials", {
+        email,
+        password,
+        redirect: false, // Prevent automatic redirect
+      });
 
-    await signIn("credentials", {
-      email,
-      password,
-      callbackUrl: "/",
-      csrfToken,
-    });
+      if (result?.error) {
+        // Handle specific error messages
+        setError(t("signin_error") || result.error);
+      } else if (result?.ok) {
+        // Successful sign-in, redirect to home page or dashboard
+        router.push("/");
+      }
+    } catch (err) {
+      console.error("Sign-in error:", err);
+      setError(t("unexpected_error") || "An unexpected error occurred");
+    }
   };
 
   return (
@@ -47,18 +58,11 @@ const SignInPage = () => {
           <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
             {error && (
               <div className="alert alert-error text-center mb-4">
-                <div className="text-sm font-medium text-red-600">
-                  {t("signin_error")}
-                </div>
+                <div className="text-sm font-medium text-red-600">{error}</div>
               </div>
             )}
 
-            <form
-              className="space-y-6"
-              method="post"
-              action="/api/auth/callback/credentials"
-              onSubmit={handleSignin}
-            >
+            <form className="space-y-6" onSubmit={handleSignin}>
               <div>
                 <label htmlFor="email" className="form-label">
                   {t("form_email")}
@@ -69,6 +73,7 @@ const SignInPage = () => {
                   id="email"
                   name="email"
                   placeholder={t("form_email_placeholder")}
+                  required
                 />
               </div>
               <div>
@@ -81,6 +86,7 @@ const SignInPage = () => {
                   id="password"
                   name="password"
                   placeholder={t("form_password_placeholder")}
+                  required
                 />
               </div>
 

@@ -108,5 +108,17 @@
   "form_send_password_reset_link": "Send Password Reset Link",
   "signin_error": "Sign in failed. Check the details you provided are correct.",
   "consent_message": "By signing up, I agree to receive notifications about blood donation needs in my region. I understand that my information will be used to match me with local donation opportunities.",
-  "form_blood_group_dont_know": "Don't know"
+  "form_blood_group_dont_know": "Don't know",
+  "name_required": "Name is required",
+  "name_too_short": "Name must be at least 2 characters long",
+  "email_required": "Email is required",
+  "email_invalid": "Please enter a valid email address",
+  "password_required": "Password is required",
+  "password_too_short": "Password must be at least 6 characters long",
+  "password_confirmation_required": "Please confirm your password",
+  "passwords_do_not_match": "Passwords do not match",
+  "city_required": "City is required",
+  "phone_required": "Phone number is required",
+  "phone_invalid": "Please enter a valid 10-digit phone number",
+  "blood_group_required": "Please select your blood group"
 }

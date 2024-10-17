@@ -106,5 +106,17 @@
   "form_send_password_reset_link": "Envoyer le lien de réinitialisation du mot de passe",
   "signin_error": "Échec de la connexion. Vérifiez que les détails que vous avez fournis sont corrects.",
   "consent_message": "En m'inscrivant, j'accepte de recevoir des notifications concernant les besoins en dons de sang dans ma région. Je comprends que mes informations seront utilisées pour me mettre en relation avec des opportunités de don locales.",
-  "form_blood_group_dont_know": "Je ne sais pas"
+  "form_blood_group_dont_know": "Je ne sais pas",
+  "name_required": "Le nom est requis",
+  "name_too_short": "Le nom doit contenir au moins 2 caractères",
+  "email_required": "L'email est requis",
+  "email_invalid": "Veuillez entrer une adresse email valide",
+  "password_required": "Le mot de passe est requis",
+  "password_too_short": "Le mot de passe doit contenir au moins 6 caractères",
+  "password_confirmation_required": "Veuillez confirmer votre mot de passe",
+  "passwords_do_not_match": "Les mots de passe ne correspondent pas",
+  "city_required": "La ville est requise",
+  "phone_required": "Le numéro de téléphone est requis",
+  "phone_invalid": "Veuillez entrer un numéro de téléphone valide à 10 chiffres",
+  "blood_group_required": "Veuillez sélectionner votre groupe sanguin"
 }

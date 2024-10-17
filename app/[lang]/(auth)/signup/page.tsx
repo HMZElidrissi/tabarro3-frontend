@@ -1,4 +1,5 @@
 "use client";
+
 import { bloodGroups } from "@/app/lib/definitions";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,6 +10,17 @@ import { useTranslation } from "@/app/lib/useTranslation";
 
 const SignUpPage = () => {
   const { t } = useTranslation();
+  const router = useRouter();
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    password_confirmation: "",
+    city: "",
+    phone: "",
+    blood_group: "",
+  });
 
   const [errors, setErrors] = useState({
     name: "",
@@ -19,37 +31,76 @@ const SignUpPage = () => {
     phone: "",
     blood_group: "",
   });
-  const router = useRouter();
 
-  const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
+  const validateField = (name: string, value: string) => {
+    let error = "";
+    switch (name) {
+      case "name":
+        if (!value.trim()) error = t("name_required");
+        else if (value.length < 2) error = t("name_too_short");
+        break;
+      case "email":
+        if (!value.trim()) error = t("email_required");
+        else if (!/\S+@\S+\.\S+/.test(value)) error = t("email_invalid");
+        break;
+      case "password":
+        if (!value) error = t("password_required");
+        else if (value.length < 6) error = t("password_too_short");
+        break;
+      case "password_confirmation":
+        if (!value) error = t("password_confirmation_required");
+        else if (value !== formData.password)
+          error = t("passwords_do_not_match");
+        break;
+      case "city":
+        if (!value.trim()) error = t("city_required");
+        break;
+      case "phone":
+        if (!value.trim()) error = t("phone_required");
+        else if (!/^\d{10}$/.test(value)) error = t("phone_invalid");
+        break;
+    }
+    return error;
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const formData = new FormData(e.currentTarget);
-    const newParticipant = {
-      name: String(formData.get("name")),
-      email: String(formData.get("email")),
-      password: String(formData.get("password")),
-      password_confirmation: String(formData.get("password_confirmation")),
-      city: String(formData.get("city")),
-      phone: String(formData.get("phone")),
-      blood_group: String(formData.get("blood_group")),
-    };
+    // Validate all fields
+    const newErrors = Object.keys(formData).reduce(
+      (acc, key) => {
+        acc[key as keyof typeof errors] = validateField(
+          key,
+          formData[key as keyof typeof formData],
+        );
+        return acc;
+      },
+      {} as typeof errors,
+    );
 
-    axiosClient
-      .post("/register", newParticipant)
-      .then((response) => {
-        router.push("/signin");
-      })
-      .catch((error) => {
-        const { response } = error;
-        if (response && response.status === 422) {
-          if (response.data.errors) {
-            setErrors(response.data.errors);
-          } else {
-            setErrors(response.data.errors);
-          }
-        }
-      });
+    setErrors(newErrors);
+
+    // Check if there are any errors
+    if (Object.values(newErrors).some((error) => error !== "")) {
+      return;
+    }
+
+    try {
+      await axiosClient.post("/register", formData);
+      router.push("/signin");
+    } catch (error: any) {
+      if (error.response && error.response.status === 422) {
+        setErrors((prev) => ({ ...prev, ...error.response.data.errors }));
+      }
+    }
   };
 
   return (
@@ -69,114 +120,41 @@ const SignUpPage = () => {
 
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-            <form className="space-y-6" onSubmit={handleSignup}>
-              <div>
-                <label htmlFor="name" className="form-label">
-                  {t("form_name")}
-                </label>
-                <input
-                  className="form-input"
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder={t("form_name_placeholder")}
-                />
-                {errors.name && (
-                  <div className="text-center text-red-500 text-sm mt-1">
-                    {errors.name}
-                  </div>
-                )}
-              </div>
-
-              <div>
-                <label htmlFor="email" className="form-label">
-                  {t("form_email")}
-                </label>
-                <input
-                  className="form-input"
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder={t("form_email_placeholder")}
-                />
-                {errors.email && (
-                  <div className="text-center text-red-500 text-sm mt-1">
-                    {errors.email}
-                  </div>
-                )}
-              </div>
-
-              <div>
-                <label htmlFor="password" className="form-label">
-                  {t("form_password")}
-                </label>
-                <input
-                  className="form-input"
-                  type="password"
-                  id="password"
-                  name="password"
-                  placeholder={t("form_password_placeholder")}
-                />
-                {errors.password && (
-                  <div className="text-center text-red-500 text-sm mt-1">
-                    {errors.password}
-                  </div>
-                )}
-              </div>
-
-              <div>
-                <label htmlFor="password_confirmation" className="form-label">
-                  {t("form_password_confirmation")}
-                </label>
-                <input
-                  className="form-input"
-                  type="password"
-                  id="password_confirmation"
-                  name="password_confirmation"
-                  placeholder={t("form_password_confirmation_placeholder")}
-                />
-                {errors.password_confirmation && (
-                  <div className="text-center text-red-500 text-sm mt-1">
-                    {errors.password_confirmation}
-                  </div>
-                )}
-              </div>
-
-              <div>
-                <label htmlFor="city" className="form-label">
-                  {t("form_city")}
-                </label>
-                <input
-                  className="form-input"
-                  type="text"
-                  id="city"
-                  name="city"
-                  placeholder={t("form_city_placeholder")}
-                />
-                {errors.city && (
-                  <div className="text-center text-red-500 text-sm mt-1">
-                    {errors.city}
-                  </div>
-                )}
-              </div>
-
-              <div>
-                <label htmlFor="phone" className="form-label">
-                  {t("form_phone")}
-                </label>
-                <input
-                  className="form-input"
-                  type="text"
-                  id="phone"
-                  name="phone"
-                  placeholder={t("form_phone_placeholder")}
-                />
-                {errors.phone && (
-                  <div className="text-center text-red-500 text-sm mt-1">
-                    {errors.phone}
-                  </div>
-                )}
-              </div>
+            <form className="space-y-6" onSubmit={handleSubmit}>
+              {[
+                "name",
+                "email",
+                "password",
+                "password_confirmation",
+                "city",
+                "phone",
+              ].map((field) => (
+                <div key={field}>
+                  <label htmlFor={field} className="form-label">
+                    {t(`form_${field}`)}
+                  </label>
+                  <input
+                    className="form-input"
+                    type={
+                      field.includes("password")
+                        ? "password"
+                        : field === "email"
+                          ? "email"
+                          : "text"
+                    }
+                    id={field}
+                    name={field}
+                    value={formData[field as keyof typeof formData]}
+                    onChange={handleChange}
+                    placeholder={t(`form_${field}_placeholder`)}
+                  />
+                  {errors[field as keyof typeof errors] && (
+                    <div className="text-center text-red-500 text-sm mt-1">
+                      {errors[field as keyof typeof errors]}
+                    </div>
+                  )}
+                </div>
+              ))}
 
               <div>
                 <label htmlFor="blood_group" className="form-label">
@@ -186,6 +164,8 @@ const SignUpPage = () => {
                   className="form-select"
                   id="blood_group"
                   name="blood_group"
+                  value={formData.blood_group}
+                  onChange={handleChange}
                 >
                   <option value="">{t("form_blood_group_placeholder")}</option>
                   <option value="">{t("form_blood_group_dont_know")}</option>

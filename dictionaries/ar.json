@@ -105,5 +105,17 @@
   "form_send_password_reset_link": "إرسال رابط إعادة تعيين كلمة المرور",
   "signin_error": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
   "consent_message": "بالتسجيل، أوافق على تلقي إشعارات حول احتياجات التبرع بالدم في منطقتي. أفهم أنه سيتم استخدام معلوماتي لمطابقتي مع فرص التبرع المحلية.",
-  "form_blood_group_dont_know": "لا أعرف"
+  "form_blood_group_dont_know": "لا أعرف",
+  "name_required": "الاسم مطلوب",
+  "name_too_short": "يجب أن يحتوي الاسم على حرفين على الأقل",
+  "email_required": "البريد الإلكتروني مطلوب",
+  "email_invalid": "يرجى إدخال عنوان بريد إلكتروني صالح",
+  "password_required": "كلمة المرور مطلوبة",
+  "password_too_short": "يجب أن تحتوي كلمة المرور على 6 أحرف على الأقل",
+  "password_confirmation_required": "يرجى تأكيد كلمة المرور",
+  "passwords_do_not_match": "كلمات المرور غير متطابقة",
+  "city_required": "المدينة مطلوبة",
+  "phone_required": "رقم الهاتف مطلوب",
+  "phone_invalid": "يرجى إدخال رقم هاتف صالح مكون من 10 أرقام",
+  "blood_group_required": "يرجى اختيار فصيلة دمك"
 }
