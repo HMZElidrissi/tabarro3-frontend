@@ -6,7 +6,7 @@ import { Contact2Icon, PhoneIcon, UserCircle } from "lucide-react";
 import { useTranslation } from "@/app/lib/useTranslation";
 import useSWR from "swr";
 import axiosClient from "@/app/lib/axiosClient";
-import React from "react";
+import { BloodRequestsSkeleton } from "@/app/ui/components/loading";
 
 const fetcher = (url: string) => axiosClient.get(url).then((res) => res.data);
 
@@ -24,9 +24,6 @@ const BloodRequestItem = ({
           <h3 className="text-gray-900 text-sm font-bold">
             {t("Blood Group")}:
           </h3>
-          {/*<span className="flex-shrink-0 inline-block px-2 py-0.5 badge-blood-group">*/}
-          {/*  {request.blood_group || "N/A"}*/}
-          {/*</span>*/}
           {request.blood_group ? (
             <span className="px-2 py-1 bg-red-100 text-red-800 rounded-full text-sm">
               {request.blood_group}
@@ -80,11 +77,14 @@ const BloodRequestItem = ({
 
 const BloodRequestsClient = () => {
   const { t } = useTranslation();
-  const {
-    data: requests,
-    error,
-    isLoading,
-  } = useSWR<BloodRequest[]>("/blood-requests/all", fetcher);
+  const { data: requests, error } = useSWR<BloodRequest[]>(
+    "/blood-requests/all",
+    fetcher,
+    {
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+    },
+  );
 
   return (
     <div className="py-20">
@@ -94,11 +94,12 @@ const BloodRequestsClient = () => {
             {t("Blood Requests")}
           </p>
         </div>
-        {isLoading ? (
-          <div className="w-full text-center py-10">
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-gray-900"></div>
-            <p className="mt-2 text-gray-600">{t("requests.loading")}</p>
-          </div>
+        {!requests && !error ? (
+          <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-6">
+            {[...Array(6)].map((_, index) => (
+              <BloodRequestsSkeleton key={index} />
+            ))}
+          </ul>
         ) : error ? (
           <div className="w-full text-center py-10 text-red-500">
             {t("Error loading blood requests")}
@@ -108,10 +109,7 @@ const BloodRequestsClient = () => {
             {t("No blood requests found")}
           </div>
         ) : (
-          <ul
-            role="list"
-            className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-6"
-          >
+          <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-6">
             {requests &&
               requests.map((request) => (
                 <BloodRequestItem key={request.id} request={request} t={t} />

@@ -3,6 +3,80 @@ import { UsersIcon, BuildingIcon, CalendarCheckIcon } from "lucide-react";
 const shimmer =
   "before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_1s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/60 before:to-transparent";
 
+export function BloodRequestsSkeleton() {
+  return (
+    <div className="col-span-1 bg-white rounded-lg shadow divide-y divide-gray-200 animate-pulse">
+      <div className="w-full p-6 space-y-4">
+        <div className="flex items-center space-x-3">
+          <div className="h-4 bg-gray-200 rounded w-24"></div>
+          <div className="h-6 bg-gray-200 rounded-full w-16"></div>
+        </div>
+        <div className="space-y-3">
+          <div className="flex items-center">
+            <div className="h-4 w-4 bg-gray-200 rounded mr-2"></div>
+            <div className="h-4 bg-gray-200 rounded w-32"></div>
+          </div>
+          <div className="flex items-center">
+            <div className="h-4 w-4 bg-gray-200 rounded mr-2"></div>
+            <div className="h-4 bg-gray-200 rounded w-48"></div>
+          </div>
+          <div className="h-16 bg-gray-200 rounded w-full"></div>
+          <div className="flex items-center">
+            <div className="h-4 w-4 bg-gray-200 rounded mr-2"></div>
+            <div className="h-4 bg-gray-200 rounded w-36"></div>
+          </div>
+        </div>
+      </div>
+      <div className="px-6 py-4">
+        <div className="h-8 bg-gray-200 rounded w-full"></div>
+      </div>
+    </div>
+  );
+}
+
+export function CampaignsSkeleton() {
+  return (
+    <div className="col-span-1 bg-white rounded-lg shadow divide-y divide-gray-200 animate-pulse">
+      <div className="w-full p-6 space-y-4">
+        <div className="flex items-center space-x-3">
+          <div className="h-4 bg-gray-200 rounded w-48"></div>
+        </div>
+        <div className="space-y-3">
+          <div className="h-16 bg-gray-200 rounded w-full"></div>
+
+          <div className="flex items-center">
+            <div className="h-4 w-4 bg-gray-200 rounded mr-2"></div>
+            <div className="h-4 bg-gray-200 rounded w-32"></div>
+          </div>
+
+          <div className="flex items-center">
+            <div className="h-4 w-4 bg-gray-200 rounded mr-2"></div>
+            <div className="h-4 bg-gray-200 rounded w-24"></div>
+          </div>
+
+          <div className="flex items-center">
+            <div className="h-4 w-4 bg-gray-200 rounded mr-2"></div>
+            <div className="h-4 bg-gray-200 rounded w-36"></div>
+          </div>
+
+          <div className="flex items-center">
+            <div className="h-4 w-4 bg-gray-200 rounded mr-2"></div>
+            <div className="h-4 bg-gray-200 rounded w-40"></div>
+          </div>
+
+          <div className="flex items-center">
+            <div className="h-4 w-4 bg-gray-200 rounded mr-2"></div>
+            <div className="h-4 bg-gray-200 rounded w-32"></div>
+          </div>
+        </div>
+      </div>
+      <div className="px-6 py-4">
+        <div className="h-10 bg-gray-200 rounded w-full"></div>
+      </div>
+    </div>
+  );
+}
+
 export function PageSkeleton() {
   return (
     <div className="bg-red-500 min-h-screen p-4">
