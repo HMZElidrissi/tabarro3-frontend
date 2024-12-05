@@ -6,15 +6,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "@/app/lib/useTranslation";
 import { useRouter } from "next/navigation";
+import LoadingButton from "@/app/ui/home/loading-button";
 
 const SignInPage = () => {
   const { t } = useTranslation();
   const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const handleSignin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
+    setIsLoading(true);
 
     const email = e.currentTarget.email.value;
     const password = e.currentTarget.password.value;
@@ -23,19 +26,19 @@ const SignInPage = () => {
       const result = await signIn("credentials", {
         email,
         password,
-        redirect: false, // Prevent automatic redirect
+        redirect: false,
       });
 
       if (result?.error) {
-        // Handle specific error messages
         setError(t("signin_error") || result.error);
       } else if (result?.ok) {
-        // Successful sign-in, redirect to home page or dashboard
         router.push("/");
       }
     } catch (err) {
       console.error("Sign-in error:", err);
       setError(t("unexpected_error") || "An unexpected error occurred");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -126,9 +129,9 @@ const SignInPage = () => {
               </div>
 
               <div>
-                <button type="submit" className="submit-button">
+                <LoadingButton type="submit" isLoading={isLoading}>
                   {t("form_sign_in")}
-                </button>
+                </LoadingButton>
               </div>
             </form>
           </div>
