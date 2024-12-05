@@ -71,6 +71,10 @@ const CampaignParticipantsDialog = ({ campaign }: { campaign: Campaign }) => {
                 <li key={participant.id} className="py-4">
                   <p className="font-medium">{participant.name}</p>
                   <p className="text-sm text-gray-500">{participant.email}</p>
+                  <p className="text-sm text-gray-500">{participant.phone}</p>
+                  <p className="text-sm text-gray-500">
+                    {participant.blood_group || "Blood group not provided"}
+                  </p>
                 </li>
               ))}
               {participants.length === 0 && (

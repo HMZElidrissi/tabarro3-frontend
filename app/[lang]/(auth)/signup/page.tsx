@@ -7,6 +7,7 @@ import axiosClient from "@/app/lib/axiosClient";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslation } from "@/app/lib/useTranslation";
+import LoadingButton from "@/app/ui/home/loading-button";
 
 const SignUpPage = () => {
   const { t } = useTranslation();
@@ -30,6 +31,8 @@ const SignUpPage = () => {
     phone: "",
     blood_group: "",
   });
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const validateField = (name: string, value: string) => {
     let error = "";
@@ -72,6 +75,7 @@ const SignUpPage = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
 
     // Validate all fields
     const newErrors = Object.keys(formData).reduce(
@@ -99,6 +103,8 @@ const SignUpPage = () => {
       if (error.response && error.response.status === 422) {
         setErrors((prev) => ({ ...prev, ...error.response.data.errors }));
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -194,9 +200,9 @@ const SignUpPage = () => {
               </div>
 
               <div>
-                <button type="submit" className="submit-button">
+                <LoadingButton type="submit" isLoading={isLoading}>
                   {t("form_button")}
-                </button>
+                </LoadingButton>
               </div>
             </form>
           </div>
