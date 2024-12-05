@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -17,6 +16,16 @@ import { useRouter } from "next/navigation";
 import { bloodGroups, BloodRequest } from "@/app/lib/definitions";
 import { useTranslation } from "@/app/lib/useTranslation";
 
+const Spinner = ({ className = "" }) => (
+  <div
+    className={`animate-spin rounded-full h-4 w-4 border-2 border-primary border-t-transparent ${className}`}
+    role="status"
+    aria-label="loading"
+  >
+    <span className="sr-only">Loading...</span>
+  </div>
+);
+
 const CreateBloodRequestDialog = ({
   onCreateRequest,
 }: {
@@ -24,10 +33,12 @@ const CreateBloodRequestDialog = ({
 }) => {
   const router = useRouter();
   const { t } = useTranslation();
+  const [isOpen, setIsOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [formData, setFormData] = useState({
     description: "",
-    blood_group: "",
+    blood_group: "ALL", // Set default value to "ALL"
     city: "",
     location: "",
     phone: "",
@@ -37,6 +48,7 @@ const CreateBloodRequestDialog = ({
     description: "",
     city: "",
     location: "",
+    blood_group: "", // Add blood group validation
   });
 
   const handleInputChange = (
@@ -46,7 +58,6 @@ const CreateBloodRequestDialog = ({
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    // Clear error when user starts typing
     if (errors[name as keyof typeof errors]) {
       setErrors((prev) => ({ ...prev, [name]: "" }));
     }
@@ -57,6 +68,7 @@ const CreateBloodRequestDialog = ({
       description: formData.description ? "" : t("description_required"),
       city: formData.city ? "" : t("city_required"),
       location: formData.location ? "" : t("location_required"),
+      blood_group: formData.blood_group ? "" : t("blood_group_required"),
     };
     setErrors(newErrors);
     return Object.values(newErrors).every((error) => error === "");
@@ -64,29 +76,49 @@ const CreateBloodRequestDialog = ({
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (validateForm()) {
+    if (!validateForm() || isSubmitting) return;
+
+    setIsSubmitting(true);
+    try {
+      // Fix: Only modify blood_group if it's "ALL"
       const newBloodRequest = {
         ...formData,
+        // If blood_group is "ALL", set it to empty string, otherwise keep the selected blood group
         blood_group: formData.blood_group === "ALL" ? "" : formData.blood_group,
         status: "open",
       };
+
+      console.log("Submitting blood request:", newBloodRequest); // Debug log
+
       const createdRequest = await createBloodRequest(
         newBloodRequest as BloodRequest,
       );
+
+      // Optimistically update UI
       onCreateRequest(createdRequest);
-      // Reset form after successful submission
+
+      // Reset form and close dialog
       setFormData({
         description: "",
-        blood_group: "",
+        blood_group: "ALL", // Reset to default
         city: "",
         location: "",
         phone: "",
       });
+      setIsOpen(false);
+
+      // Refresh the page data
+      router.refresh();
+    } catch (error) {
+      console.error("Failed to create blood request:", error);
+      // Handle error (show error message to user)
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <Dialog>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <div className="flex justify-start mr-6 my-4">
           <button className="outline-button flex items-center">
@@ -120,30 +152,40 @@ const CreateBloodRequestDialog = ({
                 onChange={handleInputChange}
                 placeholder={t("blood_request_form_description_placeholder")}
                 rows={3}
-              ></textarea>
+              />
               {errors.description && (
                 <p className="text-red-500 text-sm mt-1">
                   {errors.description}
                 </p>
               )}
             </div>
+
             <label htmlFor="blood_group" className="form-label text-right">
               {t("Blood Group")}
             </label>
-            <select
-              id="blood_group"
-              className="form-input col-span-3"
-              name="blood_group"
-              value={formData.blood_group}
-              onChange={handleInputChange}
-            >
-              <option value="ALL">{t("all_blood_groups")}</option>
-              {bloodGroups.map((group) => (
-                <option key={group} value={group}>
-                  {group}
-                </option>
-              ))}
-            </select>
+            <div className="col-span-3">
+              <select
+                id="blood_group"
+                className={`form-input w-full ${errors.blood_group ? "border-red-500" : ""}`}
+                name="blood_group"
+                value={formData.blood_group}
+                onChange={handleInputChange}
+                required
+              >
+                <option value="ALL">{t("all_blood_groups")}</option>
+                {bloodGroups.map((group) => (
+                  <option key={group} value={group}>
+                    {group}
+                  </option>
+                ))}
+              </select>
+              {errors.blood_group && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.blood_group}
+                </p>
+              )}
+            </div>
+
             <label htmlFor="city" className="form-label text-right">
               {t("City")}
             </label>
@@ -162,6 +204,7 @@ const CreateBloodRequestDialog = ({
                 <p className="text-red-500 text-sm mt-1">{errors.city}</p>
               )}
             </div>
+
             <label htmlFor="location" className="form-label text-right">
               {t("blood_request_form_location")}
             </label>
@@ -180,6 +223,7 @@ const CreateBloodRequestDialog = ({
                 <p className="text-red-500 text-sm mt-1">{errors.location}</p>
               )}
             </div>
+
             <label htmlFor="phone" className="form-label text-right">
               {t("blood_request_form_phone")}
             </label>
@@ -192,12 +236,22 @@ const CreateBloodRequestDialog = ({
               onChange={handleInputChange}
               placeholder={t("blood_request_form_phone_placeholder")}
             />
+
             <DialogFooter className="col-span-4">
-              <DialogClose asChild>
-                <button type="submit" className="save-button">
-                  {t("Save")}
-                </button>
-              </DialogClose>
+              <button
+                type="submit"
+                className="save-button flex items-center justify-center"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? (
+                  <>
+                    <Spinner className="w-4 h-4 mr-2" />
+                    {t("loading...")}
+                  </>
+                ) : (
+                  t("Save")
+                )}
+              </button>
             </DialogFooter>
           </form>
         </div>
