@@ -67,6 +67,7 @@ const CreateBloodRequestDialog = ({
     if (validateForm()) {
       const newBloodRequest = {
         ...formData,
+        blood_group: formData.blood_group === "ALL" ? "" : formData.blood_group,
         status: "open",
       };
       const createdRequest = await createBloodRequest(
@@ -136,7 +137,7 @@ const CreateBloodRequestDialog = ({
               value={formData.blood_group}
               onChange={handleInputChange}
             >
-              <option value="">{t("all_blood_groups")}</option>
+              <option value="ALL">{t("all_blood_groups")}</option>
               {bloodGroups.map((group) => (
                 <option key={group} value={group}>
                   {group}
